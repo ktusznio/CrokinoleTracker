@@ -7,142 +7,147 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5038B821153F420B000E0767 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B820153F420B000E0767 /* UIKit.framework */; };
-		5038B823153F420B000E0767 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B822153F420B000E0767 /* Foundation.framework */; };
-		5038B825153F420B000E0767 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B824153F420B000E0767 /* CoreGraphics.framework */; };
-		5038B82B153F420B000E0767 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5038B829153F420B000E0767 /* InfoPlist.strings */; };
-		5038B82D153F420B000E0767 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B82C153F420B000E0767 /* main.m */; };
-		5038B831153F420B000E0767 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B830153F420B000E0767 /* AppDelegate.m */; };
-		5038B839153F420B000E0767 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B838153F420B000E0767 /* SenTestingKit.framework */; };
-		5038B83A153F420B000E0767 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B820153F420B000E0767 /* UIKit.framework */; };
-		5038B83B153F420B000E0767 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B822153F420B000E0767 /* Foundation.framework */; };
-		5038B843153F420B000E0767 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5038B841153F420B000E0767 /* InfoPlist.strings */; };
-		5038B846153F420B000E0767 /* CrokinoleTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B845153F420B000E0767 /* CrokinoleTrackerTests.m */; };
-		5038B850153F4634000E0767 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B84F153F4634000E0767 /* CoreData.framework */; };
+		5038B864153F4B0A000E0767 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B863153F4B0A000E0767 /* UIKit.framework */; };
+		5038B866153F4B0A000E0767 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B865153F4B0A000E0767 /* Foundation.framework */; };
+		5038B868153F4B0A000E0767 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B867153F4B0A000E0767 /* CoreGraphics.framework */; };
+		5038B86A153F4B0A000E0767 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B869153F4B0A000E0767 /* CoreData.framework */; };
+		5038B870153F4B0A000E0767 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5038B86E153F4B0A000E0767 /* InfoPlist.strings */; };
+		5038B872153F4B0A000E0767 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B871153F4B0A000E0767 /* main.m */; };
+		5038B876153F4B0A000E0767 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B875153F4B0A000E0767 /* AppDelegate.m */; };
+		5038B879153F4B0B000E0767 /* CrokinoleTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5038B877153F4B0B000E0767 /* CrokinoleTracker.xcdatamodeld */; };
+		5038B881153F4B0B000E0767 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B880153F4B0B000E0767 /* SenTestingKit.framework */; };
+		5038B882153F4B0B000E0767 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B863153F4B0A000E0767 /* UIKit.framework */; };
+		5038B883153F4B0B000E0767 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B865153F4B0A000E0767 /* Foundation.framework */; };
+		5038B884153F4B0B000E0767 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B869153F4B0A000E0767 /* CoreData.framework */; };
+		5038B88C153F4B0B000E0767 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5038B88A153F4B0B000E0767 /* InfoPlist.strings */; };
+		5038B88F153F4B0B000E0767 /* CrokinoleTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B88E153F4B0B000E0767 /* CrokinoleTrackerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5038B83C153F420B000E0767 /* PBXContainerItemProxy */ = {
+		5038B885153F4B0B000E0767 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 5038B813153F420B000E0767 /* Project object */;
+			containerPortal = 5038B856153F4B0A000E0767 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5038B81B153F420B000E0767;
+			remoteGlobalIDString = 5038B85E153F4B0A000E0767;
 			remoteInfo = CrokinoleTracker;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5038B81C153F420B000E0767 /* CrokinoleTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrokinoleTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5038B820153F420B000E0767 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		5038B822153F420B000E0767 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		5038B824153F420B000E0767 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		5038B828153F420B000E0767 /* CrokinoleTracker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CrokinoleTracker-Info.plist"; sourceTree = "<group>"; };
-		5038B82A153F420B000E0767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5038B82C153F420B000E0767 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5038B82E153F420B000E0767 /* CrokinoleTracker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CrokinoleTracker-Prefix.pch"; sourceTree = "<group>"; };
-		5038B82F153F420B000E0767 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5038B830153F420B000E0767 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5038B837153F420B000E0767 /* CrokinoleTrackerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrokinoleTrackerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5038B838153F420B000E0767 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		5038B840153F420B000E0767 /* CrokinoleTrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CrokinoleTrackerTests-Info.plist"; sourceTree = "<group>"; };
-		5038B842153F420B000E0767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5038B844153F420B000E0767 /* CrokinoleTrackerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrokinoleTrackerTests.h; sourceTree = "<group>"; };
-		5038B845153F420B000E0767 /* CrokinoleTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrokinoleTrackerTests.m; sourceTree = "<group>"; };
-		5038B84F153F4634000E0767 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5038B85F153F4B0A000E0767 /* CrokinoleTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrokinoleTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5038B863153F4B0A000E0767 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5038B865153F4B0A000E0767 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5038B867153F4B0A000E0767 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5038B869153F4B0A000E0767 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5038B86D153F4B0A000E0767 /* CrokinoleTracker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CrokinoleTracker-Info.plist"; sourceTree = "<group>"; };
+		5038B86F153F4B0A000E0767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5038B871153F4B0A000E0767 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5038B873153F4B0A000E0767 /* CrokinoleTracker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CrokinoleTracker-Prefix.pch"; sourceTree = "<group>"; };
+		5038B874153F4B0A000E0767 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5038B875153F4B0A000E0767 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5038B878153F4B0B000E0767 /* CrokinoleTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CrokinoleTracker.xcdatamodel; sourceTree = "<group>"; };
+		5038B87F153F4B0B000E0767 /* CrokinoleTrackerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrokinoleTrackerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5038B880153F4B0B000E0767 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		5038B889153F4B0B000E0767 /* CrokinoleTrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CrokinoleTrackerTests-Info.plist"; sourceTree = "<group>"; };
+		5038B88B153F4B0B000E0767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5038B88D153F4B0B000E0767 /* CrokinoleTrackerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrokinoleTrackerTests.h; sourceTree = "<group>"; };
+		5038B88E153F4B0B000E0767 /* CrokinoleTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrokinoleTrackerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5038B819153F420B000E0767 /* Frameworks */ = {
+		5038B85C153F4B0A000E0767 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5038B850153F4634000E0767 /* CoreData.framework in Frameworks */,
-				5038B821153F420B000E0767 /* UIKit.framework in Frameworks */,
-				5038B823153F420B000E0767 /* Foundation.framework in Frameworks */,
-				5038B825153F420B000E0767 /* CoreGraphics.framework in Frameworks */,
+				5038B864153F4B0A000E0767 /* UIKit.framework in Frameworks */,
+				5038B866153F4B0A000E0767 /* Foundation.framework in Frameworks */,
+				5038B868153F4B0A000E0767 /* CoreGraphics.framework in Frameworks */,
+				5038B86A153F4B0A000E0767 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5038B833153F420B000E0767 /* Frameworks */ = {
+		5038B87B153F4B0B000E0767 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5038B839153F420B000E0767 /* SenTestingKit.framework in Frameworks */,
-				5038B83A153F420B000E0767 /* UIKit.framework in Frameworks */,
-				5038B83B153F420B000E0767 /* Foundation.framework in Frameworks */,
+				5038B881153F4B0B000E0767 /* SenTestingKit.framework in Frameworks */,
+				5038B882153F4B0B000E0767 /* UIKit.framework in Frameworks */,
+				5038B883153F4B0B000E0767 /* Foundation.framework in Frameworks */,
+				5038B884153F4B0B000E0767 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5038B811153F420B000E0767 = {
+		5038B854153F4B0A000E0767 = {
 			isa = PBXGroup;
 			children = (
-				5038B84F153F4634000E0767 /* CoreData.framework */,
-				5038B826153F420B000E0767 /* CrokinoleTracker */,
-				5038B83E153F420B000E0767 /* CrokinoleTrackerTests */,
-				5038B81F153F420B000E0767 /* Frameworks */,
-				5038B81D153F420B000E0767 /* Products */,
+				5038B86B153F4B0A000E0767 /* CrokinoleTracker */,
+				5038B887153F4B0B000E0767 /* CrokinoleTrackerTests */,
+				5038B862153F4B0A000E0767 /* Frameworks */,
+				5038B860153F4B0A000E0767 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		5038B81D153F420B000E0767 /* Products */ = {
+		5038B860153F4B0A000E0767 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5038B81C153F420B000E0767 /* CrokinoleTracker.app */,
-				5038B837153F420B000E0767 /* CrokinoleTrackerTests.octest */,
+				5038B85F153F4B0A000E0767 /* CrokinoleTracker.app */,
+				5038B87F153F4B0B000E0767 /* CrokinoleTrackerTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5038B81F153F420B000E0767 /* Frameworks */ = {
+		5038B862153F4B0A000E0767 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5038B820153F420B000E0767 /* UIKit.framework */,
-				5038B822153F420B000E0767 /* Foundation.framework */,
-				5038B824153F420B000E0767 /* CoreGraphics.framework */,
-				5038B838153F420B000E0767 /* SenTestingKit.framework */,
+				5038B863153F4B0A000E0767 /* UIKit.framework */,
+				5038B865153F4B0A000E0767 /* Foundation.framework */,
+				5038B867153F4B0A000E0767 /* CoreGraphics.framework */,
+				5038B869153F4B0A000E0767 /* CoreData.framework */,
+				5038B880153F4B0B000E0767 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5038B826153F420B000E0767 /* CrokinoleTracker */ = {
+		5038B86B153F4B0A000E0767 /* CrokinoleTracker */ = {
 			isa = PBXGroup;
 			children = (
-				5038B82F153F420B000E0767 /* AppDelegate.h */,
-				5038B830153F420B000E0767 /* AppDelegate.m */,
-				5038B827153F420B000E0767 /* Supporting Files */,
+				5038B874153F4B0A000E0767 /* AppDelegate.h */,
+				5038B875153F4B0A000E0767 /* AppDelegate.m */,
+				5038B877153F4B0B000E0767 /* CrokinoleTracker.xcdatamodeld */,
+				5038B86C153F4B0A000E0767 /* Supporting Files */,
 			);
 			path = CrokinoleTracker;
 			sourceTree = "<group>";
 		};
-		5038B827153F420B000E0767 /* Supporting Files */ = {
+		5038B86C153F4B0A000E0767 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5038B828153F420B000E0767 /* CrokinoleTracker-Info.plist */,
-				5038B829153F420B000E0767 /* InfoPlist.strings */,
-				5038B82C153F420B000E0767 /* main.m */,
-				5038B82E153F420B000E0767 /* CrokinoleTracker-Prefix.pch */,
+				5038B86D153F4B0A000E0767 /* CrokinoleTracker-Info.plist */,
+				5038B86E153F4B0A000E0767 /* InfoPlist.strings */,
+				5038B871153F4B0A000E0767 /* main.m */,
+				5038B873153F4B0A000E0767 /* CrokinoleTracker-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5038B83E153F420B000E0767 /* CrokinoleTrackerTests */ = {
+		5038B887153F4B0B000E0767 /* CrokinoleTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				5038B844153F420B000E0767 /* CrokinoleTrackerTests.h */,
-				5038B845153F420B000E0767 /* CrokinoleTrackerTests.m */,
-				5038B83F153F420B000E0767 /* Supporting Files */,
+				5038B88D153F4B0B000E0767 /* CrokinoleTrackerTests.h */,
+				5038B88E153F4B0B000E0767 /* CrokinoleTrackerTests.m */,
+				5038B888153F4B0B000E0767 /* Supporting Files */,
 			);
 			path = CrokinoleTrackerTests;
 			sourceTree = "<group>";
 		};
-		5038B83F153F420B000E0767 /* Supporting Files */ = {
+		5038B888153F4B0B000E0767 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5038B840153F420B000E0767 /* CrokinoleTrackerTests-Info.plist */,
-				5038B841153F420B000E0767 /* InfoPlist.strings */,
+				5038B889153F4B0B000E0767 /* CrokinoleTrackerTests-Info.plist */,
+				5038B88A153F4B0B000E0767 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -150,13 +155,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5038B81B153F420B000E0767 /* CrokinoleTracker */ = {
+		5038B85E153F4B0A000E0767 /* CrokinoleTracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5038B849153F420B000E0767 /* Build configuration list for PBXNativeTarget "CrokinoleTracker" */;
+			buildConfigurationList = 5038B892153F4B0B000E0767 /* Build configuration list for PBXNativeTarget "CrokinoleTracker" */;
 			buildPhases = (
-				5038B818153F420B000E0767 /* Sources */,
-				5038B819153F420B000E0767 /* Frameworks */,
-				5038B81A153F420B000E0767 /* Resources */,
+				5038B85B153F4B0A000E0767 /* Sources */,
+				5038B85C153F4B0A000E0767 /* Frameworks */,
+				5038B85D153F4B0A000E0767 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -164,75 +169,75 @@
 			);
 			name = CrokinoleTracker;
 			productName = CrokinoleTracker;
-			productReference = 5038B81C153F420B000E0767 /* CrokinoleTracker.app */;
+			productReference = 5038B85F153F4B0A000E0767 /* CrokinoleTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5038B836153F420B000E0767 /* CrokinoleTrackerTests */ = {
+		5038B87E153F4B0B000E0767 /* CrokinoleTrackerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5038B84C153F420B000E0767 /* Build configuration list for PBXNativeTarget "CrokinoleTrackerTests" */;
+			buildConfigurationList = 5038B895153F4B0B000E0767 /* Build configuration list for PBXNativeTarget "CrokinoleTrackerTests" */;
 			buildPhases = (
-				5038B832153F420B000E0767 /* Sources */,
-				5038B833153F420B000E0767 /* Frameworks */,
-				5038B834153F420B000E0767 /* Resources */,
-				5038B835153F420B000E0767 /* ShellScript */,
+				5038B87A153F4B0B000E0767 /* Sources */,
+				5038B87B153F4B0B000E0767 /* Frameworks */,
+				5038B87C153F4B0B000E0767 /* Resources */,
+				5038B87D153F4B0B000E0767 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5038B83D153F420B000E0767 /* PBXTargetDependency */,
+				5038B886153F4B0B000E0767 /* PBXTargetDependency */,
 			);
 			name = CrokinoleTrackerTests;
 			productName = CrokinoleTrackerTests;
-			productReference = 5038B837153F420B000E0767 /* CrokinoleTrackerTests.octest */;
+			productReference = 5038B87F153F4B0B000E0767 /* CrokinoleTrackerTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		5038B813153F420B000E0767 /* Project object */ = {
+		5038B856153F4B0A000E0767 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
 			};
-			buildConfigurationList = 5038B816153F420B000E0767 /* Build configuration list for PBXProject "CrokinoleTracker" */;
+			buildConfigurationList = 5038B859153F4B0A000E0767 /* Build configuration list for PBXProject "CrokinoleTracker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 5038B811153F420B000E0767;
-			productRefGroup = 5038B81D153F420B000E0767 /* Products */;
+			mainGroup = 5038B854153F4B0A000E0767;
+			productRefGroup = 5038B860153F4B0A000E0767 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5038B81B153F420B000E0767 /* CrokinoleTracker */,
-				5038B836153F420B000E0767 /* CrokinoleTrackerTests */,
+				5038B85E153F4B0A000E0767 /* CrokinoleTracker */,
+				5038B87E153F4B0B000E0767 /* CrokinoleTrackerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5038B81A153F420B000E0767 /* Resources */ = {
+		5038B85D153F4B0A000E0767 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5038B82B153F420B000E0767 /* InfoPlist.strings in Resources */,
+				5038B870153F4B0A000E0767 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5038B834153F420B000E0767 /* Resources */ = {
+		5038B87C153F4B0B000E0767 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5038B843153F420B000E0767 /* InfoPlist.strings in Resources */,
+				5038B88C153F4B0B000E0767 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5038B835153F420B000E0767 /* ShellScript */ = {
+		5038B87D153F4B0B000E0767 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -248,46 +253,47 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5038B818153F420B000E0767 /* Sources */ = {
+		5038B85B153F4B0A000E0767 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5038B82D153F420B000E0767 /* main.m in Sources */,
-				5038B831153F420B000E0767 /* AppDelegate.m in Sources */,
+				5038B872153F4B0A000E0767 /* main.m in Sources */,
+				5038B876153F4B0A000E0767 /* AppDelegate.m in Sources */,
+				5038B879153F4B0B000E0767 /* CrokinoleTracker.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5038B832153F420B000E0767 /* Sources */ = {
+		5038B87A153F4B0B000E0767 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5038B846153F420B000E0767 /* CrokinoleTrackerTests.m in Sources */,
+				5038B88F153F4B0B000E0767 /* CrokinoleTrackerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5038B83D153F420B000E0767 /* PBXTargetDependency */ = {
+		5038B886153F4B0B000E0767 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5038B81B153F420B000E0767 /* CrokinoleTracker */;
-			targetProxy = 5038B83C153F420B000E0767 /* PBXContainerItemProxy */;
+			target = 5038B85E153F4B0A000E0767 /* CrokinoleTracker */;
+			targetProxy = 5038B885153F4B0B000E0767 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5038B829153F420B000E0767 /* InfoPlist.strings */ = {
+		5038B86E153F4B0A000E0767 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5038B82A153F420B000E0767 /* en */,
+				5038B86F153F4B0A000E0767 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		5038B841153F420B000E0767 /* InfoPlist.strings */ = {
+		5038B88A153F4B0B000E0767 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5038B842153F420B000E0767 /* en */,
+				5038B88B153F4B0B000E0767 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -295,7 +301,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		5038B847153F420B000E0767 /* Debug */ = {
+		5038B890153F4B0B000E0767 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -320,7 +326,7 @@
 			};
 			name = Debug;
 		};
-		5038B848153F420B000E0767 /* Release */ = {
+		5038B891153F4B0B000E0767 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -340,7 +346,7 @@
 			};
 			name = Release;
 		};
-		5038B84A153F420B000E0767 /* Debug */ = {
+		5038B893153F4B0B000E0767 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -351,7 +357,7 @@
 			};
 			name = Debug;
 		};
-		5038B84B153F420B000E0767 /* Release */ = {
+		5038B894153F4B0B000E0767 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -362,7 +368,7 @@
 			};
 			name = Release;
 		};
-		5038B84D153F420B000E0767 /* Debug */ = {
+		5038B896153F4B0B000E0767 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CrokinoleTracker.app/CrokinoleTracker";
@@ -379,7 +385,7 @@
 			};
 			name = Debug;
 		};
-		5038B84E153F420B000E0767 /* Release */ = {
+		5038B897153F4B0B000E0767 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CrokinoleTracker.app/CrokinoleTracker";
@@ -399,32 +405,45 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5038B816153F420B000E0767 /* Build configuration list for PBXProject "CrokinoleTracker" */ = {
+		5038B859153F4B0A000E0767 /* Build configuration list for PBXProject "CrokinoleTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5038B847153F420B000E0767 /* Debug */,
-				5038B848153F420B000E0767 /* Release */,
+				5038B890153F4B0B000E0767 /* Debug */,
+				5038B891153F4B0B000E0767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5038B849153F420B000E0767 /* Build configuration list for PBXNativeTarget "CrokinoleTracker" */ = {
+		5038B892153F4B0B000E0767 /* Build configuration list for PBXNativeTarget "CrokinoleTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5038B84A153F420B000E0767 /* Debug */,
-				5038B84B153F420B000E0767 /* Release */,
+				5038B893153F4B0B000E0767 /* Debug */,
+				5038B894153F4B0B000E0767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		5038B84C153F420B000E0767 /* Build configuration list for PBXNativeTarget "CrokinoleTrackerTests" */ = {
+		5038B895153F4B0B000E0767 /* Build configuration list for PBXNativeTarget "CrokinoleTrackerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5038B84D153F420B000E0767 /* Debug */,
-				5038B84E153F420B000E0767 /* Release */,
+				5038B896153F4B0B000E0767 /* Debug */,
+				5038B897153F4B0B000E0767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5038B877153F4B0B000E0767 /* CrokinoleTracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5038B878153F4B0B000E0767 /* CrokinoleTracker.xcdatamodel */,
+			);
+			currentVersion = 5038B878153F4B0B000E0767 /* CrokinoleTracker.xcdatamodel */;
+			path = CrokinoleTracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
-	rootObject = 5038B813153F420B000E0767 /* Project object */;
+	rootObject = 5038B856153F4B0A000E0767 /* Project object */;
 }

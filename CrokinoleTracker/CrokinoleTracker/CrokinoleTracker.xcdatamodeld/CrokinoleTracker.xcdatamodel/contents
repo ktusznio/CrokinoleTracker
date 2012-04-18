@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Game" syncable="YES">
+        <attribute name="datePlayed" attributeType="Date" syncable="YES"/>
+        <relationship name="players" optional="YES" toMany="YES" minCount="2" maxCount="2" deletionRule="Nullify" ordered="YES" destinationEntity="Player" inverseName="games" inverseEntity="Player" syncable="YES"/>
+        <relationship name="rounds" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Round" inverseName="game" inverseEntity="Round" syncable="YES"/>
+    </entity>
+    <entity name="Player" syncable="YES">
+        <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
+        <relationship name="games" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Game" inverseName="players" inverseEntity="Game" syncable="YES"/>
+    </entity>
+    <entity name="Round" syncable="YES">
+        <attribute name="playerOne5s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="playerOne10s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="playerOne15s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="playerOne20s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="playerTwo5s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="playerTwo10s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="playerTwo15s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="playerTwo20s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="game" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="rounds" inverseEntity="Game" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Player" positionX="-1368" positionY="-1287" width="128" height="75"/>
+        <element name="Game" positionX="-1136" positionY="-1287" width="128" height="90"/>
+        <element name="Round" positionX="-920" positionY="-1377" width="128" height="180"/>
+    </elements>
 </model>

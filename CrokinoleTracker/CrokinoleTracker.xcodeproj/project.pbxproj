@@ -21,6 +21,9 @@
 		5038B884153F4B0B000E0767 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B869153F4B0A000E0767 /* CoreData.framework */; };
 		5038B88C153F4B0B000E0767 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5038B88A153F4B0B000E0767 /* InfoPlist.strings */; };
 		5038B88F153F4B0B000E0767 /* CrokinoleTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B88E153F4B0B000E0767 /* CrokinoleTrackerTests.m */; };
+		5038B89A153F54FB000E0767 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B899153F54FB000E0767 /* Player.m */; };
+		5038B89D153F5596000E0767 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B89C153F5596000E0767 /* Game.m */; };
+		5038B8A0153F55C5000E0767 /* Round.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B89F153F55C5000E0767 /* Round.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,12 @@
 		5038B88B153F4B0B000E0767 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5038B88D153F4B0B000E0767 /* CrokinoleTrackerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrokinoleTrackerTests.h; sourceTree = "<group>"; };
 		5038B88E153F4B0B000E0767 /* CrokinoleTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrokinoleTrackerTests.m; sourceTree = "<group>"; };
+		5038B898153F54FB000E0767 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		5038B899153F54FB000E0767 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		5038B89B153F5596000E0767 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		5038B89C153F5596000E0767 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		5038B89E153F55C5000E0767 /* Round.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Round.h; sourceTree = "<group>"; };
+		5038B89F153F55C5000E0767 /* Round.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Round.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +125,7 @@
 			children = (
 				5038B874153F4B0A000E0767 /* AppDelegate.h */,
 				5038B875153F4B0A000E0767 /* AppDelegate.m */,
-				5038B877153F4B0B000E0767 /* CrokinoleTracker.xcdatamodeld */,
+				5038B8A1153F55FF000E0767 /* Models */,
 				5038B86C153F4B0A000E0767 /* Supporting Files */,
 			);
 			path = CrokinoleTracker;
@@ -125,6 +134,7 @@
 		5038B86C153F4B0A000E0767 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5038B877153F4B0B000E0767 /* CrokinoleTracker.xcdatamodeld */,
 				5038B86D153F4B0A000E0767 /* CrokinoleTracker-Info.plist */,
 				5038B86E153F4B0A000E0767 /* InfoPlist.strings */,
 				5038B871153F4B0A000E0767 /* main.m */,
@@ -150,6 +160,19 @@
 				5038B88A153F4B0B000E0767 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5038B8A1153F55FF000E0767 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5038B89B153F5596000E0767 /* Game.h */,
+				5038B89C153F5596000E0767 /* Game.m */,
+				5038B898153F54FB000E0767 /* Player.h */,
+				5038B899153F54FB000E0767 /* Player.m */,
+				5038B89E153F55C5000E0767 /* Round.h */,
+				5038B89F153F55C5000E0767 /* Round.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +283,9 @@
 				5038B872153F4B0A000E0767 /* main.m in Sources */,
 				5038B876153F4B0A000E0767 /* AppDelegate.m in Sources */,
 				5038B879153F4B0B000E0767 /* CrokinoleTracker.xcdatamodeld in Sources */,
+				5038B89A153F54FB000E0767 /* Player.m in Sources */,
+				5038B89D153F5596000E0767 /* Game.m in Sources */,
+				5038B8A0153F55C5000E0767 /* Round.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

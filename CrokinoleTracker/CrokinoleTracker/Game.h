@@ -17,6 +17,9 @@
 @property (nonatomic, retain) NSOrderedSet *rounds;
 @property (nonatomic, retain) NSOrderedSet *players;
 
+- (int)playerOneScore;
+- (int)playerTwoScore;
+
 @end
 
 @interface Game (CoreDataGeneratedAccessors)
@@ -41,4 +44,5 @@
 - (void)removePlayersObject:(Player *)value;
 - (void)addPlayers:(NSOrderedSet *)values;
 - (void)removePlayers:(NSOrderedSet *)values;
+
 @end

@@ -6,10 +6,16 @@
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
+#import "AppDelegate.h"
+#import "CoreDataUtilities.h"
 #import "GameOptionsViewController.h"
+#import "Player.h"
 #import "PlayerSelectionViewController.h"
 
 @implementation GameOptionsViewController
+
+@synthesize choosePlayerOneButton;
+@synthesize choosePlayerTwoButton;
 
 - (id)init {
     self = [super init];
@@ -28,6 +34,8 @@
 }
 
 - (void)viewDidUnload {
+    [self setChoosePlayerOneButton:nil];
+    [self setChoosePlayerTwoButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -44,7 +52,29 @@
 }
 
 - (IBAction)onStartGameButtonTap:(id)sender {
-    // Fetch or create players.
+    NSArray *choosePlayerButtons = [NSArray arrayWithObjects:choosePlayerOneButton, choosePlayerTwoButton, nil];
+    NSMutableArray *gamePlayers = [NSMutableArray array];
+    for (UIButton *button in choosePlayerButtons) {
+        // Determine whether we have a new player.
+        NSString *playerName = [[button titleLabel] text];
+        Player *player = (Player *)[CoreDataUtilities entityForEntityName:@"Player"
+                                                            attributeName:@"name"
+                                                           attributeValue:playerName];
+        if (!player) {
+            // Create the new player.
+            NSDictionary *playerAttributes = [NSDictionary dictionaryWithObject:playerName
+                                                                         forKey:@"name"];
+            player = (Player *)[CoreDataUtilities createEntityForEntityName:@"Player"
+                                                        attributeDictionary:playerAttributes];
+
+            // Add the new player to the app delegate's player collection.
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [[appDelegate players] addObject:player];
+        }
+
+        // Add the chosen players to this game.
+        [gamePlayers addObject:player];
+    }
 
     // Create a new game.
 

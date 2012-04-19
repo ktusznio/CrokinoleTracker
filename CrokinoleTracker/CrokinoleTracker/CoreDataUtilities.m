@@ -48,4 +48,29 @@
     return nil;
 }
 
++ (NSManagedObject *)createEntityForEntityName:(NSString *)entityName
+                           attributeDictionary:(NSDictionary *)attributes {
+    // Get the managed object context from the app delegate.
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+
+    // Create the entity object.
+    NSManagedObject *entity = [NSEntityDescription insertNewObjectForEntityForName:entityName
+                                                            inManagedObjectContext:context];
+
+    // Assign its attributes.
+    for (NSString *key in [attributes allKeys]) {
+        [entity setValue:[attributes valueForKey:key]
+                  forKey:key];
+    }
+
+    // Save and check for errors.
+    NSError *error;
+    if (![context save:&error]) {
+        [NSException raise:@"Unable to create object." format:@"Error: %s", [error description]];
+    }
+
+    return entity;
+}
+
 @end

@@ -10,6 +10,9 @@
 
 @interface GameOptionsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *choosePlayerOneButton;
+@property (weak, nonatomic) IBOutlet UIButton *choosePlayerTwoButton;
+
 - (IBAction)onSelectPlayerButtonTap:(id)sender;
 
 @end

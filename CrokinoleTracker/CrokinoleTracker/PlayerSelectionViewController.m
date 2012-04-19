@@ -38,6 +38,21 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+# pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    // Dismiss the keyboard when "return" is pressed.
+    [textField resignFirstResponder];
+    return NO;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    // Clear the placeholder text when editing begins.
+    [textField setText:@""];
+}
+
+# pragma mark -
+
 - (IBAction)editingNewPlayerDidEnd:(id)sender {
     // Update the game options screen's button title.
     NSString *newPlayerName = [createPlayerTextField text];    

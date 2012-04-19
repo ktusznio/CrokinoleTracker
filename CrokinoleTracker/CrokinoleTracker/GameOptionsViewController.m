@@ -38,7 +38,8 @@
 
 - (IBAction)onSelectPlayerButtonTap:(id)sender {
     // Show a player selection view.
-    PlayerSelectionViewController *playerSelectionViewController = [[PlayerSelectionViewController alloc] initWithButton:(UIButton *)sender];
+    UIButton *button = (UIButton *)sender;
+    PlayerSelectionViewController *playerSelectionViewController = [[PlayerSelectionViewController alloc] initWithButton:button];
     [self presentModalViewController:playerSelectionViewController animated:YES];
 }
 

@@ -29,6 +29,7 @@
 		8EAE6A83153F603B00ECA3A7 /* GameOptionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAE6A82153F603B00ECA3A7 /* GameOptionsView.xib */; };
 		8EAE6A87153F643200ECA3A7 /* PlayerSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A85153F643200ECA3A7 /* PlayerSelectionViewController.m */; };
 		8EAE6A88153F643200ECA3A7 /* PlayerSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAE6A86153F643200ECA3A7 /* PlayerSelectionView.xib */; };
+		8EAE6A8C1540A63000ECA3A7 /* CoreDataUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A8B1540A63000ECA3A7 /* CoreDataUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,8 @@
 		8EAE6A84153F643200ECA3A7 /* PlayerSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSelectionViewController.h; sourceTree = "<group>"; };
 		8EAE6A85153F643200ECA3A7 /* PlayerSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSelectionViewController.m; sourceTree = "<group>"; };
 		8EAE6A86153F643200ECA3A7 /* PlayerSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerSelectionView.xib; sourceTree = "<group>"; };
+		8EAE6A8A1540A63000ECA3A7 /* CoreDataUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataUtilities.h; sourceTree = "<group>"; };
+		8EAE6A8B1540A63000ECA3A7 /* CoreDataUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataUtilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,7 @@
 				8EAE6A7E153F5B7100ECA3A7 /* Controllers */,
 				8EAE6A73153F59B600ECA3A7 /* View Controllers */,
 				5038B8A1153F55FF000E0767 /* Models */,
+				8EAE6A891540A60700ECA3A7 /* Utilities */,
 				8EAE6A7F153F5DE000ECA3A7 /* Views */,
 				5038B86C153F4B0A000E0767 /* Supporting Files */,
 			);
@@ -218,6 +222,15 @@
 				8EAE6A82153F603B00ECA3A7 /* GameOptionsView.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		8EAE6A891540A60700ECA3A7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8EAE6A8A1540A63000ECA3A7 /* CoreDataUtilities.h */,
+				8EAE6A8B1540A63000ECA3A7 /* CoreDataUtilities.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +349,7 @@
 				8EAE6A77153F59F500ECA3A7 /* NavigationController.m in Sources */,
 				8EAE6A7D153F5B3300ECA3A7 /* GameOptionsViewController.m in Sources */,
 				8EAE6A87153F643200ECA3A7 /* PlayerSelectionViewController.m in Sources */,
+				8EAE6A8C1540A63000ECA3A7 /* CoreDataUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

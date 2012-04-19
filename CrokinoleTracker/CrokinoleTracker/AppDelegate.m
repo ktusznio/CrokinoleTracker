@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CoreDataUtilities.h"
 #import "GameOptionsViewController.h"
 #import "Player.h"
 
@@ -25,7 +26,7 @@
     [self.window makeKeyAndVisible];
 
     // Load the list of players.
-    players = [NSMutableArray arrayWithArray:[Player fetchPlayers]];
+    players = [NSMutableArray arrayWithArray:[CoreDataUtilities fetchEntitiesForEntityName:@"Player"]];
     
     // Set up the navigation controller and its initial view.
     UINavigationController *navigationController = [[UINavigationController alloc] init];

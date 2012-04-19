@@ -18,8 +18,6 @@
 
 @interface Player (CoreDataGeneratedAccessors)
 
-+ (NSArray *)fetchPlayers;
-
 - (void)insertObject:(NSManagedObject *)value inGamesAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromGamesAtIndex:(NSUInteger)idx;
 - (void)insertGames:(NSArray *)value atIndexes:(NSIndexSet *)indexes;

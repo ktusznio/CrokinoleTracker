@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CoreDataUtilities.h"
+#import "Game.h"
 #import "GameOptionsViewController.h"
 #import "Player.h"
 #import "PlayerSelectionViewController.h"
@@ -77,6 +78,13 @@
     }
 
     // Create a new game.
+    NSMutableDictionary *gameAttributes = [NSMutableDictionary dictionary];
+    [gameAttributes setValue:[NSDate date]
+                      forKey:@"datePlayed"];
+    [gameAttributes setValue:[NSOrderedSet orderedSetWithArray:gamePlayers]
+                      forKey:@"players"];
+    Game *game = (Game *)[CoreDataUtilities createEntityForEntityName:@"Game"
+                                                  attributeDictionary:[NSDictionary dictionaryWithDictionary:gameAttributes]];
 
     // Create a new round for the game.
 

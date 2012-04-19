@@ -25,7 +25,7 @@
     UINavigationController *navigationController = [[UINavigationController alloc] init];
     GameOptionsViewController *gameOptionsViewController = [[GameOptionsViewController alloc] init];
     [navigationController pushViewController:gameOptionsViewController animated:NO];
-    [[self window] addSubview:[navigationController view]];
+    [[self window] setRootViewController:navigationController];
 
     return YES;
 }

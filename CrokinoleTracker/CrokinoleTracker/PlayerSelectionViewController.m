@@ -10,7 +10,7 @@
 
 @implementation PlayerSelectionViewController
 
-@synthesize existingPlayersTableView, createPlayerTextField;
+@synthesize createPlayerTextField;
 
 - (id)initWithButton:(UIButton *)aButton {
     self = [super init];
@@ -28,7 +28,6 @@
 }
 
 - (void)viewDidUnload {
-    [self setExistingPlayersTableView:nil];
     [self setCreatePlayerTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.

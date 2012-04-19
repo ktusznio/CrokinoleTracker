@@ -13,7 +13,6 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *createPlayerTextField;
-@property (weak, nonatomic) IBOutlet UITableView *existingPlayersTableView;
 
 - (id)initWithButton:(UIButton *)aButton;
 - (IBAction)editingNewPlayerDidEnd:(id)sender;

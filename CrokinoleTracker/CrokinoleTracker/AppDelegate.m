@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "GameOptionsViewController.h"
+#import "Player.h"
 
 @implementation AppDelegate
 
@@ -15,6 +16,7 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
+@synthesize players;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -22,6 +24,10 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
 
+    // Load the list of players.
+    players = [NSMutableArray arrayWithArray:[Player fetchPlayers]];
+    
+    // Set up the navigation controller and its initial view.
     UINavigationController *navigationController = [[UINavigationController alloc] init];
     GameOptionsViewController *gameOptionsViewController = [[GameOptionsViewController alloc] init];
     [navigationController pushViewController:gameOptionsViewController animated:NO];

@@ -13,12 +13,12 @@
 
 - (id)init {
     self = [super init];
-    
+
     if (self) {
         // Custom initialization.
         [self setTitle:@"Game Options"];
     }
-    
+
     return self;
 }
 
@@ -41,6 +41,16 @@
     UIButton *button = (UIButton *)sender;
     PlayerSelectionViewController *playerSelectionViewController = [[PlayerSelectionViewController alloc] initWithButton:button];
     [self presentModalViewController:playerSelectionViewController animated:YES];
+}
+
+- (IBAction)onStartGameButtonTap:(id)sender {
+    // Fetch or create players.
+
+    // Create a new game.
+
+    // Create a new round for the game.
+
+    // Push the scorekeeping screen.
 }
 
 @end

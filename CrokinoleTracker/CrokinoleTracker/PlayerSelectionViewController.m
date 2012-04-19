@@ -55,9 +55,9 @@
 
 - (IBAction)editingNewPlayerDidEnd:(id)sender {
     // Update the game options screen's button title.
-    NSString *newPlayerName = [createPlayerTextField text];    
+    NSString *newPlayerName = [createPlayerTextField text];
     [button setTitle:newPlayerName forState:UIControlStateNormal];
-    
+
     // Dismiss this view.
     [self dismissModalViewControllerAnimated:YES];
 }

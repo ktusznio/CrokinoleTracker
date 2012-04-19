@@ -12,6 +12,7 @@
 #import "GameOptionsViewController.h"
 #import "Player.h"
 #import "PlayerSelectionViewController.h"
+#import "Round.h"
 
 @implementation GameOptionsViewController
 
@@ -87,6 +88,13 @@
                                                   attributeDictionary:[NSDictionary dictionaryWithDictionary:gameAttributes]];
 
     // Create a new round for the game.
+    NSMutableDictionary *roundAttributes = [NSMutableDictionary dictionary];
+    [roundAttributes setValue:[NSNumber numberWithInt:1]
+                       forKey:@"roundNumber"];
+    [roundAttributes setValue:game
+                       forKey:@"game"];
+    Round *round = (Round *)[CoreDataUtilities createEntityForEntityName:@"Round"
+                                                     attributeDictionary:roundAttributes];
 
     // Push the scorekeeping screen.
 }

@@ -18,11 +18,12 @@
         <attribute name="playerTwo10s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="playerTwo15s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="playerTwo20s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="roundNumber" optional="YES" attributeType="Integer 16" minValueString="1" syncable="YES"/>
         <relationship name="game" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="rounds" inverseEntity="Game" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Player" positionX="-1368" positionY="-1287" width="128" height="75"/>
         <element name="Game" positionX="-1136" positionY="-1287" width="128" height="90"/>
-        <element name="Round" positionX="-891" positionY="-1377" width="128" height="180"/>
+        <element name="Player" positionX="-1368" positionY="-1287" width="128" height="75"/>
+        <element name="Round" positionX="-891" positionY="-1377" width="128" height="195"/>
     </elements>
 </model>

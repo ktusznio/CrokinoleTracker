@@ -24,6 +24,11 @@
 		5038B89A153F54FB000E0767 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B899153F54FB000E0767 /* Player.m */; };
 		5038B89D153F5596000E0767 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B89C153F5596000E0767 /* Game.m */; };
 		5038B8A0153F55C5000E0767 /* Round.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B89F153F55C5000E0767 /* Round.m */; };
+		8EAE6A77153F59F500ECA3A7 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A76153F59F500ECA3A7 /* NavigationController.m */; };
+		8EAE6A7D153F5B3300ECA3A7 /* GameOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A7C153F5B3300ECA3A7 /* GameOptionsViewController.m */; };
+		8EAE6A83153F603B00ECA3A7 /* GameOptionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAE6A82153F603B00ECA3A7 /* GameOptionsView.xib */; };
+		8EAE6A87153F643200ECA3A7 /* PlayerSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A85153F643200ECA3A7 /* PlayerSelectionViewController.m */; };
+		8EAE6A88153F643200ECA3A7 /* PlayerSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAE6A86153F643200ECA3A7 /* PlayerSelectionView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,14 @@
 		5038B89C153F5596000E0767 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		5038B89E153F55C5000E0767 /* Round.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Round.h; sourceTree = "<group>"; };
 		5038B89F153F55C5000E0767 /* Round.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Round.m; sourceTree = "<group>"; };
+		8EAE6A75153F59F500ECA3A7 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		8EAE6A76153F59F500ECA3A7 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		8EAE6A7B153F5B3300ECA3A7 /* GameOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOptionsViewController.h; sourceTree = "<group>"; };
+		8EAE6A7C153F5B3300ECA3A7 /* GameOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOptionsViewController.m; sourceTree = "<group>"; };
+		8EAE6A82153F603B00ECA3A7 /* GameOptionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOptionsView.xib; sourceTree = "<group>"; };
+		8EAE6A84153F643200ECA3A7 /* PlayerSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSelectionViewController.h; sourceTree = "<group>"; };
+		8EAE6A85153F643200ECA3A7 /* PlayerSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSelectionViewController.m; sourceTree = "<group>"; };
+		8EAE6A86153F643200ECA3A7 /* PlayerSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerSelectionView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +138,10 @@
 			children = (
 				5038B874153F4B0A000E0767 /* AppDelegate.h */,
 				5038B875153F4B0A000E0767 /* AppDelegate.m */,
+				8EAE6A7E153F5B7100ECA3A7 /* Controllers */,
+				8EAE6A73153F59B600ECA3A7 /* View Controllers */,
 				5038B8A1153F55FF000E0767 /* Models */,
+				8EAE6A7F153F5DE000ECA3A7 /* Views */,
 				5038B86C153F4B0A000E0767 /* Supporting Files */,
 			);
 			path = CrokinoleTracker;
@@ -173,6 +189,35 @@
 				5038B89F153F55C5000E0767 /* Round.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		8EAE6A73153F59B600ECA3A7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8EAE6A7B153F5B3300ECA3A7 /* GameOptionsViewController.h */,
+				8EAE6A7C153F5B3300ECA3A7 /* GameOptionsViewController.m */,
+				8EAE6A84153F643200ECA3A7 /* PlayerSelectionViewController.h */,
+				8EAE6A85153F643200ECA3A7 /* PlayerSelectionViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		8EAE6A7E153F5B7100ECA3A7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8EAE6A75153F59F500ECA3A7 /* NavigationController.h */,
+				8EAE6A76153F59F500ECA3A7 /* NavigationController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8EAE6A7F153F5DE000ECA3A7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8EAE6A86153F643200ECA3A7 /* PlayerSelectionView.xib */,
+				8EAE6A82153F603B00ECA3A7 /* GameOptionsView.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +291,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5038B870153F4B0A000E0767 /* InfoPlist.strings in Resources */,
+				8EAE6A83153F603B00ECA3A7 /* GameOptionsView.xib in Resources */,
+				8EAE6A88153F643200ECA3A7 /* PlayerSelectionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +333,9 @@
 				5038B89A153F54FB000E0767 /* Player.m in Sources */,
 				5038B89D153F5596000E0767 /* Game.m in Sources */,
 				5038B8A0153F55C5000E0767 /* Round.m in Sources */,
+				8EAE6A77153F59F500ECA3A7 /* NavigationController.m in Sources */,
+				8EAE6A7D153F5B3300ECA3A7 /* GameOptionsViewController.m in Sources */,
+				8EAE6A87153F643200ECA3A7 /* PlayerSelectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +497,7 @@
 				5038B894153F4B0B000E0767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5038B895153F4B0B000E0767 /* Build configuration list for PBXNativeTarget "CrokinoleTrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +506,7 @@
 				5038B897153F4B0B000E0767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

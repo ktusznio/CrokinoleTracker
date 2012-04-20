@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlayerSelectionViewController : UIViewController <UITextFieldDelegate> {
+@interface PlayerSelectionViewController : UIViewController <UITableViewDataSource, UITextFieldDelegate> {
     UIButton *button;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *createPlayerTextField;
+@property (weak, nonatomic) IBOutlet UITableView *existingPlayersTableView;
 
 - (id)initWithButton:(UIButton *)aButton;
 - (IBAction)editingNewPlayerDidEnd:(id)sender;

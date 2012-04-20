@@ -70,6 +70,17 @@
     return cell;
 }
 
+# pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Update the game options screen's button title.
+    NSString *existingPlayerName = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
+    [button setTitle:existingPlayerName forState:UIControlStateNormal];
+
+    // Dismiss this view.
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 # pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlayerSelectionViewController : UIViewController <UITableViewDataSource, UITextFieldDelegate> {
+@interface PlayerSelectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
     UIButton *button;
 }
 

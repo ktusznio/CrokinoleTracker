@@ -149,6 +149,16 @@
     return nil;
 }
 
+- (IBAction)onQuitGameButtonTap:(id)sender {
+    // Show an alert, asking if the user truly wants to quit the game.
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Really quit?"
+                                                    message:@"The current game will be lost."
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Quit", nil];
+    [alert show];
+}
+
 - (IBAction)onNextRoundButtonTap:(id)sender {
     // Update the current round.
     Round *currentRound = [game currentRound];
@@ -177,6 +187,24 @@
         // Push a new scorekeeping screen.
         ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForGame:game];
         [[self navigationController] pushViewController:scorekeepingViewController animated:YES];
+    }
+}
+
+# pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        // The user clicked "Cancel", so simply dismiss the alert.
+    } else if (buttonIndex == 1) {
+        // The user clicked "Quit".
+
+        // Delete the current game.
+        [CoreDataUtilities deleteEntity:game];
+
+        // Pop back to the player selection screen.
+        [[self navigationController] popToRootViewControllerAnimated:YES];
+    } else {
+        // Unknown button!  Simply dismiss the alert.
     }
 }
 

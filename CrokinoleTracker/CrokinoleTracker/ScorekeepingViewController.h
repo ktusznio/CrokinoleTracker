@@ -41,6 +41,7 @@
 - (id)initForGame:(Game *)aGame;
 - (IBAction)valueChanged:(id)sender;
 - (UILabel *)labelForStepper:(UIStepper *)stepper;
+- (IBAction)onQuitGameButtonTap:(id)sender;
 - (IBAction)onNextRoundButtonTap:(id)sender;
 
 @end

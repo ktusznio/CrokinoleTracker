@@ -40,7 +40,7 @@
 					<object class="IBUILabel" id="700682696">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 20}, {42, 21}}</string>
+						<string key="NSFrame">{{20, 49}, {94, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="412273081"/>
@@ -72,7 +72,7 @@
 					<object class="IBUILabel" id="412273081">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{258, 20}, {42, 21}}</string>
+						<string key="NSFrame">{{206, 49}, {94, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="868020094"/>
@@ -94,10 +94,10 @@
 					<object class="IBUILabel" id="868020094">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 49}, {42, 21}}</string>
+						<string key="NSFrame">{{20, 20}, {94, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="630563040"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -116,7 +116,7 @@
 					<object class="IBUILabel" id="1036029155">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{257, 49}, {43, 21}}</string>
+						<string key="NSFrame">{{206, 20}, {94, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="358774974"/>
@@ -127,28 +127,6 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Kamil</string>
-						<reference key="IBUITextColor" ref="826305338"/>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">0</int>
-						<float key="IBUIMinimumFontSize">10</float>
-						<int key="IBUITextAlignment">1</int>
-						<reference key="IBUIFontDescription" ref="901269796"/>
-						<reference key="IBUIFont" ref="563654565"/>
-					</object>
-					<object class="IBUILabel" id="630563040">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{112, 34}, {96, 21}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1036029155"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Round 1</string>
 						<reference key="IBUITextColor" ref="826305338"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -662,14 +640,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">roundNumberLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="630563040"/>
-					</object>
-					<int key="connectionID">13</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">playerOne20sLabel</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="358774974"/>
@@ -899,10 +869,6 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="700682696"/>
-							<reference ref="412273081"/>
-							<reference ref="868020094"/>
-							<reference ref="1036029155"/>
 							<reference ref="589554701"/>
 							<reference ref="500656239"/>
 							<reference ref="194678085"/>
@@ -925,7 +891,10 @@
 							<reference ref="29265923"/>
 							<reference ref="803821239"/>
 							<reference ref="663689550"/>
-							<reference ref="630563040"/>
+							<reference ref="868020094"/>
+							<reference ref="1036029155"/>
+							<reference ref="700682696"/>
+							<reference ref="412273081"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -958,11 +927,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">7</int>
 						<reference key="object" ref="1036029155"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">8</int>
-						<reference key="object" ref="630563040"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -1109,7 +1073,6 @@
 				<string key="52.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
@@ -1162,7 +1125,6 @@
 						<string key="playerTwo5sStepper">UIStepper</string>
 						<string key="playerTwoNameLabel">UILabel</string>
 						<string key="playerTwoScoreLabel">UILabel</string>
-						<string key="roundNumberLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="playerOne10sLabel">
@@ -1243,10 +1205,6 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="playerTwoScoreLabel">
 							<string key="name">playerTwoScoreLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="roundNumberLabel">
-							<string key="name">roundNumberLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 					</dictionary>

@@ -18,7 +18,6 @@
 @synthesize playerTwoScoreLabel;
 @synthesize playerOneNameLabel;
 @synthesize playerTwoNameLabel;
-@synthesize roundNumberLabel;
 @synthesize playerOne20sLabel, playerOne15sLabel, playerOne10sLabel, playerOne5sLabel;
 @synthesize playerOne20sStepper, playerOne15sStepper, playerOne10sStepper, playerOne5sStepper;
 @synthesize playerTwo20sLabel, playerTwo15sLabel, playerTwo10sLabel, playerTwo5sLabel;
@@ -33,7 +32,7 @@
         playerTwoStartingGameScore = [game playerTwoScore];
 
         // Set the text on the navigation bar.
-        [self setTitle:@"Crokinole"];
+        [self setTitle:[NSString stringWithFormat:@"Round %d", [[game rounds] count]]];
     }
 
     return self;
@@ -53,8 +52,6 @@
     [playerOneNameLabel setText:[playerOne name]];
     [playerTwoNameLabel setText:[playerTwo name]];
 
-    [roundNumberLabel setText:[NSString stringWithFormat:@"Round %d", [[game rounds] count]]];
-
     // Remove the back button on the navigation bar.
     [[self navigationItem] setHidesBackButton:YES];
 }
@@ -64,7 +61,6 @@
     [self setPlayerTwoScoreLabel:nil];
     [self setPlayerOneNameLabel:nil];
     [self setPlayerTwoNameLabel:nil];
-    [self setRoundNumberLabel:nil];
     [self setPlayerOne20sLabel:nil];
     [self setPlayerOne15sLabel:nil];
     [self setPlayerOne10sLabel:nil];
@@ -177,7 +173,7 @@
     } else {
         // Create a new round for the game.
         NSMutableDictionary *roundAttributes = [NSMutableDictionary dictionary];
-        [roundAttributes setValue:[NSNumber numberWithInt:[[roundNumberLabel text] intValue] + 1]
+        [roundAttributes setValue:[NSNumber numberWithInt:[[self title] intValue] + 1]
                            forKey:@"roundNumber"];
         [roundAttributes setValue:game
                            forKey:@"game"];

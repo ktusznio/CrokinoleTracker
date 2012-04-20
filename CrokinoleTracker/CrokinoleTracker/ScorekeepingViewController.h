@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *playerTwoScoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *playerOneNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *playerTwoNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *roundNumberLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *playerOne20sLabel;
 @property (weak, nonatomic) IBOutlet UILabel *playerOne15sLabel;

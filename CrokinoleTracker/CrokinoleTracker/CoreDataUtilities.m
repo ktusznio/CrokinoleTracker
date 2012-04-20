@@ -73,4 +73,19 @@
     return entity;
 }
 
++ (void)deleteEntity:(NSManagedObject *)entity {
+    // Get the managed object context from the app delegate.
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+
+    // Delete the entity.
+    [context deleteObject:entity];
+
+    // Save and check for errors.
+    NSError *error;
+    if (![context save:&error]) {
+        [NSException raise:@"Unable to delete object." format:@"Error: %s", [error description]];
+    }
+}
+
 @end

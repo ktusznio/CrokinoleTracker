@@ -16,5 +16,6 @@
                           attributeValue:(NSString *)attributeValue;
 + (NSManagedObject *)createEntityForEntityName:(NSString *)entityName
                            attributeDictionary:(NSDictionary *)attributes;
++ (void)deleteEntity:(NSManagedObject *)entity;
 
 @end

@@ -6,8 +6,10 @@
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
+#import "CoreDataUtilities.h"
 #import "Game.h"
 #import "Player.h"
+#import "Round.h"
 #import "ScorekeepingViewController.h"
 
 @implementation ScorekeepingViewController
@@ -27,6 +29,8 @@
 
     if (self) {
         game = aGame;
+        playerOneStartingGameScore = [game playerOneScore];
+        playerTwoStartingGameScore = [game playerTwoScore];
 
         // Set the text on the navigation bar.
         [self setTitle:@"Crokinole"];
@@ -39,8 +43,8 @@
     [super viewDidLoad];
 
     // Initialize the text on all the labels.
-    [playerOneScoreLabel setText:[NSString stringWithFormat:@"%d", [game playerOneScore]]];
-    [playerTwoScoreLabel setText:[NSString stringWithFormat:@"%d", [game playerTwoScore]]];
+    [playerOneScoreLabel setText:[NSString stringWithFormat:@"%d", playerOneStartingGameScore]];
+    [playerTwoScoreLabel setText:[NSString stringWithFormat:@"%d", playerTwoStartingGameScore]];
 
     NSOrderedSet *players = [game players];
     Player *playerOne = [players objectAtIndex:0];
@@ -143,6 +147,37 @@
         return playerTwo5sLabel;
     }
     return nil;
+}
+
+- (IBAction)onNextRoundButtonTap:(id)sender {
+    // Update the current round.
+    Round *currentRound = [game currentRound];
+    [currentRound setPlayerOne20s:[NSNumber numberWithInt:[[playerOne20sLabel text] intValue]]];
+    [currentRound setPlayerOne15s:[NSNumber numberWithInt:[[playerOne15sLabel text] intValue]]];
+    [currentRound setPlayerOne10s:[NSNumber numberWithInt:[[playerOne10sLabel text] intValue]]];
+    [currentRound setPlayerOne5s:[NSNumber numberWithInt:[[playerOne5sLabel text] intValue]]];
+    [currentRound setPlayerTwo20s:[NSNumber numberWithInt:[[playerTwo20sLabel text] intValue]]];
+    [currentRound setPlayerTwo15s:[NSNumber numberWithInt:[[playerTwo15sLabel text] intValue]]];
+    [currentRound setPlayerTwo10s:[NSNumber numberWithInt:[[playerTwo10sLabel text] intValue]]];
+    [currentRound setPlayerTwo5s:[NSNumber numberWithInt:[[playerTwo5sLabel text] intValue]]];
+
+    // If the game is over, redirect to the game summary screen.  Otherwise, create a new round and load a new round screen.
+    if ([[playerOneScoreLabel text] intValue] >= 100 || [[playerTwoScoreLabel text] intValue] >= 100) {
+
+    } else {
+        // Create a new round for the game.
+        NSMutableDictionary *roundAttributes = [NSMutableDictionary dictionary];
+        [roundAttributes setValue:[NSNumber numberWithInt:[[roundNumberLabel text] intValue] + 1]
+                           forKey:@"roundNumber"];
+        [roundAttributes setValue:game
+                           forKey:@"game"];
+        [CoreDataUtilities createEntityForEntityName:@"Round"
+                                 attributeDictionary:roundAttributes];
+
+        // Push a new scorekeeping screen.
+        ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForGame:game];
+        [[self navigationController] pushViewController:scorekeepingViewController animated:YES];
+    }
 }
 
 @end

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+#import "Round.h"
+
 @class Player;
 
 @interface Game : NSManagedObject
@@ -19,6 +21,7 @@
 
 - (int)playerOneScore;
 - (int)playerTwoScore;
+- (Round *)currentRound;
 
 @end
 

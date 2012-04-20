@@ -76,4 +76,8 @@
     return gameScore;
 }
 
+- (Round *)currentRound {
+    return (Round *)[[self rounds] lastObject];
+}
+
 @end

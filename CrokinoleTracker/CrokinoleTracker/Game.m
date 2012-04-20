@@ -17,30 +17,63 @@
 @dynamic players;
 
 - (int)playerOneScore {
-    int score = 0;
+    int gameScore = 0;
 
     for (Round *round in [self rounds]) {
-        score += [[round playerOne20s] intValue] * 20;
-        score += [[round playerOne15s] intValue] * 15;
-        score += [[round playerOne10s] intValue] * 10;
-        score += [[round playerOne5s] intValue] * 5;
+        int roundScore = 0;
+
+        // Add up the round score player one achieved.
+        roundScore += [[round playerOne20s] intValue] * 20;
+        roundScore += [[round playerOne15s] intValue] * 15;
+        roundScore += [[round playerOne10s] intValue] * 10;
+        roundScore += [[round playerOne5s] intValue] * 5;
+
+        // Subtract the round score player two achieved.
+        roundScore -= [[round playerTwo20s] intValue] * 20;
+        roundScore -= [[round playerTwo15s] intValue] * 15;
+        roundScore -= [[round playerTwo10s] intValue] * 10;
+        roundScore -= [[round playerTwo5s] intValue] * 5;
+
+        // If the round score is negative, player one scored zero points this round.
+        if (roundScore < 0) {
+            roundScore = 0;
+        }
+
+        // Add the round score to the game score.
+        gameScore += roundScore;
     }
 
-    return score;
+    return gameScore;
 }
 
 - (int)playerTwoScore {
-    int score = 0;
+    int gameScore = 0;
 
     for (Round *round in [self rounds]) {
-        score += [[round playerTwo20s] intValue] * 20;
-        score += [[round playerTwo15s] intValue] * 15;
-        score += [[round playerTwo10s] intValue] * 10;
-        score += [[round playerTwo5s] intValue] * 5;
+        int roundScore = 0;
+
+        // Add up the round score player two achieved.
+        roundScore += [[round playerTwo20s] intValue] * 20;
+        roundScore += [[round playerTwo15s] intValue] * 15;
+        roundScore += [[round playerTwo10s] intValue] * 10;
+        roundScore += [[round playerTwo5s] intValue] * 5;
+
+        // Subtract the round score player one achieved.
+        roundScore -= [[round playerOne20s] intValue] * 20;
+        roundScore -= [[round playerOne15s] intValue] * 15;
+        roundScore -= [[round playerOne10s] intValue] * 10;
+        roundScore -= [[round playerOne5s] intValue] * 5;
+
+        // If the round score is negative, player two scored zero points this round.
+        if (roundScore < 0) {
+            roundScore = 0;
+        }
+
+        // Add the round score to the game score.
+        gameScore += roundScore;
     }
 
-    return score;
+    return gameScore;
 }
-
 
 @end

@@ -19,6 +19,7 @@
 
 @synthesize choosePlayerOneButton;
 @synthesize choosePlayerTwoButton;
+@synthesize startGameButton;
 
 - (id)init {
     self = [super init];
@@ -40,11 +41,25 @@
                                                                          target:nil
                                                                          action:nil];
     [[self navigationItem] setBackBarButtonItem:backBarButtonItem];
+
+    // If the button is disabled, grey out the text.
+    [startGameButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+
+    // The start game button starts off disabled.
+    [startGameButton setEnabled:NO];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    // The start game button is enabled only if all players have been selected.
+    BOOL allPlayersSelected = ![[[choosePlayerOneButton titleLabel] text] isEqualToString:@"Choose Player One"];
+    allPlayersSelected &= ![[[choosePlayerTwoButton titleLabel] text] isEqualToString:@"Choose Player Two"];
+    [startGameButton setEnabled:allPlayersSelected];
 }
 
 - (void)viewDidUnload {
     [self setChoosePlayerOneButton:nil];
     [self setChoosePlayerTwoButton:nil];
+    [self setStartGameButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

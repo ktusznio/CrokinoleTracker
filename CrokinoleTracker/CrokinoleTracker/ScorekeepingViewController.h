@@ -39,5 +39,7 @@
 
 
 - (id)initForGame:(Game *)aGame;
+- (IBAction)valueChanged:(id)sender;
+- (UILabel *)labelForStepper:(UIStepper *)stepper;
 
 @end

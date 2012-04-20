@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *startGameButton;
 
 - (IBAction)onSelectPlayerButtonTap:(id)sender;
+- (IBAction)onStartGameButtonTap:(id)sender;
 
 @end

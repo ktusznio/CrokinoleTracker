@@ -13,6 +13,7 @@
 #import "Player.h"
 #import "PlayerSelectionViewController.h"
 #import "Round.h"
+#import "ScorekeepingViewController.h"
 
 @implementation GameOptionsViewController
 
@@ -23,7 +24,7 @@
     self = [super init];
 
     if (self) {
-        // Custom initialization.
+        // Set the text on the navigation bar.
         [self setTitle:@"Game Options"];
     }
 
@@ -93,10 +94,12 @@
                        forKey:@"roundNumber"];
     [roundAttributes setValue:game
                        forKey:@"game"];
-    Round *round = (Round *)[CoreDataUtilities createEntityForEntityName:@"Round"
-                                                     attributeDictionary:roundAttributes];
+    [CoreDataUtilities createEntityForEntityName:@"Round"
+                             attributeDictionary:roundAttributes];
 
     // Push the scorekeeping screen.
+    ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForGame:game];
+    [[self navigationController] pushViewController:scorekeepingViewController animated:YES];
 }
 
 @end

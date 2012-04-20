@@ -23,6 +23,9 @@
 
     if (self) {
         game = aGame;
+
+        // Set the text on the navigation bar.
+        [self setTitle:@"Crokinole"];
     }
 
     return self;
@@ -30,18 +33,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    // Initialize the text on all the labels.
     [playerOneScoreLabel setText:[NSString stringWithFormat:@"%d", [game playerOneScore]]];
     [playerTwoScoreLabel setText:[NSString stringWithFormat:@"%d", [game playerTwoScore]]];
-    
+
     NSOrderedSet *players = [game players];
     Player *playerOne = [players objectAtIndex:0];
     Player *playerTwo = [players objectAtIndex:1];
-    
+
     [playerOneNameLabel setText:[playerOne name]];
     [playerTwoNameLabel setText:[playerTwo name]];
-    
+
     [roundNumberLabel setText:[NSString stringWithFormat:@"%d", [[game rounds] count]]];
+
+    // Remove the back button on the navigation bar.
+    [[self navigationItem] setHidesBackButton:YES];
 }
 
 - (void)viewDidUnload {

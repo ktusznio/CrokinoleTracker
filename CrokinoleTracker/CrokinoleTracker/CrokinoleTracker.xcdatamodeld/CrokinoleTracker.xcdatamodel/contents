@@ -3,7 +3,7 @@
     <entity name="Game" representedClassName="Game" syncable="YES">
         <attribute name="datePlayed" attributeType="Date" syncable="YES"/>
         <relationship name="players" optional="YES" toMany="YES" minCount="2" maxCount="2" deletionRule="Nullify" ordered="YES" destinationEntity="Player" inverseName="games" inverseEntity="Player" syncable="YES"/>
-        <relationship name="rounds" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Round" inverseName="game" inverseEntity="Round" syncable="YES"/>
+        <relationship name="rounds" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Round" inverseName="game" inverseEntity="Round" syncable="YES"/>
     </entity>
     <entity name="Player" representedClassName="Player" syncable="YES">
         <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>

@@ -33,7 +33,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    // Change the text on the back bar button item.
+    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:nil
+                                                                         action:nil];
+    [[self navigationItem] setBackBarButtonItem:backBarButtonItem];
 }
 
 - (void)viewDidUnload {
@@ -51,7 +57,7 @@
     // Show a player selection view.
     UIButton *button = (UIButton *)sender;
     PlayerSelectionViewController *playerSelectionViewController = [[PlayerSelectionViewController alloc] initWithButton:button];
-    [self presentModalViewController:playerSelectionViewController animated:YES];
+    [[self navigationController] pushViewController:playerSelectionViewController animated:YES];
 }
 
 - (IBAction)onStartGameButtonTap:(id)sender {

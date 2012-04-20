@@ -19,6 +19,9 @@
 
     if (self) {
         button = aButton;
+
+        // Set the text on the navigation bar.
+        [self setTitle:@"Choose Player"];
     }
 
     return self;
@@ -77,8 +80,8 @@
     NSString *existingPlayerName = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
     [button setTitle:existingPlayerName forState:UIControlStateNormal];
 
-    // Dismiss this view.
-    [self dismissModalViewControllerAnimated:YES];
+    // Pop this view.
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 # pragma mark - UITextFieldDelegate
@@ -101,8 +104,8 @@
     NSString *newPlayerName = [createPlayerTextField text];
     [button setTitle:newPlayerName forState:UIControlStateNormal];
 
-    // Dismiss this view.
-    [self dismissModalViewControllerAnimated:YES];
+    // Pop this view.
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 @end

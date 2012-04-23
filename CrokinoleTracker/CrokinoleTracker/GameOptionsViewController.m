@@ -81,7 +81,7 @@
     NSString *playerTwoName = [[choosePlayerTwoButton titleLabel] text];
     if ([playerOneName isEqualToString:playerTwoName]) {
         // Show an alert, asking the player to choose two different names.
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ can't play themselves!", playerOneName]
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Uh oh!"
                                                         message:@"Please choose two different players."
                                                        delegate:self
                                               cancelButtonTitle:@"Okay"

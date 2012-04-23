@@ -6,8 +6,10 @@
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
+#import "CoreDataUtilities.h"
 #import "Player.h"
 #import "GameSummaryViewController.h"
+#import "ScorekeepingViewController.h"
 
 @implementation GameSummaryViewController
 
@@ -25,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     // Set the view title.
     [self setTitle:@"Game Summary"];
 
@@ -44,6 +46,19 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)onRematchButtonTap:(id)sender {
+    // Pop to the root controller to clear the view controller stack.
+    UINavigationController *nav = [self navigationController];
+    [nav popToRootViewControllerAnimated:NO];
+
+    // Create a new game.
+    Game *newGame = [CoreDataUtilities createGameForPlayers:[[game players] array]];
+
+    // Push the scorekeeping screen.
+    ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForGame:newGame];
+    [nav pushViewController:scorekeepingViewController animated:YES];
 }
 
 @end

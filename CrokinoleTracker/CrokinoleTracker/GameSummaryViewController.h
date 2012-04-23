@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *winnerLabel;
 
 - (id)initForGame:(Game *)aGame;
+- (IBAction)onRematchButtonTap:(id)sender;
 
 @end

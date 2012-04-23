@@ -76,6 +76,21 @@
 }
 
 - (IBAction)onStartGameButtonTap:(id)sender {
+    // Ensure two different player names were entered.
+    NSString *playerOneName = [[choosePlayerOneButton titleLabel] text];
+    NSString *playerTwoName = [[choosePlayerTwoButton titleLabel] text];
+    if ([playerOneName isEqualToString:playerTwoName]) {
+        // Show an alert, asking the player to choose two different names.
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ can't play themselves!", playerOneName]
+                                                        message:@"Please choose two different players."
+                                                       delegate:self
+                                              cancelButtonTitle:@"Okay"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+
+    // Get existing player entities, or create entities for new players.
     NSArray *choosePlayerButtons = [NSArray arrayWithObjects:choosePlayerOneButton, choosePlayerTwoButton, nil];
     NSMutableArray *gamePlayers = [NSMutableArray array];
     for (UIButton *button in choosePlayerButtons) {

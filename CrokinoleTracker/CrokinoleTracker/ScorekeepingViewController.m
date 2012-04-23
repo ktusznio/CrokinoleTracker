@@ -8,6 +8,7 @@
 
 #import "CoreDataUtilities.h"
 #import "Game.h"
+#import "GameSummaryViewController.h"
 #import "Player.h"
 #import "Round.h"
 #import "ScorekeepingViewController.h"
@@ -169,7 +170,8 @@
 
     // If the game is over, redirect to the game summary screen.  Otherwise, create a new round and load a new round screen.
     if ([[playerOneScoreLabel text] intValue] >= 100 || [[playerTwoScoreLabel text] intValue] >= 100) {
-
+        GameSummaryViewController *gameSummaryViewController = [[GameSummaryViewController alloc] initForGame:game];
+        [[self navigationController] pushViewController:gameSummaryViewController animated:YES];
     } else {
         // Create a new round for the game.
         NSMutableDictionary *roundAttributes = [NSMutableDictionary dictionary];

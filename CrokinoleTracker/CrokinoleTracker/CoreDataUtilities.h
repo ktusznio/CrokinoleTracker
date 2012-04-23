@@ -19,6 +19,7 @@
                            attributeValue:(NSString *)attributeValue;
 + (NSManagedObject *) createEntityForEntityName:(NSString *)entityName
                             attributeDictionary:(NSDictionary *)attributes;
++ (void) saveManagedContext;
 + (void) deleteEntity:(NSManagedObject *)entity;
 
 // Game helpers.

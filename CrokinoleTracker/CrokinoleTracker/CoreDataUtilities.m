@@ -75,6 +75,18 @@
     return entity;
 }
 
++ (void) saveManagedContext {
+    // Get the managed object context from the app delegate.
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+
+    // Save and check for errors.
+    NSError *error;
+    if (![context save:&error]) {
+        [NSException raise:@"Unable to save context." format:@"Error: %s", [error description]];
+    }
+}
+
 + (void)deleteEntity:(NSManagedObject *)entity {
     // Get the managed object context from the app delegate.
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

@@ -159,16 +159,18 @@ extern const int WINNING_SCORE;
 }
 
 - (IBAction)onNextRoundButtonTap:(id)sender {
-    // Update the current round.
+    // Update and save the current round.
     Round *currentRound = [game currentRound];
-    [currentRound setPlayerOne20s:[NSNumber numberWithInt:[[playerOne20sLabel text] intValue]]];
-    [currentRound setPlayerOne15s:[NSNumber numberWithInt:[[playerOne15sLabel text] intValue]]];
-    [currentRound setPlayerOne10s:[NSNumber numberWithInt:[[playerOne10sLabel text] intValue]]];
-    [currentRound setPlayerOne5s:[NSNumber numberWithInt:[[playerOne5sLabel text] intValue]]];
-    [currentRound setPlayerTwo20s:[NSNumber numberWithInt:[[playerTwo20sLabel text] intValue]]];
-    [currentRound setPlayerTwo15s:[NSNumber numberWithInt:[[playerTwo15sLabel text] intValue]]];
-    [currentRound setPlayerTwo10s:[NSNumber numberWithInt:[[playerTwo10sLabel text] intValue]]];
-    [currentRound setPlayerTwo5s:[NSNumber numberWithInt:[[playerTwo5sLabel text] intValue]]];
+    [currentRound setPlayerOne20s:[NSNumber numberWithDouble:[playerOne20sStepper value]]];
+    [currentRound setPlayerOne15s:[NSNumber numberWithDouble:[playerOne15sStepper value]]];
+    [currentRound setPlayerOne10s:[NSNumber numberWithDouble:[playerOne10sStepper value]]];
+    [currentRound setPlayerOne5s:[NSNumber numberWithDouble:[playerOne5sStepper value]]];
+    [currentRound setPlayerTwo20s:[NSNumber numberWithDouble:[playerTwo20sStepper value]]];
+    [currentRound setPlayerTwo15s:[NSNumber numberWithDouble:[playerTwo15sStepper value]]];
+    [currentRound setPlayerTwo10s:[NSNumber numberWithDouble:[playerTwo10sStepper value]]];
+    [currentRound setPlayerTwo5s:[NSNumber numberWithDouble:[playerTwo5sStepper value]]];
+
+    [CoreDataUtilities saveManagedContext];
 
     // If the game is over, redirect to the game summary screen.  Otherwise, create a new round and load a new round screen.
     if ([[playerOneScoreLabel text] intValue] >= WINNING_SCORE || [[playerTwoScoreLabel text] intValue] >= WINNING_SCORE) {

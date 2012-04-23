@@ -48,6 +48,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)onMainMenuButtonTap:(id)sender {
+    // Pop to the main menu.
+    [[self navigationController] popToRootViewControllerAnimated:YES];
+}
+
 - (IBAction)onRematchButtonTap:(id)sender {
     // Pop to the root controller to clear the view controller stack.
     UINavigationController *nav = [self navigationController];

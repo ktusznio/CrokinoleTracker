@@ -13,6 +13,8 @@
 #import "Round.h"
 #import "ScorekeepingViewController.h"
 
+extern const int WINNING_SCORE;
+
 @implementation ScorekeepingViewController
 
 @synthesize playerOneScoreLabel;
@@ -169,7 +171,7 @@
     [currentRound setPlayerTwo5s:[NSNumber numberWithInt:[[playerTwo5sLabel text] intValue]]];
 
     // If the game is over, redirect to the game summary screen.  Otherwise, create a new round and load a new round screen.
-    if ([[playerOneScoreLabel text] intValue] >= 100 || [[playerTwoScoreLabel text] intValue] >= 100) {
+    if ([[playerOneScoreLabel text] intValue] >= WINNING_SCORE || [[playerTwoScoreLabel text] intValue] >= WINNING_SCORE) {
         GameSummaryViewController *gameSummaryViewController = [[GameSummaryViewController alloc] initForGame:game];
         [[self navigationController] pushViewController:gameSummaryViewController animated:YES];
     } else {

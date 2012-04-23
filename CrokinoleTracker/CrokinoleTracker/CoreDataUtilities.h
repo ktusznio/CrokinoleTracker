@@ -8,14 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Game.h"
+
 @interface CoreDataUtilities : NSObject
 
-+ (NSArray *)fetchEntitiesForEntityName:(NSString *)entityName;
-+ (NSManagedObject *)entityForEntityName:(NSString *)entityName
-                           attributeName:(NSString *)attributeName
-                          attributeValue:(NSString *)attributeValue;
-+ (NSManagedObject *)createEntityForEntityName:(NSString *)entityName
-                           attributeDictionary:(NSDictionary *)attributes;
-+ (void)deleteEntity:(NSManagedObject *)entity;
+// CoreData helpers.
++ (NSArray *) fetchEntitiesForEntityName:(NSString *)entityName;
++ (NSManagedObject *) entityForEntityName:(NSString *)entityName
+                            attributeName:(NSString *)attributeName
+                           attributeValue:(NSString *)attributeValue;
++ (NSManagedObject *) createEntityForEntityName:(NSString *)entityName
+                            attributeDictionary:(NSDictionary *)attributes;
++ (void) deleteEntity:(NSManagedObject *)entity;
+
+// Game helpers.
++ (Game *)createGameForPlayers:(NSArray *)players;
 
 @end

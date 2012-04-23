@@ -11,6 +11,8 @@
 
 @implementation CoreDataUtilities
 
+# pragma mark - CoreData
+
 + (NSArray *)fetchEntitiesForEntityName:(NSString *)entityName {
     // Get the managed object context from the app delegate.
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -86,6 +88,29 @@
     if (![context save:&error]) {
         [NSException raise:@"Unable to delete object." format:@"Error: %s", [error description]];
     }
+}
+
+#pragma mark - Game
+
++ (Game *)createGameForPlayers:(NSArray *)players {
+    NSMutableDictionary *gameAttributes = [NSMutableDictionary dictionary];
+    [gameAttributes setValue:[NSDate date]
+                      forKey:@"datePlayed"];
+    [gameAttributes setValue:[NSOrderedSet orderedSetWithArray:players]
+                      forKey:@"players"];
+    Game *game = (Game *)[CoreDataUtilities createEntityForEntityName:@"Game"
+                                                  attributeDictionary:[NSDictionary dictionaryWithDictionary:gameAttributes]];
+
+    // Create a new round for the game.
+    NSMutableDictionary *roundAttributes = [NSMutableDictionary dictionary];
+    [roundAttributes setValue:[NSNumber numberWithInt:1]
+                       forKey:@"roundNumber"];
+    [roundAttributes setValue:game
+                       forKey:@"game"];
+    [CoreDataUtilities createEntityForEntityName:@"Round"
+                             attributeDictionary:roundAttributes];
+
+    return game;
 }
 
 @end

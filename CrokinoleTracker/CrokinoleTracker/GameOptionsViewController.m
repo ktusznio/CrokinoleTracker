@@ -101,22 +101,7 @@
     }
 
     // Create a new game.
-    NSMutableDictionary *gameAttributes = [NSMutableDictionary dictionary];
-    [gameAttributes setValue:[NSDate date]
-                      forKey:@"datePlayed"];
-    [gameAttributes setValue:[NSOrderedSet orderedSetWithArray:gamePlayers]
-                      forKey:@"players"];
-    Game *game = (Game *)[CoreDataUtilities createEntityForEntityName:@"Game"
-                                                  attributeDictionary:[NSDictionary dictionaryWithDictionary:gameAttributes]];
-
-    // Create a new round for the game.
-    NSMutableDictionary *roundAttributes = [NSMutableDictionary dictionary];
-    [roundAttributes setValue:[NSNumber numberWithInt:1]
-                       forKey:@"roundNumber"];
-    [roundAttributes setValue:game
-                       forKey:@"game"];
-    [CoreDataUtilities createEntityForEntityName:@"Round"
-                             attributeDictionary:roundAttributes];
+    Game *game = [CoreDataUtilities createGameForPlayers:gamePlayers];
 
     // Push the scorekeeping screen.
     ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForGame:game];

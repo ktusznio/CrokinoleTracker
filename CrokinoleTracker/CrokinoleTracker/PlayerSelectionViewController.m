@@ -92,11 +92,6 @@
     return NO;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    // Clear the placeholder text when editing begins.
-    [textField setText:@""];
-}
-
 # pragma mark -
 
 - (IBAction)editingNewPlayerDidEnd:(id)sender {

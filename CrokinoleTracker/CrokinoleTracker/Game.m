@@ -16,6 +16,8 @@
 @dynamic rounds;
 @dynamic players;
 
+const int WINNING_SCORE = 100;
+
 - (int)playerOneScore {
     int gameScore = 0;
 
@@ -78,6 +80,18 @@
 
 - (Round *)currentRound {
     return (Round *)[[self rounds] lastObject];
+}
+
+- (Player *)winningPlayer {
+    if ([self playerOneScore] >= WINNING_SCORE) {
+        return [[self players] objectAtIndex:0];
+    }
+
+    if ([self playerTwoScore] >= WINNING_SCORE) {
+        return [[self players] objectAtIndex:1];
+    }
+
+    return nil;
 }
 
 @end

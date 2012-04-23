@@ -22,6 +22,7 @@
 - (int)playerOneScore;
 - (int)playerTwoScore;
 - (Round *)currentRound;
+- (Player *)winningPlayer;
 
 @end
 

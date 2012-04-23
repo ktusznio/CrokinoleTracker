@@ -97,10 +97,14 @@
 - (IBAction)editingNewPlayerDidEnd:(id)sender {
     // Update the game options screen's button title.
     NSString *newPlayerName = [createPlayerTextField text];
-    [button setTitle:newPlayerName forState:UIControlStateNormal];
 
-    // Pop this view.
-    [[self navigationController] popViewControllerAnimated:YES];
+    if ([newPlayerName length] > 0) {
+        // Update the game options screen's button title.
+        [button setTitle:newPlayerName forState:UIControlStateNormal];
+
+        // Pop this view.
+        [[self navigationController] popViewControllerAnimated:YES];
+    }
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CoreDataUtilities.h"
-#import "GameOptionsViewController.h"
+#import "MainMenuViewController.h"
 #import "Player.h"
 
 @implementation AppDelegate
@@ -30,8 +30,8 @@
     
     // Set up the navigation controller and its initial view.
     UINavigationController *navigationController = [[UINavigationController alloc] init];
-    GameOptionsViewController *gameOptionsViewController = [[GameOptionsViewController alloc] init];
-    [navigationController pushViewController:gameOptionsViewController animated:NO];
+    MainMenuViewController *mainMenuViewController = [[MainMenuViewController alloc] init];
+    [navigationController pushViewController:mainMenuViewController animated:NO];
     [[self window] setRootViewController:navigationController];
 
     return YES;

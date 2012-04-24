@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50113A06154651F700565570 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50113A04154651F700565570 /* MainMenuViewController.m */; };
+		50113A07154651F700565570 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50113A05154651F700565570 /* MainMenuViewController.xib */; };
 		5038B864153F4B0A000E0767 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B863153F4B0A000E0767 /* UIKit.framework */; };
 		5038B866153F4B0A000E0767 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B865153F4B0A000E0767 /* Foundation.framework */; };
 		5038B868153F4B0A000E0767 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B867153F4B0A000E0767 /* CoreGraphics.framework */; };
@@ -46,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50113A03154651F700565570 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		50113A04154651F700565570 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		50113A05154651F700565570 /* MainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
 		5038B85F153F4B0A000E0767 /* CrokinoleTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrokinoleTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5038B863153F4B0A000E0767 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5038B865153F4B0A000E0767 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -204,6 +209,8 @@
 		8EAE6A73153F59B600ECA3A7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				50113A03154651F700565570 /* MainMenuViewController.h */,
+				50113A04154651F700565570 /* MainMenuViewController.m */,
 				8EAE6A7B153F5B3300ECA3A7 /* GameOptionsViewController.h */,
 				8EAE6A7C153F5B3300ECA3A7 /* GameOptionsViewController.m */,
 				8EAE6A84153F643200ECA3A7 /* PlayerSelectionViewController.h */,
@@ -219,10 +226,11 @@
 		8EAE6A7F153F5DE000ECA3A7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8EAE6A86153F643200ECA3A7 /* PlayerSelectionView.xib */,
+				50113A05154651F700565570 /* MainMenuViewController.xib */,
 				8EAE6A82153F603B00ECA3A7 /* GameOptionsView.xib */,
-				8E1992961545C71100C18D25 /* GameSummaryViewController.xib */,
+				8EAE6A86153F643200ECA3A7 /* PlayerSelectionView.xib */,
 				8E341F621540B71E0011307E /* ScorekeepingView.xib */,
+				8E1992961545C71100C18D25 /* GameSummaryViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -311,6 +319,7 @@
 				8EAE6A88153F643200ECA3A7 /* PlayerSelectionView.xib in Resources */,
 				8E341F641540B71E0011307E /* ScorekeepingView.xib in Resources */,
 				8E1992981545C71100C18D25 /* GameSummaryViewController.xib in Resources */,
+				50113A07154651F700565570 /* MainMenuViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +365,7 @@
 				8EAE6A8C1540A63000ECA3A7 /* CoreDataUtilities.m in Sources */,
 				8E341F631540B71E0011307E /* ScorekeepingViewController.m in Sources */,
 				8E1992971545C71100C18D25 /* GameSummaryViewController.m in Sources */,
+				50113A06154651F700565570 /* MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

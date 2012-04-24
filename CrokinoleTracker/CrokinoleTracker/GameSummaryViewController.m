@@ -2,7 +2,7 @@
 //  GameSummaryViewController.m
 //  CrokinoleTracker
 //
-//  Created by Kamil Tusznio and Maxwell Woghiren on 23-04-19.
+//  Created by Kamil Tusznio and Maxwell Woghiren on 12-04-23.
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 

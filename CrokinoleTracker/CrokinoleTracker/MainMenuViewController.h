@@ -11,7 +11,9 @@
 @interface MainMenuViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *playGameButton;
+@property (weak, nonatomic) IBOutlet UIButton *viewStatisticsButton;
 
 - (IBAction)onPlayGameButtonTap:(id)sender;
+- (IBAction)onViewStatisticsButtonTap:(id)sender;
 
 @end

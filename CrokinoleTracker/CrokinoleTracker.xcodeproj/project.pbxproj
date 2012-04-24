@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		50113A06154651F700565570 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50113A04154651F700565570 /* MainMenuViewController.m */; };
 		50113A07154651F700565570 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50113A05154651F700565570 /* MainMenuViewController.xib */; };
+		50113A0C15465D6E00565570 /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50113A0A15465D6E00565570 /* StatisticsViewController.m */; };
+		50113A0D15465D6E00565570 /* StatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50113A0B15465D6E00565570 /* StatisticsViewController.xib */; };
 		5038B864153F4B0A000E0767 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B863153F4B0A000E0767 /* UIKit.framework */; };
 		5038B866153F4B0A000E0767 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B865153F4B0A000E0767 /* Foundation.framework */; };
 		5038B868153F4B0A000E0767 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B867153F4B0A000E0767 /* CoreGraphics.framework */; };
@@ -51,6 +53,9 @@
 		50113A03154651F700565570 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		50113A04154651F700565570 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		50113A05154651F700565570 /* MainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
+		50113A0915465D6D00565570 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
+		50113A0A15465D6E00565570 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
+		50113A0B15465D6E00565570 /* StatisticsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticsViewController.xib; sourceTree = "<group>"; };
 		5038B85F153F4B0A000E0767 /* CrokinoleTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrokinoleTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5038B863153F4B0A000E0767 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5038B865153F4B0A000E0767 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -219,6 +224,8 @@
 				8E341F611540B71E0011307E /* ScorekeepingViewController.m */,
 				8E1992941545C71100C18D25 /* GameSummaryViewController.h */,
 				8E1992951545C71100C18D25 /* GameSummaryViewController.m */,
+				50113A0915465D6D00565570 /* StatisticsViewController.h */,
+				50113A0A15465D6E00565570 /* StatisticsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -231,6 +238,7 @@
 				8EAE6A86153F643200ECA3A7 /* PlayerSelectionView.xib */,
 				8E341F621540B71E0011307E /* ScorekeepingView.xib */,
 				8E1992961545C71100C18D25 /* GameSummaryViewController.xib */,
+				50113A0B15465D6E00565570 /* StatisticsViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -320,6 +328,7 @@
 				8E341F641540B71E0011307E /* ScorekeepingView.xib in Resources */,
 				8E1992981545C71100C18D25 /* GameSummaryViewController.xib in Resources */,
 				50113A07154651F700565570 /* MainMenuViewController.xib in Resources */,
+				50113A0D15465D6E00565570 /* StatisticsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +375,7 @@
 				8E341F631540B71E0011307E /* ScorekeepingViewController.m in Sources */,
 				8E1992971545C71100C18D25 /* GameSummaryViewController.m in Sources */,
 				50113A06154651F700565570 /* MainMenuViewController.m in Sources */,
+				50113A0C15465D6E00565570 /* StatisticsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

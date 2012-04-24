@@ -8,9 +8,12 @@
 
 #import "GameOptionsViewController.h"
 #import "MainMenuViewController.h"
+#import "StatisticsViewController.h"
 
 @implementation MainMenuViewController
+
 @synthesize playGameButton;
+@synthesize viewStatisticsButton;
 
 - (id)init {
     self = [super init];
@@ -36,6 +39,7 @@
 
 - (void)viewDidUnload {
     [self setPlayGameButton:nil];
+    [self setViewStatisticsButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -49,6 +53,12 @@
     // Push the game options screen.
     GameOptionsViewController *gameOptionsViewController = [[GameOptionsViewController alloc] init];
     [[self navigationController] pushViewController:gameOptionsViewController animated:YES];
+}
+
+- (IBAction)onViewStatisticsButtonTap:(id)sender {
+    // Push the statistics screen.
+    StatisticsViewController *statisticsViewController = [[StatisticsViewController alloc] init];
+    [[self navigationController] pushViewController:statisticsViewController animated:YES];
 }
 
 @end

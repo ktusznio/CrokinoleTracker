@@ -20,6 +20,9 @@
 
     if (self) {
         game = aGame;
+
+        // Set the text on the navigation bar.
+        [self setTitle:@"Game Summary"];
     }
 
     return self;
@@ -27,9 +30,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Set the view title.
-    [self setTitle:@"Game Summary"];
 
     // Remove the back button on the navigation bar.
     [[self navigationItem] setHidesBackButton:YES];

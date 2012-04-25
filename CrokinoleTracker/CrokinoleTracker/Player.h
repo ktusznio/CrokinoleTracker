@@ -9,17 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class PlayerStatistics;
+
 @interface Player : NSManagedObject
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSOrderedSet *games;
 
-- (int)wins;
-- (int)losses;
-- (double)pointsPerGame;
-- (double)pointsPerRound;
-- (double)twentiesPerGame;
-- (double)twentiesPerRound;
+- (PlayerStatistics *)statistics;
 
 @end
 

@@ -9,9 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-#import "Round.h"
-
 @class Player;
+@class Round;
 
 @interface Game : NSManagedObject
 
@@ -19,12 +18,8 @@
 @property (nonatomic, retain) NSOrderedSet *rounds;
 @property (nonatomic, retain) NSOrderedSet *players;
 
-- (int)scoreForPlayer:(Player *)player;
 - (int)playerOneScore;
 - (int)playerTwoScore;
-- (int)twentiesForPlayer:(Player *)player;
-- (int)playerOneTwenties;
-- (int)playerTwoTwenties;
 - (Round *)currentRound;
 - (Player *)winningPlayer;
 

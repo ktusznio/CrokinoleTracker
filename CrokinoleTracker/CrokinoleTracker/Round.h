@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 
 @class Game;
+@class Player;
 
 @interface Round : NSManagedObject
 
@@ -22,5 +23,10 @@
 @property (nonatomic, retain) NSNumber *playerTwo10s;
 @property (nonatomic, retain) NSNumber *playerTwo5s;
 @property (nonatomic, retain) Game *game;
+
+- (int)scoreForPlayer:(Player *)player;
+- (int)playerOneScore;
+- (int)playerTwoScore;
+- (int)twentiesForPlayer:(Player *)player;
 
 @end

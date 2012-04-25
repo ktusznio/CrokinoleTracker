@@ -7,6 +7,7 @@
 //
 
 #import "Player.h"
+#import "PlayerStatistics.h"
 #import "PlayerStatisticsViewController.h"
 
 @implementation PlayerStatisticsViewController
@@ -34,13 +35,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Set the wins and losses labels.
-    [winsLabel setText:[NSString stringWithFormat:@"Wins: %d", [player wins]]];
-    [lossesLabel setText:[NSString stringWithFormat:@"Losses: %d", [player losses]]];
-    [pointsPerGameLabel setText:[NSString stringWithFormat:@"Points per game: %.2f", [player pointsPerGame]]];
-    [pointsPerRoundLabel setText:[NSString stringWithFormat:@"Points per round: %.2f", [player pointsPerRound]]];
-    [twentiesPerGameLabel setText:[NSString stringWithFormat:@"Twenties per game: %.2f", [player twentiesPerGame]]];
-    [twentiesPerRoundLabel setText:[NSString stringWithFormat:@"Twenties per round: %.2f", [player twentiesPerRound]]];
+    // Get the player statistics for the selected player.
+    PlayerStatistics *playerStatistics = [player statistics];
+
+    // Set the statistics labels.
+    [winsLabel setText:[NSString stringWithFormat:@"Wins: %d", [playerStatistics wins]]];
+    [lossesLabel setText:[NSString stringWithFormat:@"Losses: %d", [playerStatistics losses]]];
+    [pointsPerGameLabel setText:[NSString stringWithFormat:@"Points per game: %.2f", [playerStatistics pointsPerGame]]];
+    [pointsPerRoundLabel setText:[NSString stringWithFormat:@"Points per round: %.2f", [playerStatistics pointsPerRound]]];
+    [twentiesPerGameLabel setText:[NSString stringWithFormat:@"Twenties per game: %.2f", [playerStatistics twentiesPerGame]]];
+    [twentiesPerRoundLabel setText:[NSString stringWithFormat:@"Twenties per round: %.2f", [playerStatistics twentiesPerRound]]];
 }
 
 - (void)viewDidUnload {

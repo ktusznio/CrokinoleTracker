@@ -8,118 +8,53 @@
 
 #import "Game.h"
 #import "Player.h"
+#import "PlayerStatistics.h"
+#import "Round.h"
 
 @implementation Player
 
 @dynamic name;
 @dynamic games;
 
-- (int)wins {
-    int wins = 0;
+- (PlayerStatistics *)statistics {
+    PlayerStatistics *playerStatistics = [[PlayerStatistics alloc] initForPlayer:self];
 
-    // For each game, increment the win count if this player won.
+    int wins = 0;
+    int losses = 0;
+    int totalGames = [[self games] count];
+    int totalRounds = 0;
+    int totalPoints = 0;
+    int totalTwenties = 0;
+
     for (Game *game in [self games]) {
+        // Increment the appropriate win/loss statistic.
         if ([game winningPlayer] == self) {
             wins++;
-        }
-    }
-
-    return wins;
-}
-
-- (int)losses {
-    int losses = 0;
-
-    // For each game, increment the loss count if this player lost.
-    for (Game *game in [self games]) {
-        if ([game winningPlayer] != self) {
+        } else {
             losses++;
         }
+
+        // Determine the total number of rounds, points, and twenties.
+        for (Round *round in [game rounds]) {
+            totalRounds++;
+            totalPoints += [round scoreForPlayer:self];
+            totalTwenties += [round twentiesForPlayer:self];
+        }
     }
 
-    return losses;
-}
+    double pointsPerGame = (totalGames > 0) ? (totalPoints * 1.0 / totalGames) : 0;
+    double pointsPerRound = (totalRounds > 0) ? (totalPoints * 1.0 / totalRounds) : 0;
+    double twentiesPerGame = (totalGames > 0) ? (totalTwenties * 1.0 / totalGames) : 0;
+    double twentiesPerRound = (totalRounds > 0) ? (totalTwenties * 1.0 / totalRounds) : 0;
 
-- (double)pointsPerGame {
-    int totalGames = [[self games] count];
+    [playerStatistics setWins:wins];
+    [playerStatistics setLosses:losses];
+    [playerStatistics setPointsPerGame:pointsPerGame];
+    [playerStatistics setPointsPerRound:pointsPerRound];
+    [playerStatistics setTwentiesPerGame:twentiesPerGame];
+    [playerStatistics setTwentiesPerRound:twentiesPerRound];
 
-    // If the player hasn't played any games, we don't need to do anything.
-    if (totalGames == 0) {
-        return 0;
-    }
-
-    int totalPoints = 0;
-
-    // For each game, add the player's score to the running total.
-    for (Game *game in [self games]) {
-        totalPoints += [game scoreForPlayer:self];
-    }
-
-    return totalPoints * 1.0 / totalGames;
-}
-
-- (double)pointsPerRound {
-    // If the player hasn't played any games, we don't need to do anything.
-    if ([[self games] count] == 0) {
-        return 0;
-    }
-
-    int totalPoints = 0;
-    int totalRounds = 0;
-
-    // For each game, add the player's score and the number of rounds to the running totals.
-    for (Game *game in [self games]) {
-        totalPoints += [game scoreForPlayer:self];
-        totalRounds += [[game rounds] count];
-    }
-
-    // If, somehow, the player has a game on record but no rounds, we don't need to do anything.
-    if (totalRounds == 0) {
-        return 0;
-    }
-
-    return totalPoints * 1.0 / totalRounds;
-}
-
-- (double)twentiesPerGame {
-    int totalGames = [[self games] count];
-
-    // If the player hasn't played any games, we don't need to do anything.
-    if (totalGames == 0) {
-        return 0;
-    }
-
-    int totalTwenties = 0;
-
-    // For each game, add the player's twenties to the running total.
-    for (Game *game in [self games]) {
-        totalTwenties += [game twentiesForPlayer:self];
-    }
-
-    return totalTwenties * 1.0 / totalGames;
-}
-
-- (double)twentiesPerRound {
-    // If the player hasn't played any games, we don't need to do anything.
-    if ([[self games] count] == 0) {
-        return 0;
-    }
-
-    int totalTwenties = 0;
-    int totalRounds = 0;
-
-    // For each game, add the player's twenties and the number of rounds to the running totals.
-    for (Game *game in [self games]) {
-        totalTwenties += [game twentiesForPlayer:self];
-        totalRounds += [[game rounds] count];
-    }
-
-    // If, somehow, the player has a game on record but no rounds, we don't need to do anything.
-    if (totalRounds == 0) {
-        return 0;
-    }
-
-    return totalTwenties * 1.0 / totalRounds;
+    return playerStatistics;
 }
 
 @end

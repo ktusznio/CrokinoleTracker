@@ -88,6 +88,36 @@ const int WINNING_SCORE = 100;
     return gameScore;
 }
 
+- (int)twentiesForPlayer:(Player *)player {
+    if ([[self players] objectAtIndex:0] == player) {
+        return [self playerOneTwenties];
+    } else if ([[self players] objectAtIndex:1] == player) {
+        return [self playerTwoTwenties];
+    }
+
+    return 0;
+}
+
+- (int)playerOneTwenties {
+    int twenties = 0;
+
+    for (Round *round in [self rounds]) {
+        twenties += [[round playerOne20s] intValue];
+    }
+
+    return twenties;
+}
+
+- (int)playerTwoTwenties {
+    int twenties = 0;
+
+    for (Round *round in [self rounds]) {
+        twenties += [[round playerTwo20s] intValue];
+    }
+
+    return twenties;
+}
+
 - (Round *)currentRound {
     return (Round *)[[self rounds] lastObject];
 }

@@ -22,6 +22,9 @@
 - (int)scoreForPlayer:(Player *)player;
 - (int)playerOneScore;
 - (int)playerTwoScore;
+- (int)twentiesForPlayer:(Player *)player;
+- (int)playerOneTwenties;
+- (int)playerTwoTwenties;
 - (Round *)currentRound;
 - (Player *)winningPlayer;
 

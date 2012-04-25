@@ -73,7 +73,7 @@
 						<string key="NSFrame">{{20, 49}, {280, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="496279550"/>
+						<reference key="NSNextKeyView" ref="699612044"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -89,7 +89,7 @@
 						<reference key="IBUIFontDescription" ref="131118429"/>
 						<reference key="IBUIFont" ref="419499102"/>
 					</object>
-					<object class="IBUILabel" id="496279550">
+					<object class="IBUILabel" id="699612044">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 78}, {280, 21}}</string>
@@ -103,6 +103,27 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Points per game: 0</string>
+						<reference key="IBUITextColor" ref="24111787"/>
+						<nil key="IBUIHighlightedColor"/>
+						<int key="IBUIBaselineAdjustment">0</int>
+						<float key="IBUIMinimumFontSize">10</float>
+						<int key="IBUITextAlignment">1</int>
+						<reference key="IBUIFontDescription" ref="131118429"/>
+						<reference key="IBUIFont" ref="419499102"/>
+					</object>
+					<object class="IBUILabel" id="654163627">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{20, 107}, {280, 21}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">7</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<string key="IBUIText">Points per round: 0</string>
 						<reference key="IBUITextColor" ref="24111787"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -160,9 +181,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">pointsPerGameLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="496279550"/>
+						<reference key="destination" ref="699612044"/>
 					</object>
 					<int key="connectionID">9</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pointsPerRoundLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="654163627"/>
+					</object>
+					<int key="connectionID">11</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -179,7 +208,8 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="648390471"/>
 							<reference ref="918328722"/>
-							<reference ref="496279550"/>
+							<reference ref="699612044"/>
+							<reference ref="654163627"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -206,7 +236,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
-						<reference key="object" ref="496279550"/>
+						<reference key="object" ref="699612044"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">10</int>
+						<reference key="object" ref="654163627"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -217,6 +252,7 @@
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -225,7 +261,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">9</int>
+			<int key="maxID">11</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -235,6 +271,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="lossesLabel">UILabel</string>
 						<string key="pointsPerGameLabel">UILabel</string>
+						<string key="pointsPerRoundLabel">UILabel</string>
 						<string key="winsLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -244,6 +281,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="pointsPerGameLabel">
 							<string key="name">pointsPerGameLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="pointsPerRoundLabel">
+							<string key="name">pointsPerRoundLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="winsLabel">

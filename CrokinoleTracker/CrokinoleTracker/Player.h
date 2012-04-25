@@ -17,6 +17,7 @@
 - (int)wins;
 - (int)losses;
 - (double)pointsPerGame;
+- (double)pointsPerRound;
 
 @end
 

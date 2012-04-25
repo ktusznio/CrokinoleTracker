@@ -34,6 +34,8 @@
 		8E1992981545C71100C18D25 /* GameSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E1992961545C71100C18D25 /* GameSummaryViewController.xib */; };
 		8E341F631540B71E0011307E /* ScorekeepingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E341F611540B71E0011307E /* ScorekeepingViewController.m */; };
 		8E341F641540B71E0011307E /* ScorekeepingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E341F621540B71E0011307E /* ScorekeepingView.xib */; };
+		8E98709F15489E90005839CB /* GameStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E98709D15489E90005839CB /* GameStatisticsViewController.m */; };
+		8E9870A015489E90005839CB /* GameStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E98709E15489E90005839CB /* GameStatisticsViewController.xib */; };
 		8EAE6A7D153F5B3300ECA3A7 /* GameOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A7C153F5B3300ECA3A7 /* GameOptionsViewController.m */; };
 		8EAE6A83153F603B00ECA3A7 /* GameOptionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAE6A82153F603B00ECA3A7 /* GameOptionsView.xib */; };
 		8EAE6A87153F643200ECA3A7 /* PlayerSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A85153F643200ECA3A7 /* PlayerSelectionViewController.m */; };
@@ -91,6 +93,9 @@
 		8E341F601540B71E0011307E /* ScorekeepingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScorekeepingViewController.h; sourceTree = "<group>"; };
 		8E341F611540B71E0011307E /* ScorekeepingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScorekeepingViewController.m; sourceTree = "<group>"; };
 		8E341F621540B71E0011307E /* ScorekeepingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScorekeepingView.xib; sourceTree = "<group>"; };
+		8E98709C15489E90005839CB /* GameStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStatisticsViewController.h; sourceTree = "<group>"; };
+		8E98709D15489E90005839CB /* GameStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStatisticsViewController.m; sourceTree = "<group>"; };
+		8E98709E15489E90005839CB /* GameStatisticsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameStatisticsViewController.xib; sourceTree = "<group>"; };
 		8EAE6A7B153F5B3300ECA3A7 /* GameOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOptionsViewController.h; sourceTree = "<group>"; };
 		8EAE6A7C153F5B3300ECA3A7 /* GameOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOptionsViewController.m; sourceTree = "<group>"; };
 		8EAE6A82153F603B00ECA3A7 /* GameOptionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOptionsView.xib; sourceTree = "<group>"; };
@@ -233,6 +238,8 @@
 				50113A0A15465D6E00565570 /* StatisticsViewController.m */,
 				50113A0E15466C3900565570 /* PlayerStatisticsViewController.h */,
 				50113A0F15466C3900565570 /* PlayerStatisticsViewController.m */,
+				8E98709C15489E90005839CB /* GameStatisticsViewController.h */,
+				8E98709D15489E90005839CB /* GameStatisticsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -247,6 +254,7 @@
 				8E1992961545C71100C18D25 /* GameSummaryViewController.xib */,
 				50113A0B15465D6E00565570 /* StatisticsViewController.xib */,
 				50113A1015466C3A00565570 /* PlayerStatisticsViewController.xib */,
+				8E98709E15489E90005839CB /* GameStatisticsViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -338,6 +346,7 @@
 				50113A07154651F700565570 /* MainMenuViewController.xib in Resources */,
 				50113A0D15465D6E00565570 /* StatisticsViewController.xib in Resources */,
 				50113A1215466C3A00565570 /* PlayerStatisticsViewController.xib in Resources */,
+				8E9870A015489E90005839CB /* GameStatisticsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +395,7 @@
 				50113A06154651F700565570 /* MainMenuViewController.m in Sources */,
 				50113A0C15465D6E00565570 /* StatisticsViewController.m in Sources */,
 				50113A1115466C3A00565570 /* PlayerStatisticsViewController.m in Sources */,
+				8E98709F15489E90005839CB /* GameStatisticsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -95,6 +95,9 @@
     // Create and push the statistics screen for the selected player.
     PlayerStatisticsViewController *playerStatisticsViewController = [[PlayerStatisticsViewController alloc] initForPlayer:player];
     [[self navigationController] pushViewController:playerStatisticsViewController animated:YES];
+
+    // Deselect the selected row.
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

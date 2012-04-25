@@ -18,6 +18,8 @@
 - (int)losses;
 - (double)pointsPerGame;
 - (double)pointsPerRound;
+- (double)twentiesPerGame;
+- (double)twentiesPerRound;
 
 @end
 

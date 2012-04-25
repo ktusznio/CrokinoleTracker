@@ -16,6 +16,7 @@
 
 - (int)wins;
 - (int)losses;
+- (double)pointsPerGame;
 
 @end
 

@@ -17,6 +17,7 @@
 - (int)wins {
     int wins = 0;
 
+    // For each game, increment the win count if this player won.
     for (Game *game in [self games]) {
         if ([game winningPlayer] == self) {
             wins++;
@@ -29,6 +30,7 @@
 - (int)losses {
     int losses = 0;
 
+    // For each game, increment the loss count if this player lost.
     for (Game *game in [self games]) {
         if ([game winningPlayer] != self) {
             losses++;
@@ -36,6 +38,23 @@
     }
 
     return losses;
+}
+
+- (double)pointsPerGame {
+    int totalPoints = 0;
+
+    // For each game, add the player's score and the total number of rounds to the running totals.
+    for (Game *game in [self games]) {
+        if ([[game players] objectAtIndex:0] == self) {
+            totalPoints += [game playerOneScore];
+        } else if ([[game players] objectAtIndex:1] == self) {
+            totalPoints += [game playerTwoScore];
+        } else {
+            // This shouldn't happen; this game is in the player's list, but the player isn't listed in the game.
+        }
+    }
+
+    return totalPoints * 1.0 / [[self games] count];
 }
 
 @end

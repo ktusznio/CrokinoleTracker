@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *winsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lossesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pointsPerGameLabel;
 
 - (id)initForPlayer:(Player *)aPlayer;
 

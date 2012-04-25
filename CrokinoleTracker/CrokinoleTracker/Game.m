@@ -18,6 +18,16 @@
 
 const int WINNING_SCORE = 100;
 
+- (int)scoreForPlayer:(Player *)player {
+    if ([[self players] objectAtIndex:0] == player) {
+        return [self playerOneScore];
+    } else if ([[self players] objectAtIndex:1] == player) {
+        return [self playerTwoScore];
+    }
+
+    return 0;
+}
+
 - (int)playerOneScore {
     int gameScore = 0;
 

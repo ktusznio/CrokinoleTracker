@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSOrderedSet *rounds;
 @property (nonatomic, retain) NSOrderedSet *players;
 
+- (int)scoreForPlayer:(Player *)player;
 - (int)playerOneScore;
 - (int)playerTwoScore;
 - (Round *)currentRound;

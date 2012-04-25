@@ -52,13 +52,7 @@
 
     // For each game, add the player's score to the running total.
     for (Game *game in [self games]) {
-        if ([[game players] objectAtIndex:0] == self) {
-            totalPoints += [game playerOneScore];
-        } else if ([[game players] objectAtIndex:1] == self) {
-            totalPoints += [game playerTwoScore];
-        } else {
-            // This shouldn't happen; this game is in the player's list, but the player isn't listed in the game.
-        }
+        totalPoints += [game scoreForPlayer:self];
     }
 
     return totalPoints * 1.0 / totalGames;
@@ -75,14 +69,7 @@
 
     // For each game, add the player's score and the total number of rounds to the running totals.
     for (Game *game in [self games]) {
-        if ([[game players] objectAtIndex:0] == self) {
-            totalPoints += [game playerOneScore];
-        } else if ([[game players] objectAtIndex:1] == self) {
-            totalPoints += [game playerTwoScore];
-        } else {
-            // This shouldn't happen; this game is in the player's list, but the player isn't listed in the game.
-        }
-
+        totalPoints += [game scoreForPlayer:self];
         totalRounds += [[game rounds] count];
     }
 

@@ -41,6 +41,13 @@
 }
 
 - (double)pointsPerGame {
+    int totalGames = [[self games] count];
+
+    // If the player hasn't played any games, we don't need to do anything.
+    if (totalGames == 0) {
+        return 0;
+    }
+
     int totalPoints = 0;
 
     // For each game, add the player's score to the running total.
@@ -54,10 +61,15 @@
         }
     }
 
-    return totalPoints * 1.0 / [[self games] count];
+    return totalPoints * 1.0 / totalGames;
 }
 
 - (double)pointsPerRound {
+    // If the player hasn't played any games, we don't need to do anything.
+    if ([[self games] count] == 0) {
+        return 0;
+    }
+
     int totalPoints = 0;
     int totalRounds = 0;
 
@@ -72,6 +84,11 @@
         }
 
         totalRounds += [[game rounds] count];
+    }
+
+    // If, somehow, the player has a game on record but no rounds, we don't need to do anything.
+    if (totalRounds == 0) {
+        return 0;
     }
 
     return totalPoints * 1.0 / totalRounds;

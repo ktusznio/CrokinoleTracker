@@ -16,7 +16,7 @@
 
 extern const int WINNING_SCORE;
 
-const int ALERT_VIEW_CANCEL_BUTTON_INDEX = 0;
+const int ALERT_VIEW_CANCEL_QUIT_BUTTON_INDEX = 0;
 const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
 
 @implementation ScorekeepingViewController
@@ -204,7 +204,7 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
 # pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == ALERT_VIEW_CANCEL_BUTTON_INDEX) {
+    if (buttonIndex == ALERT_VIEW_CANCEL_QUIT_BUTTON_INDEX) {
         // Dismiss the alert.
     } else if (buttonIndex == ALERT_VIEW_QUIT_BUTTON_INDEX) {
         // Delete the current game.

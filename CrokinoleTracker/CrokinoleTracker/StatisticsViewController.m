@@ -118,8 +118,8 @@ const int GAMES_SECTION = 1;
         }
 
         // Create the cell's label string.
-        NSString *cellLabel = [NSString stringWithFormat:@"%@ %d - %d %@", [playerOne name], [game playerOneScore], [game playerTwoScore], [playerTwo name]];
-        [[cell textLabel] setText:cellLabel];
+        NSString *cellText = [NSString stringWithFormat:@"%@ %d - %d %@", [playerOne name], [game playerOneScore], [game playerTwoScore], [playerTwo name]];
+        [[cell textLabel] setText:cellText];
         [[cell textLabel] setTextAlignment:UITextAlignmentCenter];
 
         return cell;

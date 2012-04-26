@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50113A06154651F700565570 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50113A04154651F700565570 /* MainMenuViewController.m */; };
-		50113A07154651F700565570 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50113A05154651F700565570 /* MainMenuViewController.xib */; };
+		50113A07154651F700565570 /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50113A05154651F700565570 /* MainMenuView.xib */; };
 		50113A0C15465D6E00565570 /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50113A0A15465D6E00565570 /* StatisticsViewController.m */; };
 		50113A0D15465D6E00565570 /* StatisticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50113A0B15465D6E00565570 /* StatisticsView.xib */; };
 		50113A1115466C3A00565570 /* PlayerStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50113A0F15466C3900565570 /* PlayerStatisticsViewController.m */; };
@@ -59,7 +59,7 @@
 /* Begin PBXFileReference section */
 		50113A03154651F700565570 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		50113A04154651F700565570 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
-		50113A05154651F700565570 /* MainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
+		50113A05154651F700565570 /* MainMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuView.xib; sourceTree = "<group>"; };
 		50113A0915465D6D00565570 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
 		50113A0A15465D6E00565570 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		50113A0B15465D6E00565570 /* StatisticsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticsView.xib; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 		8EAE6A7F153F5DE000ECA3A7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				50113A05154651F700565570 /* MainMenuViewController.xib */,
+				50113A05154651F700565570 /* MainMenuView.xib */,
 				8EAE6A82153F603B00ECA3A7 /* GameOptionsView.xib */,
 				8EAE6A86153F643200ECA3A7 /* PlayerSelectionView.xib */,
 				8E341F621540B71E0011307E /* ScorekeepingView.xib */,
@@ -356,7 +356,7 @@
 				8EAE6A88153F643200ECA3A7 /* PlayerSelectionView.xib in Resources */,
 				8E341F641540B71E0011307E /* ScorekeepingView.xib in Resources */,
 				8E1992981545C71100C18D25 /* GameSummaryView.xib in Resources */,
-				50113A07154651F700565570 /* MainMenuViewController.xib in Resources */,
+				50113A07154651F700565570 /* MainMenuView.xib in Resources */,
 				50113A0D15465D6E00565570 /* StatisticsView.xib in Resources */,
 				50113A1215466C3A00565570 /* PlayerStatisticsView.xib in Resources */,
 				8E9870A015489E90005839CB /* GameStatisticsView.xib in Resources */,

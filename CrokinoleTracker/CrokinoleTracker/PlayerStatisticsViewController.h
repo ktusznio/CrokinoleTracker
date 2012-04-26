@@ -12,8 +12,7 @@
     Player *player;
 }
 
-@property (weak, nonatomic) IBOutlet UILabel *winsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lossesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *recordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pointsPerGameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pointsPerRoundLabel;
 @property (weak, nonatomic) IBOutlet UILabel *twentiesPerGameLabel;

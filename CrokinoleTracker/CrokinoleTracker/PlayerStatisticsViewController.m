@@ -12,8 +12,7 @@
 
 @implementation PlayerStatisticsViewController
 
-@synthesize winsLabel;
-@synthesize lossesLabel;
+@synthesize recordLabel;
 @synthesize pointsPerGameLabel;
 @synthesize pointsPerRoundLabel;
 @synthesize twentiesPerGameLabel;
@@ -40,8 +39,7 @@
     PlayerStatistics *playerStatistics = [player statistics];
 
     // Set the statistics labels.
-    [winsLabel setText:[NSString stringWithFormat:@"Wins: %d", [playerStatistics wins]]];
-    [lossesLabel setText:[NSString stringWithFormat:@"Losses: %d", [playerStatistics losses]]];
+    [recordLabel setText:[NSString stringWithFormat:@"Record: %d-%d", [playerStatistics wins], [playerStatistics losses]]];
     [pointsPerGameLabel setText:[NSString stringWithFormat:@"Points per game: %.2f", [playerStatistics pointsPerGame]]];
     [pointsPerRoundLabel setText:[NSString stringWithFormat:@"Points per round: %.2f", [playerStatistics pointsPerRound]]];
     [twentiesPerGameLabel setText:[NSString stringWithFormat:@"Twenties per game: %.2f", [playerStatistics twentiesPerGame]]];
@@ -50,8 +48,7 @@
 }
 
 - (void)viewDidUnload {
-    [self setWinsLabel:nil];
-    [self setLossesLabel:nil];
+    [self setRecordLabel:nil];
     [self setPointsPerGameLabel:nil];
     [self setPointsPerRoundLabel:nil];
     [self setTwentiesPerGameLabel:nil];

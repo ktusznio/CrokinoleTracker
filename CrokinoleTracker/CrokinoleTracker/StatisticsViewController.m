@@ -156,5 +156,4 @@ const int GAMES_SECTION = 1;
     [[self navigationController] pushViewController:statisticsViewController animated:YES];
 }
 
-
 @end

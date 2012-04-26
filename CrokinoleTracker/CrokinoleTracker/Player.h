@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class PlayerStatistics;
+
 @interface Player : NSManagedObject
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSOrderedSet *games;
 
-- (int)wins;
-- (int)losses;
+- (PlayerStatistics *)statistics;
 
 @end
 

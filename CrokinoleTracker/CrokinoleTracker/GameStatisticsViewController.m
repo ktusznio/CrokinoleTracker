@@ -12,7 +12,7 @@
 #import "GameStatisticsViewController.h"
 #import "Player.h"
 
-const int ALERT_VIEW_CANCEL_BUTTON_INDEX = 0;
+const int ALERT_VIEW_CANCEL_DELETE_BUTTON_INDEX = 0;
 const int ALERT_VIEW_DELETE_BUTTON_INDEX = 1;
 
 @implementation GameStatisticsViewController
@@ -49,7 +49,7 @@ const int ALERT_VIEW_DELETE_BUTTON_INDEX = 1;
 # pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == ALERT_VIEW_CANCEL_BUTTON_INDEX) {
+    if (buttonIndex == ALERT_VIEW_CANCEL_DELETE_BUTTON_INDEX) {
         // Dismiss the alert.
     } else if (buttonIndex == ALERT_VIEW_DELETE_BUTTON_INDEX) {
         // Remove the game from the app delegate's loaded games.

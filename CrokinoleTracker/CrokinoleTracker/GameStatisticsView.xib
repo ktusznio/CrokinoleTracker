@@ -41,6 +41,7 @@
 						<string key="NSFrame">{{103, 359}, {114, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -171,17 +172,6 @@
 						<object class="IBActionInfo" key="NS.object.0">
 							<string key="name">onDeleteGameButtonTap:</string>
 							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">deleteGameButton</string>
-						<string key="NS.object.0">UIButton</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">deleteGameButton</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">deleteGameButton</string>
-							<string key="candidateClassName">UIButton</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

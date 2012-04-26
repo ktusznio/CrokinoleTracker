@@ -7,6 +7,7 @@
 //
 
 #import "Player.h"
+#import "PlayerGameListViewController.h"
 #import "PlayerStatistics.h"
 #import "PlayerStatisticsViewController.h"
 
@@ -18,6 +19,7 @@
 @synthesize twentiesPerGameLabel;
 @synthesize twentiesPerRoundLabel;
 @synthesize roundsPerGameLabel;
+@synthesize viewGamesButton;
 
 - (id)initForPlayer:(Player *)aPlayer {
     self = [super init];
@@ -35,6 +37,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // Change the text on the back bar button item.
+    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:nil
+                                                                         action:nil];
+    [[self navigationItem] setBackBarButtonItem:backBarButtonItem];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     // Get the player statistics for the selected player.
     PlayerStatistics *playerStatistics = [player statistics];
 
@@ -54,6 +65,7 @@
     [self setTwentiesPerGameLabel:nil];
     [self setTwentiesPerRoundLabel:nil];
     [self setRoundsPerGameLabel:nil];
+    [self setViewGamesButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -61,6 +73,12 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)onViewGamesButtonTap:(id)sender {
+    // Push the player's game list screen.
+    PlayerGameListViewController *playerGameListViewController = [[PlayerGameListViewController alloc] initForPlayer:player];
+    [[self navigationController] pushViewController:playerGameListViewController animated:YES];
 }
 
 @end

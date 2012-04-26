@@ -20,6 +20,7 @@
 @synthesize pointsPerRound;
 @synthesize twentiesPerGame;
 @synthesize twentiesPerRound;
+@synthesize roundsPerGame;
 
 - (id)initForPlayer:(Player *)aPlayer {
     self = [super init];
@@ -58,6 +59,7 @@
         double avgPointsPerRound = (totalRounds > 0) ? (totalPoints * 1.0 / totalRounds) : 0;
         double avgTwentiesPerGame = (totalGames > 0) ? (totalTwenties * 1.0 / totalGames) : 0;
         double avgTwentiesPerRound = (totalRounds > 0) ? (totalTwenties * 1.0 / totalRounds) : 0;
+        double avgRoundsPerGame = (totalGames > 0) ? (totalRounds * 1.0 / totalGames) : 0;
 
         // Set the properties using our results.
         [self setWins:totalWins];
@@ -66,6 +68,7 @@
         [self setPointsPerRound:avgPointsPerRound];
         [self setTwentiesPerGame:avgTwentiesPerGame];
         [self setTwentiesPerRound:avgTwentiesPerRound];
+        [self setRoundsPerGame:avgRoundsPerGame];
     }
 
     return self;

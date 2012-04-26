@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *pointsPerRoundLabel;
 @property (weak, nonatomic) IBOutlet UILabel *twentiesPerGameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *twentiesPerRoundLabel;
+@property (weak, nonatomic) IBOutlet UILabel *roundsPerGameLabel;
 
 - (id)initForPlayer:(Player *)aPlayer;
 

@@ -18,6 +18,7 @@
     double pointsPerRound;
     double twentiesPerGame;
     double twentiesPerRound;
+    double roundsPerGame;
 }
 
 @property (strong, nonatomic) Player *player;
@@ -27,6 +28,7 @@
 @property (nonatomic) double pointsPerRound;
 @property (nonatomic) double twentiesPerGame;
 @property (nonatomic) double twentiesPerRound;
+@property (nonatomic) double roundsPerGame;
 
 - (id)initForPlayer:(Player *)player;
 

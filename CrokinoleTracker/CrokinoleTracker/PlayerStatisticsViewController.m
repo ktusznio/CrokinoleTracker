@@ -18,6 +18,7 @@
 @synthesize pointsPerRoundLabel;
 @synthesize twentiesPerGameLabel;
 @synthesize twentiesPerRoundLabel;
+@synthesize roundsPerGameLabel;
 
 - (id)initForPlayer:(Player *)aPlayer {
     self = [super init];
@@ -45,6 +46,7 @@
     [pointsPerRoundLabel setText:[NSString stringWithFormat:@"Points per round: %.2f", [playerStatistics pointsPerRound]]];
     [twentiesPerGameLabel setText:[NSString stringWithFormat:@"Twenties per game: %.2f", [playerStatistics twentiesPerGame]]];
     [twentiesPerRoundLabel setText:[NSString stringWithFormat:@"Twenties per round: %.2f", [playerStatistics twentiesPerRound]]];
+    [roundsPerGameLabel setText:[NSString stringWithFormat:@"Rounds per game: %.2f", [playerStatistics roundsPerGame]]];
 }
 
 - (void)viewDidUnload {
@@ -54,6 +56,7 @@
     [self setPointsPerRoundLabel:nil];
     [self setTwentiesPerGameLabel:nil];
     [self setTwentiesPerRoundLabel:nil];
+    [self setRoundsPerGameLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

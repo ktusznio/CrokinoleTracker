@@ -25,7 +25,7 @@ const int GAMES_SECTION = 1;
 
     if (self) {
         // Set the text on the navigation bar.
-        [self setTitle:@"Statistics"];
+        [self setTitle:@"Players & Games"];
     }
 
     return self;

@@ -10,10 +10,11 @@
 
 @class Game;
 
-@interface GameStatisticsViewController : UIViewController {
+@interface GameStatisticsViewController : UIViewController <UIAlertViewDelegate> {
     Game *game;
 }
 
 - (id)initForGame:(Game *)aGame;
+- (IBAction)onDeleteGameButtonTap:(id)sender;
 
 @end

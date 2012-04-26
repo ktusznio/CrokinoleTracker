@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "CoreDataUtilities.h"
 #import "Game.h"
 #import "GameSummaryViewController.h"
@@ -177,6 +178,11 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
 
     // If the game is over, redirect to the game summary screen.  Otherwise, create a new round and load a new round screen.
     if ([[playerOneScoreLabel text] intValue] >= WINNING_SCORE || [[playerTwoScoreLabel text] intValue] >= WINNING_SCORE) {
+        // Add the completed game to the app delegate's game collection.
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [[appDelegate games] addObject:game];
+
+        // Initialize and push the game summary screen.
         GameSummaryViewController *gameSummaryViewController = [[GameSummaryViewController alloc] initForGame:game];
         [[self navigationController] pushViewController:gameSummaryViewController animated:YES];
     } else {

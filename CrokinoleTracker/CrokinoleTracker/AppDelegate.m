@@ -18,6 +18,7 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize players;
+@synthesize games;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -27,6 +28,7 @@
 
     // Load the list of players.
     players = [NSMutableArray arrayWithArray:[CoreDataUtilities fetchEntitiesForEntityName:@"Player"]];
+    games = [NSMutableArray arrayWithArray:[CoreDataUtilities fetchEntitiesForEntityName:@"Game"]];
     
     // Set up the navigation controller and its initial view.
     UINavigationController *navigationController = [[UINavigationController alloc] init];

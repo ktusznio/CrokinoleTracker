@@ -38,8 +38,8 @@ const int ALERT_VIEW_DELETE_BUTTON_INDEX = 1;
 
 - (IBAction)onDeleteGameButtonTap:(id)sender {
     // Show a dialog to confirm deletion of the game.
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Game Deletion"
-                                                        message:@"Are you sure you want to delete this game?"
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Really delete?"
+                                                        message:@"This cannot be undone."
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                               otherButtonTitles:@"Delete", nil];

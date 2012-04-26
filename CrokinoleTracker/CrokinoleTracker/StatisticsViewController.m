@@ -8,13 +8,17 @@
 
 #import "AppDelegate.h"
 #import "CoreDataUtilities.h"
+#import "GameStatisticsViewController.h"
+#import "Player.h"
 #import "PlayerStatisticsViewController.h"
 #import "StatisticsViewController.h"
 
 @implementation StatisticsViewController
 
-@synthesize gamesPlayedLabel;
 @synthesize playerTableView;
+
+const int PLAYERS_SECTION = 0;
+const int GAMES_SECTION = 1;
 
 - (id)init {
     self = [super init];
@@ -36,14 +40,9 @@
                                                                          target:nil
                                                                          action:nil];
     [[self navigationItem] setBackBarButtonItem:backBarButtonItem];
-
-    // Determine the number of played games and write it to the label.
-    NSArray *games = [CoreDataUtilities fetchEntitiesForEntityName:@"Game"];
-    [gamesPlayedLabel setText:[NSString stringWithFormat:@"Total games played: %d", [games count]]];
 }
 
 - (void)viewDidUnload {
-    [self setGamesPlayedLabel:nil];
     [self setPlayerTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -57,47 +56,99 @@
 # pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // We only have one section: the list of players.
-    return 1;
+    // We have two sections: the list of players, and the list of games.
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    if (section == PLAYERS_SECTION) {
+        return [NSString stringWithFormat:@"Players (%d)", [[appDelegate players] count]];
+    } else if (section == GAMES_SECTION) {
+        return [NSString stringWithFormat:@"Games (%d)", [[appDelegate games] count]];
+    }
+
+    return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // The number of rows is equal to the number of existing players.
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    return [[appDelegate players] count];
+
+    if (section == PLAYERS_SECTION) {
+        // The number of rows is equal to the number of existing players.
+        return [[appDelegate players] count];
+    } else if (section == GAMES_SECTION) {
+        // The number of rows is equal to the number of existing games.
+        return [[appDelegate games] count];
+    }
+
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSArray *players = [appDelegate players];
 
-    // Get the player name at the given index.
-    NSString *playerName = [[players objectAtIndex:[indexPath row]] name];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:playerName];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:playerName];
+    if ([indexPath section] == PLAYERS_SECTION) {
+        NSArray *players = [appDelegate players];
+
+        // Get the player name at the given index.
+        NSString *playerName = [[players objectAtIndex:[indexPath row]] name];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:playerName];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:playerName];
+        }
+
+        [[cell textLabel] setText:playerName];
+
+        return cell;
+    } else if ([indexPath section] == GAMES_SECTION) {
+        NSArray *games = [appDelegate games];
+
+        // Get the game at the given index.
+        Game *game = [games objectAtIndex:[indexPath row]];
+        Player *playerOne = [[game players] objectAtIndex:0];
+        Player *playerTwo = [[game players] objectAtIndex:1];
+
+        // Create the cell.
+        NSString *cellId = [NSString stringWithFormat:@"Game%d", [indexPath row]];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        }
+
+        // Create the cell's label string.
+        NSString *cellLabel = [NSString stringWithFormat:@"%@ %d - %d %@", [playerOne name], [game playerOneScore], [game playerTwoScore], [playerTwo name]];
+        [[cell textLabel] setText:cellLabel];
+        [[cell textLabel] setTextAlignment:UITextAlignmentCenter];
+
+        return cell;
     }
 
-    [[cell textLabel] setText:playerName];
-
-    return cell;
+    return nil;
 }
 
 # pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Fetch the selected player.
-    NSString *playerName = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
-    Player *player = (Player *)[CoreDataUtilities entityForEntityName:@"Player"
-                                                        attributeName:@"name"
-                                                       attributeValue:playerName];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
-    // Create and push the statistics screen for the selected player.
-    PlayerStatisticsViewController *playerStatisticsViewController = [[PlayerStatisticsViewController alloc] initForPlayer:player];
-    [[self navigationController] pushViewController:playerStatisticsViewController animated:YES];
+    UIViewController *statisticsViewController;
+    if ([indexPath section] == PLAYERS_SECTION) {
+        // Create the statistics view for the selected player.
+        Player *player = [[appDelegate players] objectAtIndex:[indexPath row]];
+        statisticsViewController = [[PlayerStatisticsViewController alloc] initForPlayer:player];
+    } else if ([indexPath section] == GAMES_SECTION) {
+        // Create the statistics view for the selected game.
+        Game *game = [[appDelegate games] objectAtIndex:[indexPath row]];
+        statisticsViewController = [[GameStatisticsViewController alloc] initForGame:game];
+    }
 
     // Deselect the selected row.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    // Push the statistics view controller.
+    [[self navigationController] pushViewController:statisticsViewController animated:YES];
 }
 
 

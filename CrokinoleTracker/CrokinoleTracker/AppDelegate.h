@@ -10,6 +10,7 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
     NSMutableArray *players;
+    NSMutableArray *games;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -19,6 +20,7 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (strong, nonatomic) NSMutableArray *players;
+@property (strong, nonatomic) NSMutableArray *games;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

@@ -15,7 +15,7 @@
 
 @implementation StatisticsViewController
 
-@synthesize playerTableView;
+@synthesize playerAndGameTableView;
 
 const int PLAYERS_SECTION = 0;
 const int GAMES_SECTION = 1;
@@ -43,7 +43,7 @@ const int GAMES_SECTION = 1;
 }
 
 - (void)viewDidUnload {
-    [self setPlayerTableView:nil];
+    [self setPlayerAndGameTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -51,7 +51,7 @@ const int GAMES_SECTION = 1;
 
 - (void)viewWillAppear:(BOOL)animated {
     // Reload the table data.
-    [playerTableView reloadData];
+    [playerAndGameTableView reloadData];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -155,6 +155,5 @@ const int GAMES_SECTION = 1;
     // Push the statistics view controller.
     [[self navigationController] pushViewController:statisticsViewController animated:YES];
 }
-
 
 @end

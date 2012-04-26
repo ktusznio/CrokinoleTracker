@@ -15,6 +15,9 @@
 
 extern const int WINNING_SCORE;
 
+const int ALERT_VIEW_CANCEL_BUTTON_INDEX = 0;
+const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
+
 @implementation ScorekeepingViewController
 
 @synthesize playerOneScoreLabel;
@@ -195,18 +198,16 @@ extern const int WINNING_SCORE;
 # pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        // The user clicked "Cancel", so simply dismiss the alert.
-    } else if (buttonIndex == 1) {
-        // The user clicked "Quit".
-
+    if (buttonIndex == ALERT_VIEW_CANCEL_BUTTON_INDEX) {
+        // Dismiss the alert.
+    } else if (buttonIndex == ALERT_VIEW_QUIT_BUTTON_INDEX) {
         // Delete the current game.
         [CoreDataUtilities deleteEntity:game];
 
         // Pop back to the player selection screen.
         [[self navigationController] popToRootViewControllerAnimated:YES];
     } else {
-        // Unknown button!  Simply dismiss the alert.
+        // Unknown button! Dismiss the alert.
     }
 }
 

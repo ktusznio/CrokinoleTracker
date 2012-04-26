@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
+#import "Game.h"
 #import "GameStatisticsViewController.h"
 #import "Player.h"
 

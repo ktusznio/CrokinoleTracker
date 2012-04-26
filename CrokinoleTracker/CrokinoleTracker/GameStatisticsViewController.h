@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Game.h"
+@class Game;
 
 @interface GameStatisticsViewController : UIViewController {
     Game *game;

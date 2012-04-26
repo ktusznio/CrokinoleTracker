@@ -194,7 +194,7 @@ extern const int WINNING_SCORE;
 
 # pragma mark - UIAlertViewDelegate
 
-- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         // The user clicked "Cancel", so simply dismiss the alert.
     } else if (buttonIndex == 1) {

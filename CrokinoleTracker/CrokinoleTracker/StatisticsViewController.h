@@ -10,6 +10,6 @@
 
 @interface StatisticsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *playerTableView;
+@property (weak, nonatomic) IBOutlet UITableView *playerAndGameTableView;
 
 @end

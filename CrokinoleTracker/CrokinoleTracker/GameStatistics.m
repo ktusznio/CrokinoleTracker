@@ -2,8 +2,8 @@
 //  GameStatistics.m
 //  CrokinoleTracker
 //
-//  Created by Kamil Tusznio on 12-04-26.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Kamil Tusznio and Maxwell Woghiren on 12-04-26.
+//  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
 #import "GameStatistics.h"

@@ -6,11 +6,12 @@
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
+#import "PlayerGameListViewController.h"
+
 #import "AppDelegate.h"
 #import "Game.h"
 #import "GameStatisticsViewController.h"
 #import "Player.h"
-#import "PlayerGameListViewController.h"
 
 @implementation PlayerGameListViewController
 

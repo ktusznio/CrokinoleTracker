@@ -6,8 +6,9 @@
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
-#import "AppDelegate.h"
 #import "CoreDataUtilities.h"
+
+#import "AppDelegate.h"
 
 @implementation CoreDataUtilities
 

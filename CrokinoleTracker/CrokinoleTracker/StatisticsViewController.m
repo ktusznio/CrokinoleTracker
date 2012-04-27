@@ -6,12 +6,14 @@
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
+#import "StatisticsViewController.h"
+
 #import "AppDelegate.h"
 #import "CoreDataUtilities.h"
+#import "Game.h"
 #import "GameStatisticsViewController.h"
 #import "Player.h"
 #import "PlayerStatisticsViewController.h"
-#import "StatisticsViewController.h"
 
 @implementation StatisticsViewController
 

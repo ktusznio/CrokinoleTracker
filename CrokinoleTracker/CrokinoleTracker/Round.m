@@ -7,6 +7,7 @@
 //
 
 #import "Round.h"
+
 #import "Game.h"
 
 @implementation Round
@@ -77,14 +78,58 @@
     return roundScore;
 }
 
+- (int)fivesForPlayer:(Player *)player {
+    if ([[[self game] players] objectAtIndex:0] == player) {
+        return [[self playerOne5s] intValue];
+    } else if ([[[self game] players] objectAtIndex:1] == player) {
+        return [[self playerTwo5s] intValue];
+    }
+
+    return 0;
+}
+
+- (int)tensForPlayer:(Player *)player {
+    if ([[[self game] players] objectAtIndex:0] == player) {
+        return [[self playerOne10s] intValue];
+    } else if ([[[self game] players] objectAtIndex:1] == player) {
+        return [[self playerTwo10s] intValue];
+    }
+
+    return 0;
+}
+
+- (int)fifteensForPlayer:(Player *)player {
+    if ([[[self game] players] objectAtIndex:0] == player) {
+        return [[self playerOne15s] intValue];
+    } else if ([[[self game] players] objectAtIndex:1] == player) {
+        return [[self playerTwo15s] intValue];
+    }
+
+    return 0;
+}
+
 - (int)twentiesForPlayer:(Player *)player {
     if ([[[self game] players] objectAtIndex:0] == player) {
-        return [[self playerOne20s] intValue];;
+        return [[self playerOne20s] intValue];
     } else if ([[[self game] players] objectAtIndex:1] == player) {
         return [[self playerTwo20s] intValue];
     }
 
     return 0;
+}
+
+- (Player *)winner {
+    int playerOneScore = [self playerOneScore];
+    int playerTwoScore = [self playerTwoScore];
+
+    if (playerOneScore > playerTwoScore) {
+        return [[[self game] players] objectAtIndex:0];
+    } else if (playerTwoScore > playerOneScore) {
+        return [[[self game] players] objectAtIndex:1];
+    }
+
+    // Tie; no winner.
+    return nil;
 }
 
 @end

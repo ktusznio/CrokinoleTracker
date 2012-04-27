@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Game.h"
+@class Game;
 
 @interface CoreDataUtilities : NSObject
 

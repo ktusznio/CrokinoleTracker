@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		50113A06154651F700565570 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50113A04154651F700565570 /* MainMenuViewController.m */; };
-		50113A07154651F700565570 /* MainMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50113A05154651F700565570 /* MainMenuView.xib */; };
+		50113A07154651F700565570 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50113A05154651F700565570 /* MainMenuViewController.xib */; };
 		50113A0C15465D6E00565570 /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50113A0A15465D6E00565570 /* StatisticsViewController.m */; };
-		50113A0D15465D6E00565570 /* StatisticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50113A0B15465D6E00565570 /* StatisticsView.xib */; };
+		50113A0D15465D6E00565570 /* StatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50113A0B15465D6E00565570 /* StatisticsViewController.xib */; };
 		50113A1115466C3A00565570 /* PlayerStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50113A0F15466C3900565570 /* PlayerStatisticsViewController.m */; };
-		50113A1215466C3A00565570 /* PlayerStatisticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50113A1015466C3A00565570 /* PlayerStatisticsView.xib */; };
+		50113A1215466C3A00565570 /* PlayerStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50113A1015466C3A00565570 /* PlayerStatisticsViewController.xib */; };
 		5038B864153F4B0A000E0767 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B863153F4B0A000E0767 /* UIKit.framework */; };
 		5038B866153F4B0A000E0767 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B865153F4B0A000E0767 /* Foundation.framework */; };
 		5038B868153F4B0A000E0767 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038B867153F4B0A000E0767 /* CoreGraphics.framework */; };
@@ -31,19 +31,19 @@
 		5038B89D153F5596000E0767 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B89C153F5596000E0767 /* Game.m */; };
 		5038B8A0153F55C5000E0767 /* Round.m in Sources */ = {isa = PBXBuildFile; fileRef = 5038B89F153F55C5000E0767 /* Round.m */; };
 		5050F9F01549D3A400974024 /* PlayerGameListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5050F9EE1549D3A400974024 /* PlayerGameListViewController.m */; };
-		5050F9F11549D3A400974024 /* PlayerGameListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5050F9EF1549D3A400974024 /* PlayerGameListView.xib */; };
+		5050F9F11549D3A400974024 /* PlayerGameListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5050F9EF1549D3A400974024 /* PlayerGameListViewController.xib */; };
 		50C24F211548978B005327FA /* PlayerStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C24F201548978B005327FA /* PlayerStatistics.m */; };
 		8E155FEA154A1A6700BB6A0C /* GameStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E155FE9154A1A6700BB6A0C /* GameStatistics.m */; };
-		8E155FEC154A284800BB6A0C /* GameStatisticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E155FEB154A284800BB6A0C /* GameStatisticsView.xib */; };
+		8E155FEC154A284800BB6A0C /* GameStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E155FEB154A284800BB6A0C /* GameStatisticsViewController.xib */; };
 		8E155FF1154A30D000BB6A0C /* GameStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E155FF0154A30D000BB6A0C /* GameStatisticsViewController.m */; };
 		8E1992971545C71100C18D25 /* GameSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1992951545C71100C18D25 /* GameSummaryViewController.m */; };
-		8E1992981545C71100C18D25 /* GameSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E1992961545C71100C18D25 /* GameSummaryView.xib */; };
+		8E1992981545C71100C18D25 /* GameSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E1992961545C71100C18D25 /* GameSummaryViewController.xib */; };
 		8E341F631540B71E0011307E /* ScorekeepingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E341F611540B71E0011307E /* ScorekeepingViewController.m */; };
-		8E341F641540B71E0011307E /* ScorekeepingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E341F621540B71E0011307E /* ScorekeepingView.xib */; };
+		8E341F641540B71E0011307E /* ScorekeepingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E341F621540B71E0011307E /* ScorekeepingViewController.xib */; };
 		8EAE6A7D153F5B3300ECA3A7 /* GameOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A7C153F5B3300ECA3A7 /* GameOptionsViewController.m */; };
-		8EAE6A83153F603B00ECA3A7 /* GameOptionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAE6A82153F603B00ECA3A7 /* GameOptionsView.xib */; };
+		8EAE6A83153F603B00ECA3A7 /* GameOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAE6A82153F603B00ECA3A7 /* GameOptionsViewController.xib */; };
 		8EAE6A87153F643200ECA3A7 /* PlayerSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A85153F643200ECA3A7 /* PlayerSelectionViewController.m */; };
-		8EAE6A88153F643200ECA3A7 /* PlayerSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAE6A86153F643200ECA3A7 /* PlayerSelectionView.xib */; };
+		8EAE6A88153F643200ECA3A7 /* PlayerSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAE6A86153F643200ECA3A7 /* PlayerSelectionViewController.xib */; };
 		8EAE6A8C1540A63000ECA3A7 /* CoreDataUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A8B1540A63000ECA3A7 /* CoreDataUtilities.m */; };
 /* End PBXBuildFile section */
 
@@ -60,13 +60,13 @@
 /* Begin PBXFileReference section */
 		50113A03154651F700565570 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		50113A04154651F700565570 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
-		50113A05154651F700565570 /* MainMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuView.xib; sourceTree = "<group>"; };
+		50113A05154651F700565570 /* MainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
 		50113A0915465D6D00565570 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
 		50113A0A15465D6E00565570 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
-		50113A0B15465D6E00565570 /* StatisticsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticsView.xib; sourceTree = "<group>"; };
+		50113A0B15465D6E00565570 /* StatisticsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticsViewController.xib; sourceTree = "<group>"; };
 		50113A0E15466C3900565570 /* PlayerStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerStatisticsViewController.h; sourceTree = "<group>"; };
 		50113A0F15466C3900565570 /* PlayerStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerStatisticsViewController.m; sourceTree = "<group>"; };
-		50113A1015466C3A00565570 /* PlayerStatisticsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerStatisticsView.xib; sourceTree = "<group>"; };
+		50113A1015466C3A00565570 /* PlayerStatisticsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerStatisticsViewController.xib; sourceTree = "<group>"; };
 		5038B85F153F4B0A000E0767 /* CrokinoleTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrokinoleTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5038B863153F4B0A000E0767 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5038B865153F4B0A000E0767 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -93,26 +93,26 @@
 		5038B89F153F55C5000E0767 /* Round.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Round.m; sourceTree = "<group>"; };
 		5050F9ED1549D3A300974024 /* PlayerGameListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerGameListViewController.h; sourceTree = "<group>"; };
 		5050F9EE1549D3A400974024 /* PlayerGameListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerGameListViewController.m; sourceTree = "<group>"; };
-		5050F9EF1549D3A400974024 /* PlayerGameListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerGameListView.xib; sourceTree = "<group>"; };
+		5050F9EF1549D3A400974024 /* PlayerGameListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerGameListViewController.xib; sourceTree = "<group>"; };
 		50C24F1F1548978B005327FA /* PlayerStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerStatistics.h; sourceTree = "<group>"; };
 		50C24F201548978B005327FA /* PlayerStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerStatistics.m; sourceTree = "<group>"; };
 		8E155FE8154A1A6700BB6A0C /* GameStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStatistics.h; sourceTree = "<group>"; };
 		8E155FE9154A1A6700BB6A0C /* GameStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStatistics.m; sourceTree = "<group>"; };
-		8E155FEB154A284800BB6A0C /* GameStatisticsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameStatisticsView.xib; sourceTree = "<group>"; };
+		8E155FEB154A284800BB6A0C /* GameStatisticsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameStatisticsViewController.xib; sourceTree = "<group>"; };
 		8E155FEF154A30D000BB6A0C /* GameStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStatisticsViewController.h; sourceTree = "<group>"; };
 		8E155FF0154A30D000BB6A0C /* GameStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStatisticsViewController.m; sourceTree = "<group>"; };
 		8E1992941545C71100C18D25 /* GameSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSummaryViewController.h; sourceTree = "<group>"; };
 		8E1992951545C71100C18D25 /* GameSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSummaryViewController.m; sourceTree = "<group>"; };
-		8E1992961545C71100C18D25 /* GameSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameSummaryView.xib; sourceTree = "<group>"; };
+		8E1992961545C71100C18D25 /* GameSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameSummaryViewController.xib; sourceTree = "<group>"; };
 		8E341F601540B71E0011307E /* ScorekeepingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScorekeepingViewController.h; sourceTree = "<group>"; };
 		8E341F611540B71E0011307E /* ScorekeepingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScorekeepingViewController.m; sourceTree = "<group>"; };
-		8E341F621540B71E0011307E /* ScorekeepingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScorekeepingView.xib; sourceTree = "<group>"; };
+		8E341F621540B71E0011307E /* ScorekeepingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScorekeepingViewController.xib; sourceTree = "<group>"; };
 		8EAE6A7B153F5B3300ECA3A7 /* GameOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOptionsViewController.h; sourceTree = "<group>"; };
 		8EAE6A7C153F5B3300ECA3A7 /* GameOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOptionsViewController.m; sourceTree = "<group>"; };
-		8EAE6A82153F603B00ECA3A7 /* GameOptionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOptionsView.xib; sourceTree = "<group>"; };
+		8EAE6A82153F603B00ECA3A7 /* GameOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOptionsViewController.xib; sourceTree = "<group>"; };
 		8EAE6A84153F643200ECA3A7 /* PlayerSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSelectionViewController.h; sourceTree = "<group>"; };
 		8EAE6A85153F643200ECA3A7 /* PlayerSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSelectionViewController.m; sourceTree = "<group>"; };
-		8EAE6A86153F643200ECA3A7 /* PlayerSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerSelectionView.xib; sourceTree = "<group>"; };
+		8EAE6A86153F643200ECA3A7 /* PlayerSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerSelectionViewController.xib; sourceTree = "<group>"; };
 		8EAE6A8A1540A63000ECA3A7 /* CoreDataUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataUtilities.h; sourceTree = "<group>"; };
 		8EAE6A8B1540A63000ECA3A7 /* CoreDataUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataUtilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,7 +180,6 @@
 				5038B874153F4B0A000E0767 /* AppDelegate.h */,
 				5038B875153F4B0A000E0767 /* AppDelegate.m */,
 				5038B8A1153F55FF000E0767 /* Models */,
-				8EAE6A7F153F5DE000ECA3A7 /* Views */,
 				8EAE6A73153F59B600ECA3A7 /* View Controllers */,
 				8EAE6A891540A60700ECA3A7 /* Utilities */,
 				5038B86C153F4B0A000E0767 /* Supporting Files */,
@@ -236,6 +235,22 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		8E6AE918154B2C0B00750BEE /* NIBs */ = {
+			isa = PBXGroup;
+			children = (
+				50113A05154651F700565570 /* MainMenuViewController.xib */,
+				8EAE6A82153F603B00ECA3A7 /* GameOptionsViewController.xib */,
+				8EAE6A86153F643200ECA3A7 /* PlayerSelectionViewController.xib */,
+				8E341F621540B71E0011307E /* ScorekeepingViewController.xib */,
+				8E1992961545C71100C18D25 /* GameSummaryViewController.xib */,
+				50113A0B15465D6E00565570 /* StatisticsViewController.xib */,
+				50113A1015466C3A00565570 /* PlayerStatisticsViewController.xib */,
+				5050F9EF1549D3A400974024 /* PlayerGameListViewController.xib */,
+				8E155FEB154A284800BB6A0C /* GameStatisticsViewController.xib */,
+			);
+			name = NIBs;
+			sourceTree = "<group>";
+		};
 		8EAE6A73153F59B600ECA3A7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,24 +272,9 @@
 				5050F9EE1549D3A400974024 /* PlayerGameListViewController.m */,
 				8E155FEF154A30D000BB6A0C /* GameStatisticsViewController.h */,
 				8E155FF0154A30D000BB6A0C /* GameStatisticsViewController.m */,
+				8E6AE918154B2C0B00750BEE /* NIBs */,
 			);
 			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		8EAE6A7F153F5DE000ECA3A7 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				50113A05154651F700565570 /* MainMenuView.xib */,
-				8EAE6A82153F603B00ECA3A7 /* GameOptionsView.xib */,
-				8EAE6A86153F643200ECA3A7 /* PlayerSelectionView.xib */,
-				8E341F621540B71E0011307E /* ScorekeepingView.xib */,
-				8E1992961545C71100C18D25 /* GameSummaryView.xib */,
-				50113A0B15465D6E00565570 /* StatisticsView.xib */,
-				50113A1015466C3A00565570 /* PlayerStatisticsView.xib */,
-				5050F9EF1549D3A400974024 /* PlayerGameListView.xib */,
-				8E155FEB154A284800BB6A0C /* GameStatisticsView.xib */,
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		8EAE6A891540A60700ECA3A7 /* Utilities */ = {
@@ -357,15 +357,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5038B870153F4B0A000E0767 /* InfoPlist.strings in Resources */,
-				8EAE6A83153F603B00ECA3A7 /* GameOptionsView.xib in Resources */,
-				8EAE6A88153F643200ECA3A7 /* PlayerSelectionView.xib in Resources */,
-				8E341F641540B71E0011307E /* ScorekeepingView.xib in Resources */,
-				8E1992981545C71100C18D25 /* GameSummaryView.xib in Resources */,
-				50113A07154651F700565570 /* MainMenuView.xib in Resources */,
-				50113A0D15465D6E00565570 /* StatisticsView.xib in Resources */,
-				50113A1215466C3A00565570 /* PlayerStatisticsView.xib in Resources */,
-				5050F9F11549D3A400974024 /* PlayerGameListView.xib in Resources */,
-				8E155FEC154A284800BB6A0C /* GameStatisticsView.xib in Resources */,
+				8EAE6A83153F603B00ECA3A7 /* GameOptionsViewController.xib in Resources */,
+				8EAE6A88153F643200ECA3A7 /* PlayerSelectionViewController.xib in Resources */,
+				8E341F641540B71E0011307E /* ScorekeepingViewController.xib in Resources */,
+				8E1992981545C71100C18D25 /* GameSummaryViewController.xib in Resources */,
+				50113A07154651F700565570 /* MainMenuViewController.xib in Resources */,
+				50113A0D15465D6E00565570 /* StatisticsViewController.xib in Resources */,
+				50113A1215466C3A00565570 /* PlayerStatisticsViewController.xib in Resources */,
+				5050F9F11549D3A400974024 /* PlayerGameListViewController.xib in Resources */,
+				8E155FEC154A284800BB6A0C /* GameStatisticsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

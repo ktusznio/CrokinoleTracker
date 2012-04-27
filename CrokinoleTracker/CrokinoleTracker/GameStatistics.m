@@ -14,74 +14,62 @@
 
 @implementation GameStatistics
 
+@synthesize playerOneRoundsWon;
+@synthesize playerTwoRoundsWon;
+@synthesize playerOnePointsPerRound;
+@synthesize playerTwoPointsPerRound;
+@synthesize playerOneTwenties;
+@synthesize playerTwoTwenties;
+@synthesize playerOneFifteens;
+@synthesize playerTwoFifteens;
+@synthesize playerOneTens;
+@synthesize playerTwoTens;
+@synthesize playerOneFives;
+@synthesize playerTwoFives;
+
 - (id)initForGame:(Game *)aGame {
     self = [super init];
 
     if (self) {
         game = aGame;
+
+        int numRounds = [[game rounds] count];
+        Player *playerOne = [[game players] objectAtIndex:0];
+        Player *playerTwo = [[game players] objectAtIndex:1];
+
+        // Initialize counters.
+        int playerOneTotalPoints = 0;
+        int playerTwoTotalPoints = 0;
+
+        for (Round *round in [game rounds]) {
+            // Increment rounds won counts.
+            if ([round winner] == playerOne) {
+                playerOneRoundsWon++;
+            } else if ([round winner] == playerTwo) {
+                playerTwoRoundsWon++;
+            }
+
+            // Increment point totals.
+            playerOneTotalPoints += [round playerOneScore];
+            playerTwoTotalPoints += [round playerTwoScore];
+
+            // Increment shot counts.
+            playerOneTwenties += [[round playerOne20s] intValue];
+            playerTwoTwenties += [[round playerTwo20s] intValue];
+            playerOneFifteens += [[round playerOne15s] intValue];
+            playerTwoFifteens += [[round playerTwo15s] intValue];
+            playerOneTens += [[round playerOne10s] intValue];
+            playerTwoTens += [[round playerTwo10s] intValue];
+            playerOneFives += [[round playerOne5s] intValue];
+            playerTwoFives += [[round playerTwo5s] intValue];
+        }
+
+        // Set points per round for each player.
+        playerOnePointsPerRound = (playerOneTotalPoints > 0) ? playerOneTotalPoints * 1.0 / numRounds : 0;
+        playerTwoPointsPerRound = (playerTwoTotalPoints > 0) ? playerTwoTotalPoints * 1.0 / numRounds : 0;
     }
 
     return self;
-}
-
-- (int)roundsWonForPlayer:(Player *)player {
-    int roundsWon = 0;
-
-    for (Round *round in [game rounds]) {
-        if ([round winner] == player) {
-            roundsWon++;
-        }
-    }
-
-    return roundsWon;
-}
-
-- (double)pointsPerRoundForPlayer:(Player *)player {
-    if ([[game rounds] count] <= 0) {
-        return 0;
-    }
-
-    return [game scoreForPlayer:player] * 1.0 / [[game rounds] count];
-}
-
-- (int)twentiesForPlayer:(Player *)player {
-    int twenties = 0;
-
-    for (Round *round in [game rounds]) {
-        twenties += [round twentiesForPlayer:player];
-    }
-
-    return twenties;
-}
-
-- (int)fifteensForPlayer:(Player *)player {
-    int fifteens = 0;
-
-    for (Round *round in [game rounds]) {
-        fifteens += [round fifteensForPlayer:player];
-    }
-
-    return fifteens;
-}
-
-- (int)tensForPlayer:(Player *)player {
-    int tens = 0;
-
-    for (Round *round in [game rounds]) {
-        tens += [round tensForPlayer:player];
-    }
-
-    return tens;
-}
-
-- (int)fivesForPlayer:(Player *)player {
-    int fives = 0;
-
-    for (Round *round in [game rounds]) {
-        fives += [round fivesForPlayer:player];
-    }
-
-    return fives;
 }
 
 @end

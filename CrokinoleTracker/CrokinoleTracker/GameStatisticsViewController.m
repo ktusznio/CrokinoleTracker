@@ -74,23 +74,23 @@ const int ALERT_VIEW_DELETE_BUTTON_INDEX = 1;
     [playerOneScoreLabel setText:[NSString stringWithFormat:@"%d", [game playerOneScore]]];
     [playerTwoScoreLabel setText:[NSString stringWithFormat:@"%d", [game playerTwoScore]]];
     
-    [playerOneRoundsWonLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics roundsWonForPlayer:playerOne]]];
-    [playerTwoRoundsWonLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics roundsWonForPlayer:playerTwo]]];
+    [playerOneRoundsWonLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerOneRoundsWon]]];
+    [playerTwoRoundsWonLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerTwoRoundsWon]]];
     
-    [playerOnePointsPerRoundLabel setText:[NSString stringWithFormat:@"%.2f", [gameStatistics pointsPerRoundForPlayer:playerOne]]];
-    [playerTwoPointsPerRoundLabel setText:[NSString stringWithFormat:@"%.2f", [gameStatistics pointsPerRoundForPlayer:playerTwo]]];
+    [playerOnePointsPerRoundLabel setText:[NSString stringWithFormat:@"%.2f", [gameStatistics playerOnePointsPerRound]]];
+    [playerTwoPointsPerRoundLabel setText:[NSString stringWithFormat:@"%.2f", [gameStatistics playerTwoPointsPerRound]]];
     
-    [playerOneTwentiesLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics twentiesForPlayer:playerOne]]];
-    [playerTwoTwentiesLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics twentiesForPlayer:playerTwo]]];
+    [playerOneTwentiesLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerOneTwenties]]];
+    [playerTwoTwentiesLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerTwoTwenties]]];
     
-    [playerOneFifteensLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics fifteensForPlayer:playerOne]]];
-    [playerTwoFifteensLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics fifteensForPlayer:playerTwo]]];
+    [playerOneFifteensLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerOneFifteens]]];
+    [playerTwoFifteensLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerTwoFifteens]]];
     
-    [playerOneTensLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics tensForPlayer:playerOne]]];
-    [playerTwoTensLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics tensForPlayer:playerTwo]]];
+    [playerOneTensLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerOneTens]]];
+    [playerTwoTensLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerTwoTens]]];
     
-    [playerOneFivesLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics fivesForPlayer:playerOne]]];
-    [playerTwoFivesLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics fivesForPlayer:playerTwo]]];
+    [playerOneFivesLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerOneFives]]];
+    [playerTwoFivesLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerTwoFives]]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

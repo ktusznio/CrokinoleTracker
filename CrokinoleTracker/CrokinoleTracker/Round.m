@@ -125,10 +125,10 @@
         return [[[self game] players] objectAtIndex:0];
     } else if (playerTwoScore > playerOneScore) {
         return [[[self game] players] objectAtIndex:1];
-    } else {
-        // Tie; no winner.
-        return nil;
     }
+
+    // Tie; no winner.
+    return nil;
 }
 
 @end

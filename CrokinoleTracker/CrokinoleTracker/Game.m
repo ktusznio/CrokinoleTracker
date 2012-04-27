@@ -83,10 +83,10 @@ const int WINNING_SCORE = 100;
         return [self playerOneScore];
     } else if ([[self players] objectAtIndex:1] == player) {
         return [self playerTwoScore];
-    } else {
-        // Given player didn't take part in this game!
-        return 0;
     }
+
+    // Given player didn't take part in this game!
+    return 0;
 }
 
 - (Round *)currentRound {

@@ -41,7 +41,7 @@
         return 0;
     }
 
-    return [game scoreForPlayer:player] / (1.0 * [[game rounds] count]);
+    return [game scoreForPlayer:player] * 1.0 / [[game rounds] count];
 }
 
 - (int)twentiesForPlayer:(Player *)player {

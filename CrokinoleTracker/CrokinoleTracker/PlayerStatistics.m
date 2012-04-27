@@ -6,9 +6,10 @@
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
+#import "PlayerStatistics.h"
+
 #import "Game.h"
 #import "Player.h"
-#import "PlayerStatistics.h"
 #import "Round.h"
 
 @implementation PlayerStatistics

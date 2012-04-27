@@ -6,8 +6,9 @@
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
-#import "GameOptionsViewController.h"
 #import "MainMenuViewController.h"
+
+#import "GameOptionsViewController.h"
 #import "StatisticsViewController.h"
 
 @implementation MainMenuViewController

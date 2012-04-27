@@ -6,10 +6,11 @@
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
+#import "GameOptionsViewController.h"
+
 #import "AppDelegate.h"
 #import "CoreDataUtilities.h"
 #import "Game.h"
-#import "GameOptionsViewController.h"
 #import "Player.h"
 #import "PlayerSelectionViewController.h"
 #import "Round.h"

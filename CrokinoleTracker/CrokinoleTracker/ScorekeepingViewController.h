@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class Game;
+
 @interface ScorekeepingViewController : UIViewController {
     Game *game;
     int playerOneStartingGameScore;

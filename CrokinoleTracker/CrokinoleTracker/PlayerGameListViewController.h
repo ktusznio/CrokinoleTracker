@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class Player;
+
 @interface PlayerGameListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     Player *player;
 }

@@ -27,6 +27,11 @@
 - (int)scoreForPlayer:(Player *)player;
 - (int)playerOneScore;
 - (int)playerTwoScore;
+- (int)fivesForPlayer:(Player *)player;
+- (int)tensForPlayer:(Player *)player;
+- (int)fifteensForPlayer:(Player *)player;
 - (int)twentiesForPlayer:(Player *)player;
+
+- (Player *)winner;
 
 @end

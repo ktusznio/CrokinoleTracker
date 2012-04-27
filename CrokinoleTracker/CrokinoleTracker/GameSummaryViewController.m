@@ -6,9 +6,11 @@
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
-#import "CoreDataUtilities.h"
-#import "Player.h"
 #import "GameSummaryViewController.h"
+
+#import "CoreDataUtilities.h"
+#import "Game.h"
+#import "Player.h"
 #import "ScorekeepingViewController.h"
 
 @implementation GameSummaryViewController

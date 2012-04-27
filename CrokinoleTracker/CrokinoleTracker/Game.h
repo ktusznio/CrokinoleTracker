@@ -20,6 +20,7 @@
 
 - (int)playerOneScore;
 - (int)playerTwoScore;
+- (int)scoreForPlayer:(Player *)player;
 - (Round *)currentRound;
 - (Player *)winningPlayer;
 

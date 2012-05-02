@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class Game;
+@class GameSummaryView;
 
 @interface PostGameViewController : UIViewController {
     Game *game;
 }
 
-@property (weak, nonatomic) IBOutlet UILabel *winnerLabel;
+@property (weak, nonatomic) IBOutlet GameSummaryView *gameSummaryView;
 
 - (id)initForGame:(Game *)aGame;
 - (IBAction)onMainMenuButtonTap:(id)sender;

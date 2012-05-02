@@ -10,12 +10,14 @@
 
 #import "CoreDataUtilities.h"
 #import "Game.h"
+#import "GameStatistics.h"
+#import "GameSummaryView.h"
 #import "Player.h"
 #import "ScorekeepingViewController.h"
 
 @implementation PostGameViewController
 
-@synthesize winnerLabel;
+@synthesize gameSummaryView;
 
 - (id)initForGame:(Game *)aGame {
     self = [super init];
@@ -23,8 +25,9 @@
     if (self) {
         game = aGame;
 
-        // Set the text on the navigation bar.
-        [self setTitle:@"Game Summary"];
+        // Set the text on the navigation bar to show the winner.
+        Player *winner = [game winningPlayer];
+        [self setTitle:[NSString stringWithFormat:@"%@ wins!", [winner name]]];
     }
 
     return self;
@@ -33,16 +36,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // Compute and retrieve the game's statistics.
+    GameStatistics *gameStatistics = [[GameStatistics alloc] initForGame:game];
+
+    // Display the statistics in the game summary view.
+    [gameSummaryView displayStatistics:gameStatistics];
+
     // Remove the back button on the navigation bar.
     [[self navigationItem] setHidesBackButton:YES];
-
-    // Set the winning player label.
-    Player *winner = [game winningPlayer];
-    [winnerLabel setText:[NSString stringWithFormat:@"%@ wins!", [winner name]]];
 }
 
 - (void)viewDidUnload {
-    [self setWinnerLabel:nil];
+    [self setGameSummaryView:nil];
     [super viewDidUnload];
 }
 

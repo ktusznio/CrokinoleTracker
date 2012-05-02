@@ -12,6 +12,7 @@
 #import "CoreDataUtilities.h"
 #import "Game.h"
 #import "GameStatistics.h"
+#import "GameSummaryView.h"
 #import "Player.h"
 
 const int ALERT_VIEW_CANCEL_DELETE_BUTTON_INDEX = 0;
@@ -19,22 +20,7 @@ const int ALERT_VIEW_DELETE_BUTTON_INDEX = 1;
 
 @implementation GameStatisticsViewController
 
-@synthesize playerOneLabel;
-@synthesize playerTwoLabel;
-@synthesize playerOneScoreLabel;
-@synthesize playerTwoScoreLabel;
-@synthesize playerOneRoundsWonLabel;
-@synthesize playerTwoRoundsWonLabel;
-@synthesize playerOnePointsPerRoundLabel;
-@synthesize playerTwoPointsPerRoundLabel;
-@synthesize playerOneTwentiesLabel;
-@synthesize playerTwoTwentiesLabel;
-@synthesize playerOneFifteensLabel;
-@synthesize playerTwoFifteensLabel;
-@synthesize playerOneTensLabel;
-@synthesize playerTwoTensLabel;
-@synthesize playerOneFivesLabel;
-@synthesize playerTwoFivesLabel;
+@synthesize gameSummaryView;
 
 - (id)initForGame:(Game *)aGame {
     self = [super init];
@@ -63,34 +49,11 @@ const int ALERT_VIEW_DELETE_BUTTON_INDEX = 1;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    // Set the statistics labels.
+    // Compute and retrieve the game's statistics.
     GameStatistics *gameStatistics = [[GameStatistics alloc] initForGame:game];
-    Player *playerOne = [[game players] objectAtIndex:0];
-    Player *playerTwo = [[game players] objectAtIndex:1];
     
-    [playerOneLabel setText:[playerOne name]];
-    [playerTwoLabel setText:[playerTwo name]];
-    
-    [playerOneScoreLabel setText:[NSString stringWithFormat:@"%d", [game playerOneScore]]];
-    [playerTwoScoreLabel setText:[NSString stringWithFormat:@"%d", [game playerTwoScore]]];
-    
-    [playerOneRoundsWonLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerOneRoundsWon]]];
-    [playerTwoRoundsWonLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerTwoRoundsWon]]];
-    
-    [playerOnePointsPerRoundLabel setText:[NSString stringWithFormat:@"%.2f", [gameStatistics playerOnePointsPerRound]]];
-    [playerTwoPointsPerRoundLabel setText:[NSString stringWithFormat:@"%.2f", [gameStatistics playerTwoPointsPerRound]]];
-    
-    [playerOneTwentiesLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerOneTwenties]]];
-    [playerTwoTwentiesLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerTwoTwenties]]];
-    
-    [playerOneFifteensLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerOneFifteens]]];
-    [playerTwoFifteensLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerTwoFifteens]]];
-    
-    [playerOneTensLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerOneTens]]];
-    [playerTwoTensLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerTwoTens]]];
-    
-    [playerOneFivesLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerOneFives]]];
-    [playerTwoFivesLabel setText:[NSString stringWithFormat:@"%d", [gameStatistics playerTwoFives]]];
+    // Display the statistics in the game summary view.
+    [gameSummaryView displayStatistics:gameStatistics];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -128,22 +91,7 @@ const int ALERT_VIEW_DELETE_BUTTON_INDEX = 1;
 }
 
 - (void)viewDidUnload {
-    [self setPlayerOneLabel:nil];
-    [self setPlayerTwoLabel:nil];
-    [self setPlayerOneScoreLabel:nil];
-    [self setPlayerTwoScoreLabel:nil];
-    [self setPlayerOneRoundsWonLabel:nil];
-    [self setPlayerTwoRoundsWonLabel:nil];
-    [self setPlayerOnePointsPerRoundLabel:nil];
-    [self setPlayerTwoPointsPerRoundLabel:nil];
-    [self setPlayerOneTwentiesLabel:nil];
-    [self setPlayerTwoTwentiesLabel:nil];
-    [self setPlayerOneFifteensLabel:nil];
-    [self setPlayerTwoFifteensLabel:nil];
-    [self setPlayerOneTensLabel:nil];
-    [self setPlayerTwoTensLabel:nil];
-    [self setPlayerOneFivesLabel:nil];
-    [self setPlayerTwoFivesLabel:nil];
+    [self setGameSummaryView:nil];
     [super viewDidUnload];
 }
 

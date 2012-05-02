@@ -11,8 +11,8 @@
 #import "AppDelegate.h"
 #import "CoreDataUtilities.h"
 #import "Game.h"
-#import "GameSummaryViewController.h"
 #import "Player.h"
+#import "PostGameViewController.h"
 #import "Round.h"
 
 extern const int WINNING_SCORE;
@@ -184,8 +184,8 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
         [[appDelegate games] addObject:game];
 
         // Initialize and push the game summary screen.
-        GameSummaryViewController *gameSummaryViewController = [[GameSummaryViewController alloc] initForGame:game];
-        [[self navigationController] pushViewController:gameSummaryViewController animated:YES];
+        PostGameViewController *postGameViewController = [[PostGameViewController alloc] initForGame:game];
+        [[self navigationController] pushViewController:postGameViewController animated:YES];
     } else {
         // Create a new round for the game.
         NSMutableDictionary *roundAttributes = [NSMutableDictionary dictionary];

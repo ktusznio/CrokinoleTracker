@@ -1,5 +1,5 @@
 //
-//  GameSummaryViewController.h
+//  PostGameViewController.h
 //  CrokinoleTracker
 //
 //  Created by Kamil Tusznio and Maxwell Woghiren on 12-04-23.
@@ -10,7 +10,7 @@
 
 @class Game;
 
-@interface GameSummaryViewController : UIViewController {
+@interface PostGameViewController : UIViewController {
     Game *game;
 }
 

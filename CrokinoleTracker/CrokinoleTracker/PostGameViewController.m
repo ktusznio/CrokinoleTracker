@@ -1,19 +1,19 @@
 //
-//  GameSummaryViewController.m
+//  PostGameViewController.m
 //  CrokinoleTracker
 //
 //  Created by Kamil Tusznio and Maxwell Woghiren on 12-04-23.
 //  Copyright (c) 2012 KMSoft. All rights reserved.
 //
 
-#import "GameSummaryViewController.h"
+#import "PostGameViewController.h"
 
 #import "CoreDataUtilities.h"
 #import "Game.h"
 #import "Player.h"
 #import "ScorekeepingViewController.h"
 
-@implementation GameSummaryViewController
+@implementation PostGameViewController
 
 @synthesize winnerLabel;
 

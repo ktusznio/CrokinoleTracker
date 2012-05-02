@@ -28,6 +28,8 @@
     int playerTwoFives;
 }
 
+@property (strong, nonatomic) Game *game;
+
 @property (nonatomic) int playerOneRoundsWon;
 @property (nonatomic) int playerTwoRoundsWon;
 @property (nonatomic) double playerOnePointsPerRound;

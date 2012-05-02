@@ -14,6 +14,7 @@
 
 @implementation GameStatistics
 
+@synthesize game;
 @synthesize playerOneRoundsWon;
 @synthesize playerTwoRoundsWon;
 @synthesize playerOnePointsPerRound;

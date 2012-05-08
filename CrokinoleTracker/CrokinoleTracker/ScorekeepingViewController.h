@@ -40,8 +40,9 @@
 
 
 - (id)initForRound:(Round *)aRound;
-- (IBAction)valueChanged:(id)sender;
 - (UILabel *)labelForStepper:(UIStepper *)stepper;
+- (void)saveRound;
+- (IBAction)valueChanged:(id)sender;
 - (IBAction)onQuitGameButtonTap:(id)sender;
 - (IBAction)onNextRoundButtonTap:(id)sender;
 

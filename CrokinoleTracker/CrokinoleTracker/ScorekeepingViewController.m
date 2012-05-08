@@ -37,12 +37,8 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
     if (self) {
         round = aRound;
 
-        Game *game = [round game];
-        playerOneStartingGameScore = [game playerOneScore];
-        playerTwoStartingGameScore = [game playerTwoScore];
-
         // Set the text on the navigation bar.
-        [self setTitle:[NSString stringWithFormat:@"Round %d", [[game rounds] count]]];
+        [self setTitle:[NSString stringWithFormat:@"Round %d", [[[round game] rounds] indexOfObject:round] + 1]];
     }
 
     return self;
@@ -51,10 +47,14 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Initialize the text on all the labels.
-    [playerOneScoreLabel setText:[NSString stringWithFormat:@"%d", playerOneStartingGameScore]];
-    [playerTwoScoreLabel setText:[NSString stringWithFormat:@"%d", playerTwoStartingGameScore]];
+    // If this is the first round, remove the back button on the navigation bar.
+    if (round == [[[round game] rounds] objectAtIndex:0]) {
+        [[self navigationItem] setHidesBackButton:YES];
+    }
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    // Initialize the text on all the labels.
     NSOrderedSet *players = [[round game] players];
     Player *playerOne = [players objectAtIndex:0];
     Player *playerTwo = [players objectAtIndex:1];
@@ -62,8 +62,39 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
     [playerOneNameLabel setText:[playerOne name]];
     [playerTwoNameLabel setText:[playerTwo name]];
 
-    // Remove the back button on the navigation bar.
-    [[self navigationItem] setHidesBackButton:YES];
+    playerOneStartingGameScore = [[round game] playerOneScoreAtRound:round];
+    playerTwoStartingGameScore = [[round game] playerTwoScoreAtRound:round];
+
+    [playerOneScoreLabel setText:[NSString stringWithFormat:@"%d", playerOneStartingGameScore + [round playerOneScore]]];
+    [playerTwoScoreLabel setText:[NSString stringWithFormat:@"%d", playerTwoStartingGameScore + [round playerTwoScore]]];
+
+    // Set the stepper and label values according to the round's data.
+    [[self playerOne20sStepper] setValue:[[round playerOne20s] doubleValue]];
+    [[self playerOne15sStepper] setValue:[[round playerOne15s] doubleValue]];
+    [[self playerOne10sStepper] setValue:[[round playerOne10s] doubleValue]];
+    [[self playerOne5sStepper] setValue:[[round playerOne5s] doubleValue]];
+    [[self playerTwo20sStepper] setValue:[[round playerTwo20s] doubleValue]];
+    [[self playerTwo15sStepper] setValue:[[round playerTwo15s] doubleValue]];
+    [[self playerTwo10sStepper] setValue:[[round playerTwo10s] doubleValue]];
+    [[self playerTwo5sStepper] setValue:[[round playerTwo5s] doubleValue]];
+
+    [[self playerOne20sLabel] setText:[NSString stringWithFormat:@"%d", (int)[playerOne20sStepper value]]];
+    [[self playerOne15sLabel] setText:[NSString stringWithFormat:@"%d", (int)[playerOne15sStepper value]]];
+    [[self playerOne10sLabel] setText:[NSString stringWithFormat:@"%d", (int)[playerOne10sStepper value]]];
+    [[self playerOne5sLabel] setText:[NSString stringWithFormat:@"%d", (int)[playerOne5sStepper value]]];
+    [[self playerTwo20sLabel] setText:[NSString stringWithFormat:@"%d", (int)[playerTwo20sStepper value]]];
+    [[self playerTwo15sLabel] setText:[NSString stringWithFormat:@"%d", (int)[playerTwo15sStepper value]]];
+    [[self playerTwo10sLabel] setText:[NSString stringWithFormat:@"%d", (int)[playerTwo10sStepper value]]];
+    [[self playerTwo5sLabel] setText:[NSString stringWithFormat:@"%d", (int)[playerTwo5sStepper value]]];
+
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    // Update and save the current round.
+    [self saveRound];
+
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidUnload {
@@ -90,6 +121,40 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (UILabel *)labelForStepper:(UIStepper *)stepper {
+    if (stepper == playerOne20sStepper) {
+        return playerOne20sLabel;
+    } else if (stepper == playerOne15sStepper) {
+        return playerOne15sLabel;
+    } else if (stepper == playerOne10sStepper) {
+        return playerOne10sLabel;
+    } else if (stepper == playerOne5sStepper) {
+        return playerOne5sLabel;
+    } else if (stepper == playerTwo20sStepper) {
+        return playerTwo20sLabel;
+    } else if (stepper == playerTwo15sStepper) {
+        return playerTwo15sLabel;
+    } else if (stepper == playerTwo10sStepper) {
+        return playerTwo10sLabel;
+    } else if (stepper == playerTwo5sStepper) {
+        return playerTwo5sLabel;
+    }
+    return nil;
+}
+
+- (void)saveRound {
+    [round setPlayerOne20s:[NSNumber numberWithDouble:[playerOne20sStepper value]]];
+    [round setPlayerOne15s:[NSNumber numberWithDouble:[playerOne15sStepper value]]];
+    [round setPlayerOne10s:[NSNumber numberWithDouble:[playerOne10sStepper value]]];
+    [round setPlayerOne5s:[NSNumber numberWithDouble:[playerOne5sStepper value]]];
+    [round setPlayerTwo20s:[NSNumber numberWithDouble:[playerTwo20sStepper value]]];
+    [round setPlayerTwo15s:[NSNumber numberWithDouble:[playerTwo15sStepper value]]];
+    [round setPlayerTwo10s:[NSNumber numberWithDouble:[playerTwo10sStepper value]]];
+    [round setPlayerTwo5s:[NSNumber numberWithDouble:[playerTwo5sStepper value]]];
+
+    [CoreDataUtilities saveManagedContext];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -134,27 +199,6 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
     [playerTwoScoreLabel setText:[NSString stringWithFormat:@"%d", playerTwoGameScore]];
 }
 
-- (UILabel *)labelForStepper:(UIStepper *)stepper {
-    if (stepper == playerOne20sStepper) {
-        return playerOne20sLabel;
-    } else if (stepper == playerOne15sStepper) {
-        return playerOne15sLabel;
-    } else if (stepper == playerOne10sStepper) {
-        return playerOne10sLabel;
-    } else if (stepper == playerOne5sStepper) {
-        return playerOne5sLabel;
-    } else if (stepper == playerTwo20sStepper) {
-        return playerTwo20sLabel;
-    } else if (stepper == playerTwo15sStepper) {
-        return playerTwo15sLabel;
-    } else if (stepper == playerTwo10sStepper) {
-        return playerTwo10sLabel;
-    } else if (stepper == playerTwo5sStepper) {
-        return playerTwo5sLabel;
-    }
-    return nil;
-}
-
 - (IBAction)onQuitGameButtonTap:(id)sender {
     // Show an alert, asking if the user truly wants to quit the game.
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Really quit?"
@@ -167,19 +211,18 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
 
 - (IBAction)onNextRoundButtonTap:(id)sender {
     // Update and save the current round.
-    [round setPlayerOne20s:[NSNumber numberWithDouble:[playerOne20sStepper value]]];
-    [round setPlayerOne15s:[NSNumber numberWithDouble:[playerOne15sStepper value]]];
-    [round setPlayerOne10s:[NSNumber numberWithDouble:[playerOne10sStepper value]]];
-    [round setPlayerOne5s:[NSNumber numberWithDouble:[playerOne5sStepper value]]];
-    [round setPlayerTwo20s:[NSNumber numberWithDouble:[playerTwo20sStepper value]]];
-    [round setPlayerTwo15s:[NSNumber numberWithDouble:[playerTwo15sStepper value]]];
-    [round setPlayerTwo10s:[NSNumber numberWithDouble:[playerTwo10sStepper value]]];
-    [round setPlayerTwo5s:[NSNumber numberWithDouble:[playerTwo5sStepper value]]];
-
-    [CoreDataUtilities saveManagedContext];
+    [self saveRound];
 
     // If the game is over, redirect to the game summary screen.  Otherwise, create a new round and load a new round screen.
     if ([[playerOneScoreLabel text] intValue] >= WINNING_SCORE || [[playerTwoScoreLabel text] intValue] >= WINNING_SCORE) {
+        // If there are subsequent rounds, delete them because they're now obsolete.
+        NSOrderedSet *rounds = [[round game] rounds];
+        if (round != [rounds lastObject]) {
+            for (int i = [rounds count] - 1; i > [rounds indexOfObject:round]; i--) {
+                [CoreDataUtilities deleteEntity:[rounds objectAtIndex:i]];
+            }
+        }
+
         // Add the completed game to the app delegate's game collection.
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [[appDelegate games] addObject:[round game]];
@@ -188,14 +231,22 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
         PostGameViewController *postGameViewController = [[PostGameViewController alloc] initForGame:[round game]];
         [[self navigationController] pushViewController:postGameViewController animated:YES];
     } else {
-        // Create a new round for the game.
-        NSMutableDictionary *roundAttributes = [NSMutableDictionary dictionary];
-        [roundAttributes setValue:[NSNumber numberWithInt:[[self title] intValue] + 1]
-                           forKey:@"roundNumber"];
-        [roundAttributes setValue:[round game]
-                           forKey:@"game"];
-        Round *nextRound = (Round *)[CoreDataUtilities createEntityForEntityName:@"Round"
-                                                             attributeDictionary:roundAttributes];
+        // Determine whether the next round already exists.  If it does, go to it.  If it doesn't, create one.
+        Round *nextRound;
+
+        if (round == [[[round game] rounds] lastObject]) {
+            // Create a new round for the game.
+            NSMutableDictionary *roundAttributes = [NSMutableDictionary dictionary];
+            [roundAttributes setValue:[NSNumber numberWithInt:[[self title] intValue] + 1]
+                               forKey:@"roundNumber"];
+            [roundAttributes setValue:[round game]
+                               forKey:@"game"];
+            nextRound = (Round *)[CoreDataUtilities createEntityForEntityName:@"Round"
+                                                                 attributeDictionary:roundAttributes];
+        } else {
+            int currentRoundIndex = [[[round game] rounds] indexOfObject:round];
+            nextRound = [[[round game] rounds] objectAtIndex:currentRoundIndex + 1];
+        }
 
         // Push a new scorekeeping screen.
         ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForRound:nextRound];

@@ -31,11 +31,13 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
 @synthesize playerTwo20sLabel, playerTwo15sLabel, playerTwo10sLabel, playerTwo5sLabel;
 @synthesize playerTwo20sStepper, playerTwo15sStepper, playerTwo10sStepper, playerTwo5sStepper;
 
-- (id)initForGame:(Game *)aGame {
+- (id)initForRound:(Round *)aRound {
     self = [super init];
 
     if (self) {
-        game = aGame;
+        round = aRound;
+
+        Game *game = [round game];
         playerOneStartingGameScore = [game playerOneScore];
         playerTwoStartingGameScore = [game playerTwoScore];
 
@@ -53,7 +55,7 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
     [playerOneScoreLabel setText:[NSString stringWithFormat:@"%d", playerOneStartingGameScore]];
     [playerTwoScoreLabel setText:[NSString stringWithFormat:@"%d", playerTwoStartingGameScore]];
 
-    NSOrderedSet *players = [game players];
+    NSOrderedSet *players = [[round game] players];
     Player *playerOne = [players objectAtIndex:0];
     Player *playerTwo = [players objectAtIndex:1];
 
@@ -165,15 +167,14 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
 
 - (IBAction)onNextRoundButtonTap:(id)sender {
     // Update and save the current round.
-    Round *currentRound = [game currentRound];
-    [currentRound setPlayerOne20s:[NSNumber numberWithDouble:[playerOne20sStepper value]]];
-    [currentRound setPlayerOne15s:[NSNumber numberWithDouble:[playerOne15sStepper value]]];
-    [currentRound setPlayerOne10s:[NSNumber numberWithDouble:[playerOne10sStepper value]]];
-    [currentRound setPlayerOne5s:[NSNumber numberWithDouble:[playerOne5sStepper value]]];
-    [currentRound setPlayerTwo20s:[NSNumber numberWithDouble:[playerTwo20sStepper value]]];
-    [currentRound setPlayerTwo15s:[NSNumber numberWithDouble:[playerTwo15sStepper value]]];
-    [currentRound setPlayerTwo10s:[NSNumber numberWithDouble:[playerTwo10sStepper value]]];
-    [currentRound setPlayerTwo5s:[NSNumber numberWithDouble:[playerTwo5sStepper value]]];
+    [round setPlayerOne20s:[NSNumber numberWithDouble:[playerOne20sStepper value]]];
+    [round setPlayerOne15s:[NSNumber numberWithDouble:[playerOne15sStepper value]]];
+    [round setPlayerOne10s:[NSNumber numberWithDouble:[playerOne10sStepper value]]];
+    [round setPlayerOne5s:[NSNumber numberWithDouble:[playerOne5sStepper value]]];
+    [round setPlayerTwo20s:[NSNumber numberWithDouble:[playerTwo20sStepper value]]];
+    [round setPlayerTwo15s:[NSNumber numberWithDouble:[playerTwo15sStepper value]]];
+    [round setPlayerTwo10s:[NSNumber numberWithDouble:[playerTwo10sStepper value]]];
+    [round setPlayerTwo5s:[NSNumber numberWithDouble:[playerTwo5sStepper value]]];
 
     [CoreDataUtilities saveManagedContext];
 
@@ -181,23 +182,23 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
     if ([[playerOneScoreLabel text] intValue] >= WINNING_SCORE || [[playerTwoScoreLabel text] intValue] >= WINNING_SCORE) {
         // Add the completed game to the app delegate's game collection.
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [[appDelegate games] addObject:game];
+        [[appDelegate games] addObject:[round game]];
 
         // Initialize and push the game summary screen.
-        PostGameViewController *postGameViewController = [[PostGameViewController alloc] initForGame:game];
+        PostGameViewController *postGameViewController = [[PostGameViewController alloc] initForGame:[round game]];
         [[self navigationController] pushViewController:postGameViewController animated:YES];
     } else {
         // Create a new round for the game.
         NSMutableDictionary *roundAttributes = [NSMutableDictionary dictionary];
         [roundAttributes setValue:[NSNumber numberWithInt:[[self title] intValue] + 1]
                            forKey:@"roundNumber"];
-        [roundAttributes setValue:game
+        [roundAttributes setValue:[round game]
                            forKey:@"game"];
-        [CoreDataUtilities createEntityForEntityName:@"Round"
-                                 attributeDictionary:roundAttributes];
+        Round *nextRound = (Round *)[CoreDataUtilities createEntityForEntityName:@"Round"
+                                                             attributeDictionary:roundAttributes];
 
         // Push a new scorekeeping screen.
-        ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForGame:game];
+        ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForRound:nextRound];
         [[self navigationController] pushViewController:scorekeepingViewController animated:YES];
     }
 }
@@ -209,7 +210,7 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
         // Dismiss the alert.
     } else if (buttonIndex == ALERT_VIEW_QUIT_BUTTON_INDEX) {
         // Delete the current game.
-        [CoreDataUtilities deleteEntity:game];
+        [CoreDataUtilities deleteEntity:[round game]];
 
         // Pop back to the player selection screen.
         [[self navigationController] popToRootViewControllerAnimated:YES];

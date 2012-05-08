@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class Game;
+@class Round;
 
 @interface ScorekeepingViewController : UIViewController {
-    Game *game;
+    Round *round;
     int playerOneStartingGameScore;
     int playerTwoStartingGameScore;
 }
@@ -39,7 +39,7 @@
 @property (weak, nonatomic) IBOutlet UIStepper *playerTwo5sStepper;
 
 
-- (id)initForGame:(Game *)aGame;
+- (id)initForRound:(Round *)aRound;
 - (IBAction)valueChanged:(id)sender;
 - (UILabel *)labelForStepper:(UIStepper *)stepper;
 - (IBAction)onQuitGameButtonTap:(id)sender;

@@ -62,15 +62,16 @@
 
 - (IBAction)onRematchButtonTap:(id)sender {
     // Pop to the root controller to clear the view controller stack.
-    UINavigationController *nav = [self navigationController];
-    [nav popToRootViewControllerAnimated:NO];
+    UINavigationController *navigationController = [self navigationController];
+    [navigationController popToRootViewControllerAnimated:NO];
 
     // Create a new game.
     Game *newGame = [CoreDataUtilities createGameForPlayers:[[game players] array]];
 
     // Push the scorekeeping screen.
-    ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForGame:newGame];
-    [nav pushViewController:scorekeepingViewController animated:YES];
+    Round *firstRound = [[newGame rounds] objectAtIndex:0];
+    ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForRound:firstRound];
+    [navigationController pushViewController:scorekeepingViewController animated:YES];
 }
 
 @end

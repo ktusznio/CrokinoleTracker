@@ -120,7 +120,8 @@
     Game *game = [CoreDataUtilities createGameForPlayers:gamePlayers];
 
     // Push the scorekeeping screen.
-    ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForGame:game];
+    Round *firstRound = [[game rounds] objectAtIndex:0];
+    ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForRound:firstRound];
     [[self navigationController] pushViewController:scorekeepingViewController animated:YES];
 }
 

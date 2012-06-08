@@ -8,6 +8,19 @@
 	<string>My Crokinole</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>MyCrokinoleIcon-57x57.png</string>
+				<string>MyCrokinoleIcon-114x114.png</string>
+				<string>MyCrokinoleIcon-72x72.png</string>
+				<string>MyCrokinoleIcon-144x144.png</string>
+			</array>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>com.lostcitystudios.crokinoletracker</string>
 	<key>CFBundleInfoDictionaryVersion</key>

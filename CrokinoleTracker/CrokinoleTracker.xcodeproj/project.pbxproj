@@ -42,6 +42,10 @@
 		8E1992981545C71100C18D25 /* PostGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E1992961545C71100C18D25 /* PostGameViewController.xib */; };
 		8E341F631540B71E0011307E /* ScorekeepingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E341F611540B71E0011307E /* ScorekeepingViewController.m */; };
 		8E341F641540B71E0011307E /* ScorekeepingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E341F621540B71E0011307E /* ScorekeepingViewController.xib */; };
+		8E6E8FFE158262E100E5214D /* MyCrokinoleIcon-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6E8FFD158262E100E5214D /* MyCrokinoleIcon-57x57.png */; };
+		8E6E90001582632600E5214D /* MyCrokinoleIcon-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6E8FFF1582632600E5214D /* MyCrokinoleIcon-114x114.png */; };
+		8E6E90021582633C00E5214D /* MyCrokinoleIcon-72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6E90011582633C00E5214D /* MyCrokinoleIcon-72x72.png */; };
+		8E6E90041582634100E5214D /* MyCrokinoleIcon-144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6E90031582634100E5214D /* MyCrokinoleIcon-144x144.png */; };
 		8EAE6A7D153F5B3300ECA3A7 /* GameOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A7C153F5B3300ECA3A7 /* GameOptionsViewController.m */; };
 		8EAE6A83153F603B00ECA3A7 /* GameOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAE6A82153F603B00ECA3A7 /* GameOptionsViewController.xib */; };
 		8EAE6A87153F643200ECA3A7 /* PlayerSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A85153F643200ECA3A7 /* PlayerSelectionViewController.m */; };
@@ -112,6 +116,10 @@
 		8E341F601540B71E0011307E /* ScorekeepingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScorekeepingViewController.h; sourceTree = "<group>"; };
 		8E341F611540B71E0011307E /* ScorekeepingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScorekeepingViewController.m; sourceTree = "<group>"; };
 		8E341F621540B71E0011307E /* ScorekeepingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScorekeepingViewController.xib; sourceTree = "<group>"; };
+		8E6E8FFD158262E100E5214D /* MyCrokinoleIcon-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MyCrokinoleIcon-57x57.png"; path = "../MyCrokinoleIcon-57x57.png"; sourceTree = "<group>"; };
+		8E6E8FFF1582632600E5214D /* MyCrokinoleIcon-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MyCrokinoleIcon-114x114.png"; path = "../MyCrokinoleIcon-114x114.png"; sourceTree = "<group>"; };
+		8E6E90011582633C00E5214D /* MyCrokinoleIcon-72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MyCrokinoleIcon-72x72.png"; path = "../MyCrokinoleIcon-72x72.png"; sourceTree = "<group>"; };
+		8E6E90031582634100E5214D /* MyCrokinoleIcon-144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MyCrokinoleIcon-144x144.png"; path = "../MyCrokinoleIcon-144x144.png"; sourceTree = "<group>"; };
 		8EAE6A7B153F5B3300ECA3A7 /* GameOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOptionsViewController.h; sourceTree = "<group>"; };
 		8EAE6A7C153F5B3300ECA3A7 /* GameOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOptionsViewController.m; sourceTree = "<group>"; };
 		8EAE6A82153F603B00ECA3A7 /* GameOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOptionsViewController.xib; sourceTree = "<group>"; };
@@ -201,6 +209,10 @@
 				5038B86E153F4B0A000E0767 /* InfoPlist.strings */,
 				5038B871153F4B0A000E0767 /* main.m */,
 				5038B873153F4B0A000E0767 /* CrokinoleTracker-Prefix.pch */,
+				8E6E90031582634100E5214D /* MyCrokinoleIcon-144x144.png */,
+				8E6E90011582633C00E5214D /* MyCrokinoleIcon-72x72.png */,
+				8E6E8FFF1582632600E5214D /* MyCrokinoleIcon-114x114.png */,
+				8E6E8FFD158262E100E5214D /* MyCrokinoleIcon-57x57.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -391,6 +403,10 @@
 				5050F9F11549D3A400974024 /* PlayerGameListViewController.xib in Resources */,
 				8E155FEC154A284800BB6A0C /* GameStatisticsViewController.xib in Resources */,
 				5055C9601550B9A00072917D /* GameSummaryView.xib in Resources */,
+				8E6E8FFE158262E100E5214D /* MyCrokinoleIcon-57x57.png in Resources */,
+				8E6E90001582632600E5214D /* MyCrokinoleIcon-114x114.png in Resources */,
+				8E6E90021582633C00E5214D /* MyCrokinoleIcon-72x72.png in Resources */,
+				8E6E90041582634100E5214D /* MyCrokinoleIcon-144x144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

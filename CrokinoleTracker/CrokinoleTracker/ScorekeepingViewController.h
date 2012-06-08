@@ -3,7 +3,7 @@
 //  CrokinoleTracker
 //
 //  Created by Kamil Tusznio and Maxwell Woghiren on 12-04-19.
-//  Copyright (c) 2012 KMSoft. All rights reserved.
+//  Copyright (c) 2012 Lost City Studios Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -260,11 +260,11 @@ const int ALERT_VIEW_QUIT_BUTTON_INDEX = 1;
     if (buttonIndex == ALERT_VIEW_CANCEL_QUIT_BUTTON_INDEX) {
         // Dismiss the alert.
     } else if (buttonIndex == ALERT_VIEW_QUIT_BUTTON_INDEX) {
-        // Delete the current game.
-        [CoreDataUtilities deleteEntity:[round game]];
-
         // Pop back to the player selection screen.
         [[self navigationController] popToRootViewControllerAnimated:YES];
+
+        // Delete the current game.
+        [CoreDataUtilities deleteEntity:[round game]];
     } else {
         // Unknown button! Dismiss the alert.
     }

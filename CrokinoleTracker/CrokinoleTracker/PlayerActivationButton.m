@@ -15,13 +15,13 @@
 
 - (id)initWithFrame:(CGRect)frame
            delegate:(id<PlayerActivationButtonDelegate>)aDelegate
- initiallyActivated:(BOOL)anIsActivated
+ initiallyActivated:(BOOL)activated
               color:(UIColor *)aColor {
     self = [super initWithFrame:frame];
 
     if (self) {
         [self setDelegate:aDelegate];
-        [self setIsActivated:anIsActivated];
+        [self setIsActivated:activated];
         [self setColor:aColor];
 
         // Style the button.

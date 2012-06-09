@@ -23,7 +23,7 @@
 
 - (id)initWithFrame:(CGRect)frame
            delegate:(id<PlayerActivationButtonDelegate>)aDelegate
- initiallyActivated:(BOOL)anIsActivated
+ initiallyActivated:(BOOL)activated
               color:(UIColor *)aColor;
 - (void)onButtonTap;
 

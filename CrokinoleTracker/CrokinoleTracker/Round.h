@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class DiscCoordinates;
 @class Game;
 @class Player;
 
 @interface Round : NSManagedObject
 
+@property (nonatomic, retain) NSOrderedSet *discPositions;
 @property (nonatomic, retain) NSNumber *playerOne20s;
 @property (nonatomic, retain) NSNumber *playerOne15s;
 @property (nonatomic, retain) NSNumber *playerOne10s;
@@ -24,6 +26,8 @@
 @property (nonatomic, retain) NSNumber *playerTwo5s;
 @property (nonatomic, retain) Game *game;
 
+- (void)addDiscPositionAtX:(int)x
+                         y:(int)y;
 - (int)scoreForPlayer:(Player *)player;
 - (int)playerOneScore;
 - (int)playerTwoScore;

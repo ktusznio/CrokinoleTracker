@@ -8,10 +8,13 @@
 
 #import "Round.h"
 
+#import "CoreDataUtilities.h"
+#import "DiscCoordinates.h"
 #import "Game.h"
 
 @implementation Round
 
+@dynamic discPositions;
 @dynamic playerOne20s;
 @dynamic playerOne15s;
 @dynamic playerOne10s;
@@ -21,6 +24,20 @@
 @dynamic playerTwo10s;
 @dynamic playerTwo5s;
 @dynamic game;
+
+- (void)addDiscPositionAtX:(int)x
+                         y:(int)y {
+    // Create a new set of disc coordinates.
+    NSMutableDictionary *discCoordinateAttributes = [NSMutableDictionary dictionary];
+    [discCoordinateAttributes setValue:self
+                                forKey:@"round"];
+    [discCoordinateAttributes setValue:[NSNumber numberWithInt:x]
+                                forKey:@"x"];
+    [discCoordinateAttributes setValue:[NSNumber numberWithInt:y]
+                                forKey:@"y"];
+    [CoreDataUtilities createEntityForEntityName:@"DiscCoordinates"
+                             attributeDictionary:discCoordinateAttributes];
+}
 
 - (int)scoreForPlayer:(Player *)player {
     if ([[[self game] players] objectAtIndex:0] == player) {

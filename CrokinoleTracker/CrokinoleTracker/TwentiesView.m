@@ -47,7 +47,6 @@
         [aValueLabel setBackgroundColor:[UIColor whiteColor]];
         [aValueLabel setFont:[UIFont fontWithName:@"Helvetica" size:16]];
         [aValueLabel setTextAlignment:UITextAlignmentCenter];
-        [aValueLabel setText:@"K"];
         [self setValueLabel:aValueLabel];
         [self addSubview:[self valueLabel]];
     }
@@ -65,11 +64,17 @@
 }
 
 - (void)onSubtractButtonTap {
-
+    if ([self value] > 0) {
+        [self setValue:[self value] - 1];
+        [self setNeedsDisplay];
+    }
 }
 
 - (void)onAddButtonTap {
-
+    if ([self value] < 12) {
+        [self setValue:[self value] + 1];
+        [self setNeedsDisplay];
+    }
 }
 
 @end

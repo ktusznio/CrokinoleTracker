@@ -10,7 +10,7 @@
 
 @interface TwentiesView : UIView
 
-@property (nonatomic) double value;
+@property (nonatomic) int value;
 
 @property (strong, nonatomic) UIButton *subtractButton;
 @property (strong, nonatomic) UIButton *addButton;

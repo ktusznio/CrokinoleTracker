@@ -76,7 +76,7 @@
     return entity;
 }
 
-+ (void) saveManagedContext {
++ (void)saveManagedContext {
     // Get the managed object context from the app delegate.
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];

@@ -251,8 +251,9 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
     [self updateScores];
 }
 
-- (void)boardWasTapped:(CGPoint)point {
-    [round addDiscPosition:point forPlayer:[[[round game] players] objectAtIndex:0]];
+- (void)boardWasTapped:(CGPoint)point
+           playerIndex:(int)playerIndex {
+    [round addDiscPosition:point forPlayer:[[[round game] players] objectAtIndex:playerIndex]];
     [self updateScores];
 }
 

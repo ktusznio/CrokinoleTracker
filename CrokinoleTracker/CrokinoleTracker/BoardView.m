@@ -96,8 +96,9 @@
     CGContextStrokePath(context);
 
     // Finally, draw the discs.
-    CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
-    for (NSMutableSet *discPositionSet in [self discPositions]) {
+    for (int i = 0; i < 2; i++) {
+        NSMutableSet *discPositionSet = [[self discPositions] objectAtIndex:i];
+        CGContextSetFillColorWithColor(context, ((UIColor *)[[self playerColors] objectAtIndex:i]).CGColor);
         for (NSValue *discPositionValue in discPositionSet) {
             CGPoint discPosition = [discPositionValue CGPointValue];
             CGContextFillEllipseInRect(context, CGRectMake(discPosition.x - 7.5, discPosition.y - 7.5, 15, 15));
@@ -111,14 +112,27 @@
     return sqrt(xSquared + ySquared);
 }
 
-- (void)updateCountsForDiscWithCenterAtRadius:(double)radius {
+- (void)updateCountsForDiscWithCenterAtRadius:(double)radius
+                                  playerIndex:(int)playerIndex {
     // Check the circles, starting from the inside.
     if (radius < 40 - 7.5) {
-        [self setPlayerOne15s:[self playerOne15s] + 1];
+        if (playerIndex == 0) {
+            [self setPlayerOne15s:[self playerOne15s] + 1];
+        } else {
+            [self setPlayerTwo15s:[self playerTwo15s] + 1];
+        }
     } else if (radius < 80 - 7.5) {
-        [self setPlayerOne10s:[self playerOne10s] + 1];
+        if (playerIndex == 0) {
+            [self setPlayerOne10s:[self playerOne10s] + 1];
+        } else {
+            [self setPlayerTwo10s:[self playerTwo10s] + 1];
+        }
     } else if (radius < 120 - 7.5) {
-        [self setPlayerOne5s:[self playerOne5s] + 1];
+        if (playerIndex == 0) {
+            [self setPlayerOne5s:[self playerOne5s] + 1];
+        } else {
+            [self setPlayerTwo5s:[self playerTwo5s] + 1];
+        }
     }
 }
 
@@ -131,10 +145,12 @@
     [self setPlayerTwo10s:0];
     [self setPlayerTwo5s:0];
 
-    for (NSMutableSet *discPositionSet in [self discPositions]) {
+    for (int i = 0; i < 2; i++) {
+        NSMutableSet *discPositionSet = [[self discPositions] objectAtIndex:i];
         for (NSValue *discPositionValue in discPositionSet) {
             CGPoint discPosition = [discPositionValue CGPointValue];
-            [self updateCountsForDiscWithCenterAtRadius:[BoardView calculateRadiusOfPosition:discPosition]];
+            [self updateCountsForDiscWithCenterAtRadius:[BoardView calculateRadiusOfPosition:discPosition]
+                                            playerIndex:i];
         }
     }
 
@@ -146,18 +162,29 @@
     CGPoint tapPosition = [sender locationInView:self];
     double radius = [BoardView calculateRadiusOfPosition:tapPosition];
     if (radius < 120 - 7.5) {
-        [[[self discPositions] objectAtIndex:0] addObject:[NSValue valueWithCGPoint:tapPosition]];
+        int playerIndex = -1;
+        if ([playerOneActivationButton isActivated]) {
+            playerIndex = 0;
+        } else {
+            playerIndex = 1;
+        }
+
+        [[[self discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:tapPosition]];
 
         // Determine the value of the point and update the appropriate score.
-        [self updateCountsForDiscWithCenterAtRadius:radius];
+        [self updateCountsForDiscWithCenterAtRadius:radius
+                                        playerIndex:playerIndex];
 
         // Call the delegate.
-        [delegate boardWasTapped:tapPosition];
+        [delegate boardWasTapped:tapPosition
+                     playerIndex:playerIndex];
 
         // Update the view.
         [self setNeedsDisplay];
     }
 }
+
+#pragma mark UIGestureRecognizerDelegate
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
        shouldReceiveTouch:(UITouch *)touch {

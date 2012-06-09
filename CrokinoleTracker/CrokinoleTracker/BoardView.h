@@ -13,7 +13,8 @@
 @protocol BoardViewDelegate
 
 - (void)boardWasRecreated;
-- (void)boardWasTapped:(CGPoint)point;
+- (void)boardWasTapped:(CGPoint)point
+           playerIndex:(int)playerIndex;
 
 @end
 
@@ -37,6 +38,7 @@
            delegate:(id<BoardViewDelegate>)aDelegate;
 - (void)recreateDiscPositions:(NSMutableArray *)someDiscPositions;
 + (double)calculateRadiusOfPosition:(CGPoint)position;
-- (void)updateCountsForDiscWithCenterAtRadius:(double)radius;
+- (void)updateCountsForDiscWithCenterAtRadius:(double)radius
+                                  playerIndex:(int)playerIndex;
 
 @end

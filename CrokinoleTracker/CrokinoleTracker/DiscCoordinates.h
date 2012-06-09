@@ -10,7 +10,7 @@
 
 @class Round;
 
-@interface DiscCoordinates : NSObject
+@interface DiscCoordinates : NSManagedObject
 
 @property (weak, nonatomic) Round *round;
 @property (nonatomic) double x;

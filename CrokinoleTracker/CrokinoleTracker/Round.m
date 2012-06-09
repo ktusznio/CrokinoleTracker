@@ -25,15 +25,15 @@
 @dynamic playerTwo5s;
 @dynamic game;
 
-- (void)addDiscPositionAtX:(int)x
-                         y:(int)y {
+- (void)addDiscPositionAtX:(CGFloat)x
+                         y:(CGFloat)y {
     // Create a new set of disc coordinates.
     NSMutableDictionary *discCoordinateAttributes = [NSMutableDictionary dictionary];
     [discCoordinateAttributes setValue:self
                                 forKey:@"round"];
-    [discCoordinateAttributes setValue:[NSNumber numberWithInt:x]
+    [discCoordinateAttributes setValue:[NSNumber numberWithDouble:x]
                                 forKey:@"x"];
-    [discCoordinateAttributes setValue:[NSNumber numberWithInt:y]
+    [discCoordinateAttributes setValue:[NSNumber numberWithDouble:y]
                                 forKey:@"y"];
     [CoreDataUtilities createEntityForEntityName:@"DiscCoordinates"
                              attributeDictionary:discCoordinateAttributes];

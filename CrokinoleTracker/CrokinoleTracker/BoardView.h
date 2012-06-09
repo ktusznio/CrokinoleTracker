@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class DiscCoordinates;
+
 @protocol BoardViewDelegate
 
-- (void)boardWasTapped;
+- (void)boardWasRecreated;
+- (void)boardWasTappedAtX:(CGFloat)x
+                        y:(CGFloat)y;
 
 @end
 
@@ -18,7 +22,7 @@
 
 @property (weak, nonatomic) id<BoardViewDelegate> delegate;
 
-@property (strong, nonatomic) NSMutableArray *discPositions;
+@property (strong, nonatomic) NSMutableSet *discPositions;
 @property (nonatomic) int playerOne15s;
 @property (nonatomic) int playerOne10s;
 @property (nonatomic) int playerOne5s;
@@ -28,6 +32,6 @@
 
 - (id)initWithFrame:(CGRect)frame
            delegate:(id<BoardViewDelegate>)aDelegate;
-- (void)recreateDiscPositions:(NSArray *)someDiscPositions;
+- (void)recreateDiscPositions:(NSOrderedSet *)someDiscPositions;
 
 @end

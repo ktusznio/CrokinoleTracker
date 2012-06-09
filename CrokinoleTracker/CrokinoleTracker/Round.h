@@ -26,8 +26,8 @@
 @property (nonatomic, retain) NSNumber *playerTwo5s;
 @property (nonatomic, retain) Game *game;
 
-- (void)addDiscPositionAtX:(int)x
-                         y:(int)y;
+- (void)addDiscPositionAtX:(CGFloat)x
+                         y:(CGFloat)y;
 - (int)scoreForPlayer:(Player *)player;
 - (int)playerOneScore;
 - (int)playerTwoScore;

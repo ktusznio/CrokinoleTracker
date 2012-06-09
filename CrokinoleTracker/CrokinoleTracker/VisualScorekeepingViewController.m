@@ -123,7 +123,7 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
     [[self playerTwo20sView] updateValue:[[round playerTwo20s] doubleValue]];
 
     // Recreate the board view.
-  //  [[self boardView] recreateDiscPositions:[round discPositions]];
+    [[self boardView] recreateDiscPositions:[round discPositions]];
 
     [super viewWillAppear:animated];
 }
@@ -245,7 +245,14 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
 
 # pragma mark - BoardViewDelegate
 
-- (void)boardWasTapped {
+- (void)boardWasRecreated {
+    [self updateScores];
+}
+
+- (void)boardWasTappedAtX:(CGFloat)x
+                        y:(CGFloat)y {
+    [round addDiscPositionAtX:x
+                            y:y];
     [self updateScores];
 }
 

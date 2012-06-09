@@ -8,6 +8,8 @@
 
 #import "BoardView.h"
 
+#import "DiscCoordinates.h"
+
 @implementation BoardView
 
 @synthesize delegate;
@@ -20,7 +22,7 @@
 
     if (self) {
         [self setDelegate:aDelegate];
-        [self setDiscPositions:[NSMutableArray array]];
+        [self setDiscPositions:[NSMutableSet set]];
         [self setPlayerOne15s:0];
         [self setPlayerOne10s:0];
         [self setPlayerOne5s:0];
@@ -30,6 +32,11 @@
 
         // Make the background transparent.
         [self setBackgroundColor:[UIColor clearColor]];
+
+        // Prepare a tap gesture recognizer.
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(onBoardTap:)];
+        [self addGestureRecognizer:tapGestureRecognizer];
     }
 
     return self;
@@ -56,6 +63,7 @@
     CGContextAddEllipseInRect(context, twentyRectangle);
 
     // Next, the lines.
+    // Did some sweet math to get these numbers.  God forbid they ever have to change.
     CGContextMoveToPoint(context, 40.15, 40.15);
     CGContextAddLineToPoint(context, 68.43, 68.43);
 
@@ -69,11 +77,27 @@
     CGContextAddLineToPoint(context, 181.57, 181.57);
 
     CGContextStrokePath(context);
+
+    // Finally, draw the discs.
+    CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
+    for (NSValue *pointValue in [self discPositions]) {
+        CGPoint point = [pointValue CGPointValue];
+        CGContextFillEllipseInRect(context, CGRectMake(point.x - 7.5, point.y - 7.5, 15, 15));
+    }
 }
 
-- (void)recreateDiscPositions:(NSArray *)someDiscPositions {
-    [self setDiscPositions:[NSMutableArray arrayWithArray:someDiscPositions]];
-    [delegate boardWasTapped];
+- (void)recreateDiscPositions:(NSSet *)someDiscPositions {
+    [self setDiscPositions:[NSMutableSet setWithSet:someDiscPositions]];
+    [delegate boardWasRecreated];
+    [self setNeedsDisplay];
+}
+
+- (void)onBoardTap:(UITapGestureRecognizer *)sender {
+    // Add a disc position.
+    CGPoint tapPosition = [sender locationInView:self];
+    [delegate boardWasTappedAtX:tapPosition.x
+                              y:tapPosition.y];
+    [[self discPositions] addObject:[NSValue valueWithCGPoint:tapPosition]];
     [self setNeedsDisplay];
 }
 

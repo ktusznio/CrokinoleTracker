@@ -8,8 +8,6 @@
 
 #import "BoardView.h"
 
-#import "DiscCoordinates.h"
-
 @implementation BoardView
 
 @synthesize delegate;
@@ -86,18 +84,32 @@
     }
 }
 
-- (void)recreateDiscPositions:(NSSet *)someDiscPositions {
-    [self setDiscPositions:[NSMutableSet setWithSet:someDiscPositions]];
-    [delegate boardWasRecreated];
-    [self setNeedsDisplay];
+- (void)updateCountsForDiscAtPosition:(CGPoint)position {
+    // Check the circles, starting from the inside.
+    double xSquared = (position.x - 125) * (position.x - 125);
+    double ySquared = (position.y - 125) * (position.y - 125);
+    double r = sqrt(xSquared + ySquared);
+    if (r < 40 - 7.5) {
+        [self setPlayerOne15s:[self playerOne15s] + 1];
+    } else if (r < 80 - 7.5) {
+        [self setPlayerOne10s:[self playerOne10s] + 1];
+    } else if (r < 120 - 7.5) {
+        [self setPlayerOne5s:[self playerOne5s] + 1];
+    }
 }
 
 - (void)onBoardTap:(UITapGestureRecognizer *)sender {
     // Add a disc position.
     CGPoint tapPosition = [sender locationInView:self];
-    [delegate boardWasTappedAtX:tapPosition.x
-                              y:tapPosition.y];
     [[self discPositions] addObject:[NSValue valueWithCGPoint:tapPosition]];
+
+    // Determine the value of the point and update the appropriate score.
+    [self updateCountsForDiscAtPosition:tapPosition];
+
+    // Call the delegate.
+    [delegate boardWasTapped:tapPosition];
+
+    // Update the view.
     [self setNeedsDisplay];
 }
 

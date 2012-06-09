@@ -8,13 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class DiscCoordinates;
-
 @protocol BoardViewDelegate
 
 - (void)boardWasRecreated;
-- (void)boardWasTappedAtX:(CGFloat)x
-                        y:(CGFloat)y;
+- (void)boardWasTapped:(CGPoint)point;
 
 @end
 
@@ -32,6 +29,6 @@
 
 - (id)initWithFrame:(CGRect)frame
            delegate:(id<BoardViewDelegate>)aDelegate;
-- (void)recreateDiscPositions:(NSOrderedSet *)someDiscPositions;
+- (void)updateCountsForDiscAtPosition:(CGPoint)position;
 
 @end

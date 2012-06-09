@@ -122,9 +122,6 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
     [[self playerOne20sView] updateValue:[[round playerOne20s] doubleValue]];
     [[self playerTwo20sView] updateValue:[[round playerTwo20s] doubleValue]];
 
-    // Recreate the board view.
-    [[self boardView] recreateDiscPositions:[round discPositions]];
-
     [super viewWillAppear:animated];
 }
 
@@ -230,6 +227,8 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
                                forKey:@"roundNumber"];
             [roundAttributes setValue:[round game]
                                forKey:@"game"];
+            [roundAttributes setValue:[NSMutableSet set]
+                               forKey:@"discPositions"];
             nextRound = (Round *)[CoreDataUtilities createEntityForEntityName:@"Round"
                                                           attributeDictionary:roundAttributes];
         } else {
@@ -249,10 +248,8 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
     [self updateScores];
 }
 
-- (void)boardWasTappedAtX:(CGFloat)x
-                        y:(CGFloat)y {
-    [round addDiscPositionAtX:x
-                            y:y];
+- (void)boardWasTapped:(CGPoint)point {
+    [round addDiscPosition:point];
     [self updateScores];
 }
 

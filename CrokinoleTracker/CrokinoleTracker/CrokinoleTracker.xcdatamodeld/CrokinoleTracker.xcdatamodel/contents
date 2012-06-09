@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="DiscCoordinates" representedClassName="DiscCoordinates" syncable="YES">
-        <attribute name="x" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="y" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="round" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Round" inverseName="discPositions" inverseEntity="Round" syncable="YES"/>
-    </entity>
     <entity name="Game" representedClassName="Game" syncable="YES">
         <attribute name="datePlayed" attributeType="Date" syncable="YES"/>
         <relationship name="players" optional="YES" toMany="YES" minCount="2" maxCount="2" deletionRule="Nullify" ordered="YES" destinationEntity="Player" inverseName="games" inverseEntity="Player" syncable="YES"/>
@@ -24,13 +19,11 @@
         <attribute name="playerTwo15s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="playerTwo20s" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="roundNumber" attributeType="Integer 16" minValueString="1" syncable="YES"/>
-        <relationship name="discPositions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DiscCoordinates" inverseName="round" inverseEntity="DiscCoordinates" syncable="YES"/>
         <relationship name="game" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Game" inverseName="rounds" inverseEntity="Game" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DiscCoordinates" positionX="-1460" positionY="-1431" width="128" height="90"/>
         <element name="Game" positionX="-1802" positionY="-1431" width="128" height="90"/>
         <element name="Player" positionX="-1980" positionY="-1431" width="128" height="75"/>
-        <element name="Round" positionX="-1629" positionY="-1536" width="128" height="210"/>
+        <element name="Round" positionX="-1629" positionY="-1536" width="128" height="195"/>
     </elements>
 </model>

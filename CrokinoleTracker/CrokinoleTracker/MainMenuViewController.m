@@ -21,7 +21,7 @@
 
     if (self) {
         // Set the text on the navigation bar.
-        [self setTitle:@"Crokinole Tracker"];
+        [self setTitle:@"My Crokinole"];
     }
 
     return self;

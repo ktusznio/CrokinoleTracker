@@ -8,11 +8,15 @@
 
 #import "BoardView.h"
 
+#import "PlayerActivationButton.h"
+
 @implementation BoardView
 
 @synthesize delegate;
 @synthesize discPositions;
 @synthesize playerOne15s, playerOne10s, playerOne5s, playerTwo15s, playerTwo10s, playerTwo5s;
+@synthesize playerOneColor, playerTwoColor;
+@synthesize playerOneActivationButton, playerTwoActivationButton;
 
 - (id)initWithFrame:(CGRect)frame
            delegate:(id<BoardViewDelegate>)aDelegate {
@@ -27,13 +31,29 @@
         [self setPlayerTwo15s:0];
         [self setPlayerTwo10s:0];
         [self setPlayerTwo5s:0];
+        [self setPlayerOneColor:[UIColor blackColor]];
+        [self setPlayerTwoColor:[UIColor orangeColor]];
 
         // Make the background transparent.
         [self setBackgroundColor:[UIColor clearColor]];
 
-        // Prepare a tap gesture recognizer.
+        // Create the player activation buttons.
+        [self setPlayerOneActivationButton:[[PlayerActivationButton alloc] initWithFrame:CGRectMake(10, 10, 20, 20)
+                                                                                delegate:self
+                                                                      initiallyActivated:YES
+                                                                                   color:[self playerOneColor]]];
+        [self addSubview:[self playerOneActivationButton]];
+
+        [self setPlayerTwoActivationButton:[[PlayerActivationButton alloc] initWithFrame:CGRectMake(220, 10, 20, 20)
+                                                                                delegate:self
+                                                                      initiallyActivated:NO
+                                                                                   color:[self playerTwoColor]]];
+        [self addSubview:[self playerTwoActivationButton]];
+
+        // Prepare a tap gesture recognizer for the board.
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                                action:@selector(onBoardTap:)];
+        [tapGestureRecognizer setDelegate:self];
         [self addGestureRecognizer:tapGestureRecognizer];
     }
 
@@ -86,16 +106,19 @@
     }
 }
 
-- (void)updateCountsForDiscAtPosition:(CGPoint)position {
-    // Check the circles, starting from the inside.
++ (double)calculateRadiusOfPosition:(CGPoint)position {
     double xSquared = (position.x - 125) * (position.x - 125);
     double ySquared = (position.y - 125) * (position.y - 125);
-    double r = sqrt(xSquared + ySquared);
-    if (r < 40 - 7.5) {
+    return sqrt(xSquared + ySquared);
+}
+
+- (void)updateCountsForDiscWithCenterAtRadius:(double)radius {
+    // Check the circles, starting from the inside.
+    if (radius < 40 - 7.5) {
         [self setPlayerOne15s:[self playerOne15s] + 1];
-    } else if (r < 80 - 7.5) {
+    } else if (radius < 80 - 7.5) {
         [self setPlayerOne10s:[self playerOne10s] + 1];
-    } else if (r < 120 - 7.5) {
+    } else if (radius < 120 - 7.5) {
         [self setPlayerOne5s:[self playerOne5s] + 1];
     }
 }
@@ -112,7 +135,7 @@
     for (NSMutableSet *discPositionSet in [self discPositions]) {
         for (NSValue *discPositionValue in discPositionSet) {
             CGPoint discPosition = [discPositionValue CGPointValue];
-            [self updateCountsForDiscAtPosition:discPosition];
+            [self updateCountsForDiscWithCenterAtRadius:[BoardView calculateRadiusOfPosition:discPosition]];
         }
     }
 
@@ -120,18 +143,43 @@
 }
 
 - (void)onBoardTap:(UITapGestureRecognizer *)sender {
-    // Add a disc position.
+    // If the tap is in bounds, add a disc position.
     CGPoint tapPosition = [sender locationInView:self];
-    [[[self discPositions] objectAtIndex:0] addObject:[NSValue valueWithCGPoint:tapPosition]];
+    double radius = [BoardView calculateRadiusOfPosition:tapPosition];
+    if (radius < 120 - 7.5) {
+        [[[self discPositions] objectAtIndex:0] addObject:[NSValue valueWithCGPoint:tapPosition]];
 
-    // Determine the value of the point and update the appropriate score.
-    [self updateCountsForDiscAtPosition:tapPosition];
+        // Determine the value of the point and update the appropriate score.
+        [self updateCountsForDiscWithCenterAtRadius:radius];
 
-    // Call the delegate.
-    [delegate boardWasTapped:tapPosition];
+        // Call the delegate.
+        [delegate boardWasTapped:tapPosition];
 
-    // Update the view.
-    [self setNeedsDisplay];
+        // Update the view.
+        [self setNeedsDisplay];
+    }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+       shouldReceiveTouch:(UITouch *)touch {
+    // Ignore the tap if it's in one of the activation buttons.
+    return ![[touch view] isKindOfClass:[PlayerActivationButton class]];
+}
+
+#pragma mark PlayerActivationButtonDelegate
+
+- (void)buttonWasPressed:(id)sender {
+    // When a button is pressed, we need to update both buttons, since only one can be selected.
+    if (sender == [self playerOneActivationButton]) {
+        [playerOneActivationButton setIsActivated:YES];
+        [playerTwoActivationButton setIsActivated:NO];
+    } else if (sender == [self playerTwoActivationButton]) {
+        [playerOneActivationButton setIsActivated:NO];
+        [playerTwoActivationButton setIsActivated:YES];
+    }
+
+    [playerOneActivationButton setNeedsDisplay];
+    [playerTwoActivationButton setNeedsDisplay];
 }
 
 @end

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PlayerActivationButton.h"
+
 @protocol BoardViewDelegate
 
 - (void)boardWasRecreated;
@@ -15,7 +17,7 @@
 
 @end
 
-@interface BoardView : UIView
+@interface BoardView : UIView <PlayerActivationButtonDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) id<BoardViewDelegate> delegate;
 
@@ -26,10 +28,16 @@
 @property (nonatomic) int playerTwo15s;
 @property (nonatomic) int playerTwo10s;
 @property (nonatomic) int playerTwo5s;
+@property (strong, nonatomic) UIColor *playerOneColor;
+@property (strong, nonatomic) UIColor *playerTwoColor;
+
+@property (strong, nonatomic) PlayerActivationButton *playerOneActivationButton;
+@property (strong, nonatomic) PlayerActivationButton *playerTwoActivationButton;
 
 - (id)initWithFrame:(CGRect)frame
            delegate:(id<BoardViewDelegate>)aDelegate;
-- (void)updateCountsForDiscAtPosition:(CGPoint)position;
 - (void)recreateDiscPositions:(NSMutableArray *)someDiscPositions;
++ (double)calculateRadiusOfPosition:(CGPoint)position;
+- (void)updateCountsForDiscWithCenterAtRadius:(double)radius;
 
 @end

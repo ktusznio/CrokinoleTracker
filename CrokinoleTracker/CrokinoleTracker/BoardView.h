@@ -28,8 +28,7 @@
 @property (nonatomic) int playerTwo15s;
 @property (nonatomic) int playerTwo10s;
 @property (nonatomic) int playerTwo5s;
-@property (strong, nonatomic) UIColor *playerOneColor;
-@property (strong, nonatomic) UIColor *playerTwoColor;
+@property (strong, nonatomic) NSArray *playerColors;
 
 @property (strong, nonatomic) PlayerActivationButton *playerOneActivationButton;
 @property (strong, nonatomic) PlayerActivationButton *playerTwoActivationButton;

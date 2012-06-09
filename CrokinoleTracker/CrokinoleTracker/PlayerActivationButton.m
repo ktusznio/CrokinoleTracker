@@ -11,20 +11,21 @@
 @implementation PlayerActivationButton
 
 @synthesize delegate;
-@synthesize isActivated;
+@synthesize isActivated, color;
 
 - (id)initWithFrame:(CGRect)frame
            delegate:(id<PlayerActivationButtonDelegate>)aDelegate
  initiallyActivated:(BOOL)anIsActivated
-              color:(UIColor *)color {
+              color:(UIColor *)aColor {
     self = [super initWithFrame:frame];
 
     if (self) {
         [self setDelegate:aDelegate];
         [self setIsActivated:anIsActivated];
+        [self setColor:aColor];
 
         // Style the button.
-        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [[self titleLabel] setTextAlignment:UITextAlignmentCenter];
         [[self titleLabel] setFont:[UIFont fontWithName:@"Helvetica"
                                                    size:8]];
@@ -43,7 +44,7 @@
     CGContextSetLineWidth(context, 2.0);
     
     // Draw the selection disc.
-    CGContextSetFillColorWithColor(context, [UIColor yellowColor].CGColor);
+    CGContextSetFillColorWithColor(context, [self color].CGColor);
     CGContextFillEllipseInRect(context, rect);
     
     // If this button is activated, make that clear.

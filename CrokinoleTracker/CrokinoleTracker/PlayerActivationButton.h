@@ -19,11 +19,12 @@
 @property (weak, nonatomic) id<PlayerActivationButtonDelegate> delegate;
 
 @property (nonatomic) BOOL isActivated;
+@property (weak, nonatomic) UIColor *color;
 
 - (id)initWithFrame:(CGRect)frame
            delegate:(id<PlayerActivationButtonDelegate>)aDelegate
  initiallyActivated:(BOOL)anIsActivated
-              color:(UIColor *)color ;
+              color:(UIColor *)aColor;
 - (void)onButtonTap;
 
 @end

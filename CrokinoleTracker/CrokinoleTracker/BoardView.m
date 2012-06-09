@@ -15,7 +15,7 @@
 @synthesize delegate;
 @synthesize discPositions;
 @synthesize playerOne15s, playerOne10s, playerOne5s, playerTwo15s, playerTwo10s, playerTwo5s;
-@synthesize playerOneColor, playerTwoColor;
+@synthesize playerColors;
 @synthesize playerOneActivationButton, playerTwoActivationButton;
 
 - (id)initWithFrame:(CGRect)frame
@@ -31,8 +31,7 @@
         [self setPlayerTwo15s:0];
         [self setPlayerTwo10s:0];
         [self setPlayerTwo5s:0];
-        [self setPlayerOneColor:[UIColor blackColor]];
-        [self setPlayerTwoColor:[UIColor orangeColor]];
+        [self setPlayerColors:[NSArray arrayWithObjects:[UIColor blackColor], [UIColor orangeColor], nil]];
 
         // Make the background transparent.
         [self setBackgroundColor:[UIColor clearColor]];
@@ -41,13 +40,13 @@
         [self setPlayerOneActivationButton:[[PlayerActivationButton alloc] initWithFrame:CGRectMake(10, 10, 20, 20)
                                                                                 delegate:self
                                                                       initiallyActivated:YES
-                                                                                   color:[self playerOneColor]]];
+                                                                                   color:[[self playerColors] objectAtIndex:0]]];
         [self addSubview:[self playerOneActivationButton]];
 
         [self setPlayerTwoActivationButton:[[PlayerActivationButton alloc] initWithFrame:CGRectMake(220, 10, 20, 20)
                                                                                 delegate:self
                                                                       initiallyActivated:NO
-                                                                                   color:[self playerTwoColor]]];
+                                                                                   color:[[self playerColors] objectAtIndex:1]]];
         [self addSubview:[self playerTwoActivationButton]];
 
         // Prepare a tap gesture recognizer for the board.

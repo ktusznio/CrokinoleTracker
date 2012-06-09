@@ -20,7 +20,7 @@
 
     if (self) {
         [self setDelegate:aDelegate];
-        [self setDiscPositions:[NSMutableSet set]];
+        [self setDiscPositions:[NSMutableArray arrayWithObjects:[NSMutableSet set], [NSMutableSet set], nil]];
         [self setPlayerOne15s:0];
         [self setPlayerOne10s:0];
         [self setPlayerOne5s:0];
@@ -78,9 +78,11 @@
 
     // Finally, draw the discs.
     CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
-    for (NSValue *pointValue in [self discPositions]) {
-        CGPoint point = [pointValue CGPointValue];
-        CGContextFillEllipseInRect(context, CGRectMake(point.x - 7.5, point.y - 7.5, 15, 15));
+    for (NSMutableSet *discPositionSet in [self discPositions]) {
+        for (NSValue *discPositionValue in discPositionSet) {
+            CGPoint discPosition = [discPositionValue CGPointValue];
+            CGContextFillEllipseInRect(context, CGRectMake(discPosition.x - 7.5, discPosition.y - 7.5, 15, 15));
+        }
     }
 }
 
@@ -98,7 +100,7 @@
     }
 }
 
-- (void)recreateDiscPositions:(NSMutableSet *)someDiscPositions {
+- (void)recreateDiscPositions:(NSMutableArray *)someDiscPositions {
     [self setDiscPositions:someDiscPositions];
     [self setPlayerOne15s:0];
     [self setPlayerOne10s:0];
@@ -107,9 +109,11 @@
     [self setPlayerTwo10s:0];
     [self setPlayerTwo5s:0];
 
-    for (NSValue *discPositionValue in [self discPositions]) {
-        CGPoint discPosition = [discPositionValue CGPointValue];
-        [self updateCountsForDiscAtPosition:discPosition];
+    for (NSMutableSet *discPositionSet in [self discPositions]) {
+        for (NSValue *discPositionValue in discPositionSet) {
+            CGPoint discPosition = [discPositionValue CGPointValue];
+            [self updateCountsForDiscAtPosition:discPosition];
+        }
     }
 
     [delegate boardWasRecreated];
@@ -118,7 +122,7 @@
 - (void)onBoardTap:(UITapGestureRecognizer *)sender {
     // Add a disc position.
     CGPoint tapPosition = [sender locationInView:self];
-    [[self discPositions] addObject:[NSValue valueWithCGPoint:tapPosition]];
+    [[[self discPositions] objectAtIndex:0] addObject:[NSValue valueWithCGPoint:tapPosition]];
 
     // Determine the value of the point and update the appropriate score.
     [self updateCountsForDiscAtPosition:tapPosition];

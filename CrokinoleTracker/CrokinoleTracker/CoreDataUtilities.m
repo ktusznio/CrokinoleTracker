@@ -120,7 +120,7 @@
                        forKey:@"roundNumber"];
     [roundAttributes setValue:game
                        forKey:@"game"];
-    [roundAttributes setValue:[NSMutableSet set]
+    [roundAttributes setValue:[NSMutableArray arrayWithObjects:[NSMutableSet set], [NSMutableSet set], nil]
                        forKey:@"discPositions"];
     [CoreDataUtilities createEntityForEntityName:@"Round"
                              attributeDictionary:roundAttributes];

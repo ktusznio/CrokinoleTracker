@@ -14,7 +14,7 @@
 
 @interface Round : NSManagedObject
 
-@property (nonatomic, retain) NSMutableSet *discPositions;
+@property (nonatomic, retain) NSMutableArray *discPositions;
 @property (nonatomic, retain) NSNumber *playerOne20s;
 @property (nonatomic, retain) NSNumber *playerOne15s;
 @property (nonatomic, retain) NSNumber *playerOne10s;
@@ -25,7 +25,8 @@
 @property (nonatomic, retain) NSNumber *playerTwo5s;
 @property (nonatomic, retain) Game *game;
 
-- (void)addDiscPosition:(CGPoint)discPosition;
+- (void)addDiscPosition:(CGPoint)discPosition
+              forPlayer:(Player *)player;
 - (int)scoreForPlayer:(Player *)player;
 - (int)playerOneScore;
 - (int)playerTwoScore;

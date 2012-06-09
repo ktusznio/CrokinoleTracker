@@ -19,7 +19,7 @@
 
 @property (weak, nonatomic) id<BoardViewDelegate> delegate;
 
-@property (strong, nonatomic) NSMutableSet *discPositions;
+@property (strong, nonatomic) NSMutableArray *discPositions;
 @property (nonatomic) int playerOne15s;
 @property (nonatomic) int playerOne10s;
 @property (nonatomic) int playerOne5s;
@@ -30,6 +30,6 @@
 - (id)initWithFrame:(CGRect)frame
            delegate:(id<BoardViewDelegate>)aDelegate;
 - (void)updateCountsForDiscAtPosition:(CGPoint)position;
-- (void)recreateDiscPositions:(NSMutableSet *)someDiscPositions;
+- (void)recreateDiscPositions:(NSMutableArray *)someDiscPositions;
 
 @end

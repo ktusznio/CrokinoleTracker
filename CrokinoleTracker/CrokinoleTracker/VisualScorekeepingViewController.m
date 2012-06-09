@@ -230,7 +230,7 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
                                forKey:@"roundNumber"];
             [roundAttributes setValue:[round game]
                                forKey:@"game"];
-            [roundAttributes setValue:[NSMutableSet set]
+            [roundAttributes setValue:[NSMutableArray arrayWithObjects:[NSMutableSet set], [NSMutableSet set], nil]
                                forKey:@"discPositions"];
             nextRound = (Round *)[CoreDataUtilities createEntityForEntityName:@"Round"
                                                           attributeDictionary:roundAttributes];
@@ -252,7 +252,7 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
 }
 
 - (void)boardWasTapped:(CGPoint)point {
-    [round addDiscPosition:point];
+    [round addDiscPosition:point forPlayer:[[[round game] players] objectAtIndex:0]];
     [self updateScores];
 }
 

@@ -18,6 +18,8 @@
 
 @end
 
+extern const double DISC_RADIUS;
+
 @interface BoardView : UIView <PlayerActivationButtonDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) id<BoardViewDelegate> delegate;

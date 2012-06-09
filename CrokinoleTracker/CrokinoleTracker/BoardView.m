@@ -10,6 +10,8 @@
 
 #import "PlayerActivationButton.h"
 
+const double DISC_RADIUS = 7.5;
+
 @implementation BoardView
 
 @synthesize delegate;
@@ -101,7 +103,7 @@
         CGContextSetFillColorWithColor(context, ((UIColor *)[[self playerColors] objectAtIndex:i]).CGColor);
         for (NSValue *discPositionValue in discPositionSet) {
             CGPoint discPosition = [discPositionValue CGPointValue];
-            CGContextFillEllipseInRect(context, CGRectMake(discPosition.x - 7.5, discPosition.y - 7.5, 15, 15));
+            CGContextFillEllipseInRect(context, CGRectMake(discPosition.x - DISC_RADIUS, discPosition.y - DISC_RADIUS, DISC_RADIUS * 2, DISC_RADIUS * 2));
         }
     }
 }
@@ -115,19 +117,19 @@
 - (void)updateCountsForDiscWithCenterAtRadius:(double)radius
                                   playerIndex:(int)playerIndex {
     // Check the circles, starting from the inside.
-    if (radius < 40 - 7.5) {
+    if (radius < 40 - DISC_RADIUS) {
         if (playerIndex == 0) {
             [self setPlayerOne15s:[self playerOne15s] + 1];
         } else {
             [self setPlayerTwo15s:[self playerTwo15s] + 1];
         }
-    } else if (radius < 80 - 7.5) {
+    } else if (radius < 80 - DISC_RADIUS) {
         if (playerIndex == 0) {
             [self setPlayerOne10s:[self playerOne10s] + 1];
         } else {
             [self setPlayerTwo10s:[self playerTwo10s] + 1];
         }
-    } else if (radius < 120 - 7.5) {
+    } else if (radius < 120 - DISC_RADIUS) {
         if (playerIndex == 0) {
             [self setPlayerOne5s:[self playerOne5s] + 1];
         } else {
@@ -161,14 +163,8 @@
     // If the tap is in bounds, add a disc position.
     CGPoint tapPosition = [sender locationInView:self];
     double radius = [BoardView calculateRadiusOfPosition:tapPosition];
-    if (radius < 120 - 7.5) {
-        int playerIndex = -1;
-        if ([playerOneActivationButton isActivated]) {
-            playerIndex = 0;
-        } else {
-            playerIndex = 1;
-        }
-
+    if (radius < 120 - DISC_RADIUS) {
+        int playerIndex = ([playerOneActivationButton isActivated]) ? 0 : 1;
         [[[self discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:tapPosition]];
 
         // Determine the value of the point and update the appropriate score.

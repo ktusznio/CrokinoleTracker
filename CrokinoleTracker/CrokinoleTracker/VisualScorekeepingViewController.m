@@ -65,14 +65,17 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
     [[self view] addSubview:[self playerTwoScoreLabel]];
 
     // Add the 20s views.
-    [self setPlayerOne20sView:[[TwentiesView alloc] initWithFrame:CGRectMake(20, 70, 94, 21)]];
+    [self setPlayerOne20sView:[[TwentiesView alloc] initWithFrame:CGRectMake(20, 70, 94, 21)
+                                                         delegate:self]];
     [[self view] addSubview:[self playerOne20sView]];
 
-    [self setPlayerTwo20sView:[[TwentiesView alloc] initWithFrame:CGRectMake(206, 70, 94, 21)]];
+    [self setPlayerTwo20sView:[[TwentiesView alloc] initWithFrame:CGRectMake(206, 70, 94, 21)
+                                                         delegate:self]];
     [[self view] addSubview:[self playerTwo20sView]];
 
     // Add the board view.
-    [self setBoardView:[[BoardView alloc] initWithFrame:CGRectMake(38, 95, 250, 250)]];
+    [self setBoardView:[[BoardView alloc] initWithFrame:CGRectMake(38, 95, 250, 250)
+                                               delegate:self]];
     [[self view] addSubview:[self boardView]];
 
     // Add the buttons.
@@ -138,6 +141,38 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)updateScores {
+    // Calculate the round score and update the game score labels.
+    int playerOneRoundScore = 0;
+    playerOneRoundScore += [playerOne20sView value] * 20;
+    playerOneRoundScore += [boardView playerOne15s] * 15;
+    playerOneRoundScore += [boardView playerOne10s] * 10;
+    playerOneRoundScore += [boardView playerOne5s] * 5;
+
+    int playerTwoRoundScore = 0;
+    playerTwoRoundScore += [playerTwo20sView value] * 20;
+    playerTwoRoundScore += [boardView playerTwo15s] * 15;
+    playerTwoRoundScore += [boardView playerTwo10s] * 10;
+    playerTwoRoundScore += [boardView playerTwo5s] * 5;
+
+    if (playerOneRoundScore > playerTwoRoundScore) {
+        playerOneRoundScore -= playerTwoRoundScore;
+        playerTwoRoundScore = 0;
+    } else if (playerOneRoundScore < playerTwoRoundScore) {
+        playerTwoRoundScore -= playerOneRoundScore;
+        playerOneRoundScore = 0;
+    } else {
+        playerOneRoundScore = 0;
+        playerTwoRoundScore = 0;
+    }
+
+    int playerOneGameScore = playerOneStartingGameScore + playerOneRoundScore;
+    [playerOneScoreLabel setText:[NSString stringWithFormat:@"%d", playerOneGameScore]];
+
+    int playerTwoGameScore = playerTwoStartingGameScore + playerTwoRoundScore;
+    [playerTwoScoreLabel setText:[NSString stringWithFormat:@"%d", playerTwoGameScore]];
 }
 
 - (void)saveRound {
@@ -206,6 +241,18 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
         VisualScorekeepingViewController *scorekeepingViewController = [[VisualScorekeepingViewController alloc] initForRound:nextRound];
         [[self navigationController] pushViewController:scorekeepingViewController animated:YES];
     }
+}
+
+# pragma mark - BoardViewDelegate
+
+- (void)boardWasTapped {
+    [self updateScores];
+}
+
+# pragma mark - TwentiesViewDelegate
+
+- (void)valueChanged {
+    [self updateScores];
 }
 
 # pragma mark - UIAlertViewDelegate

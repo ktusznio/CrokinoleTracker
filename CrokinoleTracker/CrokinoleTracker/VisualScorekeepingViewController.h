@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class BoardView;
-@class Round;
-@class TwentiesView;
+#import "BoardView.h"
+#import "TwentiesView.h"
 
-@interface VisualScorekeepingViewController : UIViewController
+@class Round;
+
+@interface VisualScorekeepingViewController : UIViewController <BoardViewDelegate, TwentiesViewDelegate>
 
 @property (weak, nonatomic) Round *round;
 @property (nonatomic) int playerOneStartingGameScore;
@@ -29,5 +30,9 @@
 @property (strong, nonatomic) UIButton *nextRoundButton;
 
 - (id)initForRound:(Round *)aRound;
+- (void)updateScores;
+- (void)saveRound;
+- (void)onQuitGameButtonTap:(id)sender;
+- (void)onNextRoundButtonTap:(id)sender;
 
 @end

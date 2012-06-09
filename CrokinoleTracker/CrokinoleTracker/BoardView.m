@@ -10,13 +10,16 @@
 
 @implementation BoardView
 
+@synthesize delegate;
 @synthesize discPositions;
 @synthesize playerOne15s, playerOne10s, playerOne5s, playerTwo15s, playerTwo10s, playerTwo5s;
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame
+           delegate:(id<BoardViewDelegate>)aDelegate {
     self = [super initWithFrame:frame];
 
     if (self) {
+        [self setDelegate:aDelegate];
         [self setDiscPositions:[NSMutableArray array]];
         [self setPlayerOne15s:0];
         [self setPlayerOne10s:0];
@@ -70,6 +73,7 @@
 
 - (void)recreateDiscPositions:(NSArray *)someDiscPositions {
     [self setDiscPositions:[NSMutableArray arrayWithArray:someDiscPositions]];
+    [delegate boardWasTapped];
     [self setNeedsDisplay];
 }
 

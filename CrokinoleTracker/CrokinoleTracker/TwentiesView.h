@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TwentiesViewDelegate
+
+- (void)valueChanged;
+
+@end
+
 @interface TwentiesView : UIView
+
+@property (weak, nonatomic) id<TwentiesViewDelegate> delegate;
 
 @property (nonatomic) int value;
 
@@ -16,6 +24,8 @@
 @property (strong, nonatomic) UIButton *addButton;
 @property (strong, nonatomic) UILabel *valueLabel;
 
+- (id)initWithFrame:(CGRect)frame
+           delegate:(id<TwentiesViewDelegate>)aDelegate;
 - (void)updateValue:(double)aValue;
 
 @end

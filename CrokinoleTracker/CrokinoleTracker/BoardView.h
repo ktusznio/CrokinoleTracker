@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BoardViewDelegate
+
+- (void)boardWasTapped;
+
+@end
+
 @interface BoardView : UIView
+
+@property (weak, nonatomic) id<BoardViewDelegate> delegate;
 
 @property (strong, nonatomic) NSMutableArray *discPositions;
 @property (nonatomic) int playerOne15s;
@@ -18,6 +26,8 @@
 @property (nonatomic) int playerTwo10s;
 @property (nonatomic) int playerTwo5s;
 
+- (id)initWithFrame:(CGRect)frame
+           delegate:(id<BoardViewDelegate>)aDelegate;
 - (void)recreateDiscPositions:(NSArray *)someDiscPositions;
 
 @end

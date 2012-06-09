@@ -10,13 +10,17 @@
 
 @implementation TwentiesView
 
+@synthesize delegate;
 @synthesize value;
 @synthesize subtractButton, addButton, valueLabel;
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame
+           delegate:(id<TwentiesViewDelegate>)aDelegate {
     self = [super initWithFrame:frame];
 
     if (self) {
+        // Initialize the delegate and value.
+        [self setDelegate:aDelegate];
         [self setValue:0];
 
         // Add the buttons.
@@ -60,12 +64,14 @@
 
 - (void)updateValue:(double)aValue {
     [self setValue:aValue];
+    [delegate valueChanged];
     [self setNeedsDisplay];
 }
 
 - (void)onSubtractButtonTap {
     if ([self value] > 0) {
         [self setValue:[self value] - 1];
+        [delegate valueChanged];
         [self setNeedsDisplay];
     }
 }
@@ -73,6 +79,7 @@
 - (void)onAddButtonTap {
     if ([self value] < 12) {
         [self setValue:[self value] + 1];
+        [delegate valueChanged];
         [self setNeedsDisplay];
     }
 }

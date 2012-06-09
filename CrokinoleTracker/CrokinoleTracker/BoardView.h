@@ -42,5 +42,6 @@ extern const double DISC_RADIUS;
 + (double)calculateRadiusOfPosition:(CGPoint)position;
 - (void)updateCountsForDiscWithCenterAtRadius:(double)radius
                                   playerIndex:(int)playerIndex;
+- (BOOL)canDrawNewDiscAtPosition:(CGPoint)aDiscPosition;
 
 @end

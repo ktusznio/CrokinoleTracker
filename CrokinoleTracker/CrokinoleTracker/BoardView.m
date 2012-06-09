@@ -163,7 +163,7 @@ const double DISC_RADIUS = 7.5;
     // If the tap is in bounds, add a disc position.
     CGPoint tapPosition = [sender locationInView:self];
     double radius = [BoardView calculateRadiusOfPosition:tapPosition];
-    if (radius < 120 - DISC_RADIUS) {
+    if (radius < 120 - DISC_RADIUS && [self canDrawNewDiscAtPosition:tapPosition]) {
         int playerIndex = ([playerOneActivationButton isActivated]) ? 0 : 1;
         [[[self discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:tapPosition]];
 
@@ -178,6 +178,25 @@ const double DISC_RADIUS = 7.5;
         // Update the view.
         [self setNeedsDisplay];
     }
+}
+
+- (BOOL)canDrawNewDiscAtPosition:(CGPoint)aDiscPosition {
+    // Check if any existing disc rectangles collide with a disc rectangle at the given position.
+    CGRect desiredDiscRectangle = CGRectMake(aDiscPosition.x - DISC_RADIUS, aDiscPosition.y - DISC_RADIUS, DISC_RADIUS * 2, DISC_RADIUS * 2);
+    for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
+        NSMutableSet *playerDiscs = [[self discPositions] objectAtIndex:playerIndex];
+        for (NSValue *discPositionValue in playerDiscs) {
+            CGPoint discPoint = [discPositionValue CGPointValue];
+            CGRect existingDiscRectangle = CGRectMake(discPoint.x - DISC_RADIUS, discPoint.y - DISC_RADIUS, DISC_RADIUS * 2, DISC_RADIUS * 2);
+
+            // If the desired rectangle intersects with an existing rectangle, we shouldn't draw there.
+            if (CGRectIntersectsRect(existingDiscRectangle, desiredDiscRectangle)) {
+                return NO;
+            }
+        }
+    }
+
+    return YES;
 }
 
 #pragma mark UIGestureRecognizerDelegate

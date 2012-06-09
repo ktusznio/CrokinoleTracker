@@ -30,5 +30,6 @@
 - (id)initWithFrame:(CGRect)frame
            delegate:(id<BoardViewDelegate>)aDelegate;
 - (void)updateCountsForDiscAtPosition:(CGPoint)position;
+- (void)recreateDiscPositions:(NSMutableSet *)someDiscPositions;
 
 @end

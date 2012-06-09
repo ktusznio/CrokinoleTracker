@@ -122,6 +122,9 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
     [[self playerOne20sView] updateValue:[[round playerOne20s] doubleValue]];
     [[self playerTwo20sView] updateValue:[[round playerTwo20s] doubleValue]];
 
+    // Recreate the board view.
+    [[self boardView] recreateDiscPositions:[round discPositions]];
+
     [super viewWillAppear:animated];
 }
 

@@ -98,6 +98,23 @@
     }
 }
 
+- (void)recreateDiscPositions:(NSMutableSet *)someDiscPositions {
+    [self setDiscPositions:someDiscPositions];
+    [self setPlayerOne15s:0];
+    [self setPlayerOne10s:0];
+    [self setPlayerOne5s:0];
+    [self setPlayerTwo15s:0];
+    [self setPlayerTwo10s:0];
+    [self setPlayerTwo5s:0];
+
+    for (NSValue *discPositionValue in [self discPositions]) {
+        CGPoint discPosition = [discPositionValue CGPointValue];
+        [self updateCountsForDiscAtPosition:discPosition];
+    }
+
+    [delegate boardWasRecreated];
+}
+
 - (void)onBoardTap:(UITapGestureRecognizer *)sender {
     // Add a disc position.
     CGPoint tapPosition = [sender locationInView:self];

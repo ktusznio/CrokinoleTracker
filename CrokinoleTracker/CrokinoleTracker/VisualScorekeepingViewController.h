@@ -26,13 +26,15 @@
 @property (strong, nonatomic) UILabel *playerTwoNameLabel;
 @property (strong, nonatomic) TwentiesView *playerOne20sView;
 @property (strong, nonatomic) TwentiesView *playerTwo20sView;
-@property (strong, nonatomic) UIButton *quitGameButton;
+@property (strong, nonatomic) UIButton *quitButton;
+@property (strong, nonatomic) UIButton *undoButton;
 @property (strong, nonatomic) UIButton *nextRoundButton;
 
 - (id)initForRound:(Round *)aRound;
 - (void)updateScores;
 - (void)saveRound;
-- (void)onQuitGameButtonTap:(id)sender;
+- (void)onQuitButtonTap:(id)sender;
+- (void)onUndoButtonTap:(id)sender;
 - (void)onNextRoundButtonTap:(id)sender;
 
 @end

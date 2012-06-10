@@ -28,7 +28,7 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
 @synthesize boardView;
 @synthesize playerOneNameLabel, playerTwoNameLabel, playerOneScoreLabel, playerTwoScoreLabel;
 @synthesize playerOne20sView, playerTwo20sView;
-@synthesize quitGameButton, nextRoundButton;
+@synthesize quitButton, undoButton, nextRoundButton;
 
 - (id)initForRound:(Round *)aRound {
     self = [super init];
@@ -79,14 +79,23 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
     [[self view] addSubview:[self boardView]];
 
     // Add the buttons.
-    [self setQuitGameButton:[UIButton buttonWithType:UIButtonTypeRoundedRect]];
-    [[self quitGameButton] setFrame:CGRectMake(20, 359, 120, 37)];
-    [[self quitGameButton] setTitle:@"Quit Game"
-                           forState:UIControlStateNormal];
-    [[self quitGameButton] addTarget:self
-                              action:@selector(onQuitGameButtonTap:)
-                    forControlEvents:UIControlEventTouchUpInside];
-    [[self view] addSubview:[self quitGameButton]];
+    [self setQuitButton:[UIButton buttonWithType:UIButtonTypeRoundedRect]];
+    [[self quitButton] setFrame:CGRectMake(20, 359, 80, 37)];
+    [[self quitButton] setTitle:@"Quit"
+                       forState:UIControlStateNormal];
+    [[self quitButton] addTarget:self
+                          action:@selector(onQuitButtonTap:)
+                forControlEvents:UIControlEventTouchUpInside];
+    [[self view] addSubview:[self quitButton]];
+
+    [self setUndoButton:[UIButton buttonWithType:UIButtonTypeRoundedRect]];
+    [[self undoButton] setFrame:CGRectMake(110, 359, 80, 37)];
+    [[self undoButton] setTitle:@"Undo"
+                       forState:UIControlStateNormal];
+    [[self undoButton] addTarget:self
+                          action:@selector(onUndoButtonTap:)
+                forControlEvents:UIControlEventTouchUpInside];
+    [[self view] addSubview:[self undoButton]];
 
     [self setNextRoundButton:[UIButton buttonWithType:UIButtonTypeRoundedRect]];
     [[self nextRoundButton] setFrame:CGRectMake(180, 359, 120, 37)];
@@ -188,7 +197,7 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
     [CoreDataUtilities saveManagedContext];
 }
 
-- (void)onQuitGameButtonTap:(id)sender {
+- (void)onQuitButtonTap:(id)sender {
     // Show an alert, asking if the user truly wants to quit the game.
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Really quit?"
                                                     message:@"The current game will be lost."
@@ -196,6 +205,10 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
                                           cancelButtonTitle:@"Cancel"
                                           otherButtonTitles:@"Quit", nil];
     [alert show];
+}
+
+- (void)onUndoButtonTap:(id)sender {
+    [[self boardView] removeLastDiscForActivePlayer];
 }
 
 - (void)onNextRoundButtonTap:(id)sender {
@@ -230,7 +243,7 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
                                forKey:@"roundNumber"];
             [roundAttributes setValue:[round game]
                                forKey:@"game"];
-            [roundAttributes setValue:[NSMutableArray arrayWithObjects:[NSMutableSet set], [NSMutableSet set], nil]
+            [roundAttributes setValue:[NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], nil]
                                forKey:@"discPositions"];
             nextRound = (Round *)[CoreDataUtilities createEntityForEntityName:@"Round"
                                                           attributeDictionary:roundAttributes];

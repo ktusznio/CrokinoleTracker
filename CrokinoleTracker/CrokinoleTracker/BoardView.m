@@ -26,7 +26,7 @@ const double DISC_RADIUS = 7.5;
 
     if (self) {
         [self setDelegate:aDelegate];
-        [self setDiscPositions:[NSMutableArray arrayWithObjects:[NSMutableSet set], [NSMutableSet set], nil]];
+        [self setDiscPositions:[NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], nil]];
         [self setPlayerOne15s:0];
         [self setPlayerOne10s:0];
         [self setPlayerOne5s:0];
@@ -99,9 +99,9 @@ const double DISC_RADIUS = 7.5;
 
     // Finally, draw the discs.
     for (int i = 0; i < 2; i++) {
-        NSMutableSet *discPositionSet = [[self discPositions] objectAtIndex:i];
+        NSMutableArray *discPositionArray = [[self discPositions] objectAtIndex:i];
         CGContextSetFillColorWithColor(context, ((UIColor *)[[self playerColors] objectAtIndex:i]).CGColor);
-        for (NSValue *discPositionValue in discPositionSet) {
+        for (NSValue *discPositionValue in discPositionArray) {
             CGPoint discPosition = [discPositionValue CGPointValue];
             CGContextFillEllipseInRect(context, CGRectMake(discPosition.x - DISC_RADIUS, discPosition.y - DISC_RADIUS, DISC_RADIUS * 2, DISC_RADIUS * 2));
         }
@@ -148,8 +148,8 @@ const double DISC_RADIUS = 7.5;
     [self setPlayerTwo5s:0];
 
     for (int i = 0; i < 2; i++) {
-        NSMutableSet *discPositionSet = [[self discPositions] objectAtIndex:i];
-        for (NSValue *discPositionValue in discPositionSet) {
+        NSMutableArray *discPositionArray = [[self discPositions] objectAtIndex:i];
+        for (NSValue *discPositionValue in discPositionArray) {
             CGPoint discPosition = [discPositionValue CGPointValue];
             [self updateCountsForDiscWithCenterAtRadius:[BoardView calculateRadiusOfPosition:discPosition]
                                             playerIndex:i];
@@ -183,7 +183,7 @@ const double DISC_RADIUS = 7.5;
 - (BOOL)canDrawNewDiscAtPosition:(CGPoint)newDiscPosition {
     // The given position needs to be 2*DISC_RADIUS away from all other disc positions.
     for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
-        NSMutableSet *playerDiscs = [[self discPositions] objectAtIndex:playerIndex];
+        NSMutableArray *playerDiscs = [[self discPositions] objectAtIndex:playerIndex];
         for (NSValue *discPositionValue in playerDiscs) {
             CGPoint discPosition = [discPositionValue CGPointValue];
 
@@ -198,6 +198,15 @@ const double DISC_RADIUS = 7.5;
     }
 
     return YES;
+}
+
+- (void)removeLastDiscForActivePlayer {
+    int activePlayerIndex = ([[self playerOneActivationButton] isActivated]) ? 0 : 1;
+    NSMutableArray *playerDiscs = [[self discPositions] objectAtIndex:activePlayerIndex];
+    if ([playerDiscs count] > 0) {
+        [playerDiscs removeLastObject];
+        [self setNeedsDisplay];
+    }
 }
 
 #pragma mark UIGestureRecognizerDelegate

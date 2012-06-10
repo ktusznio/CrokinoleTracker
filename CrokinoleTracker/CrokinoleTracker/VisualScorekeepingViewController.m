@@ -74,7 +74,7 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
     [[self view] addSubview:[self playerTwo20sView]];
 
     // Add the board view.
-    [self setBoardView:[[BoardView alloc] initWithFrame:CGRectMake(38, 95, 250, 250)
+    [self setBoardView:[[BoardView alloc] initWithFrame:CGRectMake(35, 95, 250, 250)
                                                delegate:self]];
     [[self view] addSubview:[self boardView]];
 

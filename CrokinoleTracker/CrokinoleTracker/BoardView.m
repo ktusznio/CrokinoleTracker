@@ -180,17 +180,18 @@ const double DISC_RADIUS = 7.5;
     }
 }
 
-- (BOOL)canDrawNewDiscAtPosition:(CGPoint)aDiscPosition {
-    // Check if any existing disc rectangles collide with a disc rectangle at the given position.
-    CGRect desiredDiscRectangle = CGRectMake(aDiscPosition.x - DISC_RADIUS, aDiscPosition.y - DISC_RADIUS, DISC_RADIUS * 2, DISC_RADIUS * 2);
+- (BOOL)canDrawNewDiscAtPosition:(CGPoint)newDiscPosition {
+    // The given position needs to be 2*DISC_RADIUS away from all other disc positions.
     for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
         NSMutableSet *playerDiscs = [[self discPositions] objectAtIndex:playerIndex];
         for (NSValue *discPositionValue in playerDiscs) {
-            CGPoint discPoint = [discPositionValue CGPointValue];
-            CGRect existingDiscRectangle = CGRectMake(discPoint.x - DISC_RADIUS, discPoint.y - DISC_RADIUS, DISC_RADIUS * 2, DISC_RADIUS * 2);
+            CGPoint discPosition = [discPositionValue CGPointValue];
 
-            // If the desired rectangle intersects with an existing rectangle, we shouldn't draw there.
-            if (CGRectIntersectsRect(existingDiscRectangle, desiredDiscRectangle)) {
+            CGFloat dx = newDiscPosition.x - discPosition.x;
+            CGFloat dy = newDiscPosition.y - discPosition.y;
+            CGFloat distanceBetweenDiscs = sqrt(dx * dx + dy * dy);
+
+            if (distanceBetweenDiscs < 2 * DISC_RADIUS) {
                 return NO;
             }
         }

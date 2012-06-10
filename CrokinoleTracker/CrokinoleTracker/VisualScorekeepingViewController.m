@@ -253,7 +253,6 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
 
 - (void)boardWasTapped:(CGPoint)point
            playerIndex:(int)playerIndex {
-    [round addDiscPosition:point forPlayer:[[[round game] players] objectAtIndex:playerIndex]];
     [self updateScores];
 }
 

@@ -24,12 +24,6 @@
 @dynamic playerTwo5s;
 @dynamic game;
 
-- (void)addDiscPosition:(CGPoint)discPosition
-              forPlayer:(Player *)player {
-    int playerIndex = [[[self game] players] indexOfObject:player];
-    [[[self discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:discPosition]];
-}
-
 - (int)scoreForPlayer:(Player *)player {
     if ([[[self game] players] objectAtIndex:0] == player) {
         return [self playerOneScore];

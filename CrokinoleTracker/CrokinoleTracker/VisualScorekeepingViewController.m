@@ -44,7 +44,8 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
     [super viewDidLoad];
 
     // Add the board view.
-    [self setBoardView:[[BoardView alloc] initWithRound:round andFrame:CGRectMake(20, 10, 280, 340)]];
+    [self setBoardView:[[BoardView alloc] initWithFrame:CGRectMake(20, 10, 280, 340)
+                                                  round:round]];
     [[self view] addSubview:boardView];
 
     // Add the buttons.

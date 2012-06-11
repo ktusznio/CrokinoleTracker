@@ -24,7 +24,8 @@ const double BOARD_Y_INSET = 40;
 @synthesize playerColors;
 @synthesize activePlayerSegmentControl;
 
-- (id)initWithRound:(Round *)aRound andFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame
+              round:(Round *)aRound {
     self = [super initWithFrame:frame];
 
     if (self) {

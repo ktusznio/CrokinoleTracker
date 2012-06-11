@@ -26,7 +26,8 @@
 
 @property (strong, nonatomic) UISegmentedControl *activePlayerSegmentControl;
 
-- (id)initWithRound:(Round *)aRound andFrame:(CGRect)frame;
+- (id)initWithFrame:(CGRect)frame
+              round:(Round *)aRound;
 
 - (double)calculateRadiusOfPosition:(CGPoint)position;
 - (void)updateScores;

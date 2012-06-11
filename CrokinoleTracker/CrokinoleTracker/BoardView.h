@@ -30,8 +30,6 @@
 
 - (void)recreateDiscPositions:(NSMutableArray *)someDiscPositions;
 - (double)calculateRadiusOfPosition:(CGPoint)position;
-- (void)updateCountsForDiscWithCenterAtRadius:(double)radius
-                                  playerIndex:(int)playerIndex;
 - (void)updateScores;
 - (BOOL)canDrawNewDiscAtPosition:(CGPoint)newDiscPosition;
 - (void)removeLastDiscForActivePlayer;

@@ -121,57 +121,10 @@ const double BOARD_Y_INSET = 40;
     return sqrt(xSquared + ySquared);
 }
 
-- (void)updateCountsForDiscWithCenterAtRadius:(double)radius
-                                  playerIndex:(int)playerIndex {
-    // Check the circles, starting from the inside.
-    if (radius < fifteensRadiusThreshold - DISC_RADIUS) {
-        if (playerIndex == 0) {
-            [round setPlayerOne15s:[NSNumber numberWithInt:[[round playerOne15s] intValue] + 1]];
-        } else {
-            [round setPlayerTwo15s:[NSNumber numberWithInt:[[round playerTwo15s] intValue] + 1]];
-        }
-    } else if (radius < tensRadiusThreshold - DISC_RADIUS) {
-        if (playerIndex == 0) {
-            [round setPlayerOne10s:[NSNumber numberWithInt:[[round playerOne10s] intValue] + 1]];
-        } else {
-            [round setPlayerTwo10s:[NSNumber numberWithInt:[[round playerTwo10s] intValue] + 1]];
-        }
-    } else if (radius < fivesRadiusThreshold - DISC_RADIUS) {
-        if (playerIndex == 0) {
-            [round setPlayerOne5s:[NSNumber numberWithInt:[[round playerOne5s] intValue] + 1]];
-        } else {
-            [round setPlayerTwo5s:[NSNumber numberWithInt:[[round playerTwo5s] intValue] + 1]];
-        }
-    }
-
-    [self setNeedsDisplay];
-}
-
 - (void)updateScores {
     // Calculate the round score and update the game score labels.
-    int playerOneRoundScore = 0;
-    playerOneRoundScore += [[round playerOne20s] intValue] * 20;
-    playerOneRoundScore += [[round playerOne15s] intValue] * 15;
-    playerOneRoundScore += [[round playerOne10s] intValue] * 10;
-    playerOneRoundScore += [[round playerOne5s] intValue] * 5;
-
-    int playerTwoRoundScore = 0;
-    playerTwoRoundScore += [[round playerTwo20s] intValue] * 20;
-    playerTwoRoundScore += [[round playerTwo15s] intValue] * 15;
-    playerTwoRoundScore += [[round playerTwo10s] intValue] * 10;
-    playerTwoRoundScore += [[round playerTwo5s] intValue] * 5;
-
-    if (playerOneRoundScore > playerTwoRoundScore) {
-        playerOneRoundScore -= playerTwoRoundScore;
-        playerTwoRoundScore = 0;
-    } else if (playerOneRoundScore < playerTwoRoundScore) {
-        playerTwoRoundScore -= playerOneRoundScore;
-        playerOneRoundScore = 0;
-    } else {
-        playerOneRoundScore = 0;
-        playerTwoRoundScore = 0;
-    }
-
+    int playerOneRoundScore = [round playerOneScore];
+    int playerTwoRoundScore = [round playerTwoScore];
     int playerOneGameScore = playerOneStartingGameScore + playerOneRoundScore;
     int playerTwoGameScore = playerTwoStartingGameScore + playerTwoRoundScore;
 
@@ -195,9 +148,10 @@ const double BOARD_Y_INSET = 40;
     for (int i = 0; i < 2; i++) {
         NSMutableArray *discPositionArray = [[round discPositions] objectAtIndex:i];
         for (NSValue *discPositionValue in discPositionArray) {
-            CGPoint discPosition = [discPositionValue CGPointValue];
-            [self updateCountsForDiscWithCenterAtRadius:[self calculateRadiusOfPosition:discPosition]
-                                            playerIndex:i];
+            int discValue = [self valueForPoint:[discPositionValue CGPointValue]];
+            [round adjustCounter:discValue
+                     playerIndex:i
+                       increment:YES];
         }
     }
 }
@@ -211,8 +165,9 @@ const double BOARD_Y_INSET = 40;
         [[[round discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:tapPosition]];
 
         // Determine the value of the point and update the appropriate score.
-        [self updateCountsForDiscWithCenterAtRadius:radius
-                                        playerIndex:playerIndex];
+        [round adjustCounter:[self valueForPoint:tapPosition]
+                 playerIndex:playerIndex
+                   increment:YES];
 
         // Update the view.
         [self setNeedsDisplay];
@@ -243,6 +198,11 @@ const double BOARD_Y_INSET = 40;
     int activePlayerIndex = [activePlayerSegmentControl selectedSegmentIndex];
     NSMutableArray *playerDiscs = [[round discPositions] objectAtIndex:activePlayerIndex];
     if ([playerDiscs count] > 0) {
+        CGPoint lastPoint = [(NSValue *)[[[round discPositions] objectAtIndex:activePlayerIndex] lastObject] CGPointValue];
+        [round adjustCounter:[self valueForPoint:lastPoint]
+                 playerIndex:activePlayerIndex
+                   increment:NO];
+
         [playerDiscs removeLastObject];
         [self setNeedsDisplay];
     }

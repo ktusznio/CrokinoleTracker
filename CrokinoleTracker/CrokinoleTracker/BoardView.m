@@ -8,7 +8,6 @@
 
 #import "BoardView.h"
 
-#import "AppDelegate.h"
 #import "Game.h"
 #import "Player.h"
 #import "Round.h"
@@ -41,10 +40,8 @@ const double BOARD_Y_INSET = 40;
         [self setBackgroundColor:[UIColor clearColor]];
 
         // Create the player activation control.
-        NSMutableArray *players = [(AppDelegate *)[[UIApplication sharedApplication] delegate] players];
-        Player *playerOne = [players objectAtIndex:0];
-        Player *playerTwo = [players objectAtIndex:1];
-
+        Player *playerOne = [[[round game] players] objectAtIndex:0];
+        Player *playerTwo = [[[round game] players] objectAtIndex:1];
         NSString *playerOneSegmentLabel = [NSString stringWithFormat:@"%@ (%d)", [playerOne name], playerOneStartingGameScore];
         NSString *playerTwoSegmentLabel = [NSString stringWithFormat:@"%@ (%d)", [playerTwo name], playerTwoStartingGameScore];
 
@@ -183,10 +180,8 @@ const double BOARD_Y_INSET = 40;
     int playerOneGameScore = playerOneStartingGameScore + playerOneRoundScore;
     int playerTwoGameScore = playerTwoStartingGameScore + playerTwoRoundScore;
 
-    NSMutableArray *players = [(AppDelegate *)[[UIApplication sharedApplication] delegate] players];
-    Player *playerOne = [players objectAtIndex:0];
-    Player *playerTwo = [players objectAtIndex:1];
-
+    Player *playerOne = [[[round game] players] objectAtIndex:0];
+    Player *playerTwo = [[[round game] players] objectAtIndex:1];
     NSString *playerOneSegmentLabel = [NSString stringWithFormat:@"%@ (%d)", [playerOne name], playerOneGameScore];
     NSString *playerTwoSegmentLabel = [NSString stringWithFormat:@"%@ (%d)", [playerTwo name], playerTwoGameScore];
 

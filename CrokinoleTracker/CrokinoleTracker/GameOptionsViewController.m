@@ -15,6 +15,7 @@
 #import "PlayerSelectionViewController.h"
 #import "Round.h"
 #import "ScorekeepingViewController.h"
+#import "VisualScorekeepingViewController.h"
 
 @implementation GameOptionsViewController
 
@@ -121,8 +122,9 @@
 
     // Push the scorekeeping screen.
     Round *firstRound = [[game rounds] objectAtIndex:0];
-    ScorekeepingViewController *scorekeepingViewController = [[ScorekeepingViewController alloc] initForRound:firstRound];
-    [[self navigationController] pushViewController:scorekeepingViewController animated:YES];
+    VisualScorekeepingViewController *scorekeepingViewController = [[VisualScorekeepingViewController alloc] initForRound:firstRound];
+    [[self navigationController] pushViewController:scorekeepingViewController
+                                           animated:YES];
 }
 
 @end

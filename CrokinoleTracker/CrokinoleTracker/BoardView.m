@@ -40,12 +40,7 @@ const double BOARD_Y_INSET = 40;
         [self setBackgroundColor:[UIColor clearColor]];
 
         // Create the player activation control.
-        Player *playerOne = [[[round game] players] objectAtIndex:0];
-        Player *playerTwo = [[[round game] players] objectAtIndex:1];
-        NSString *playerOneSegmentLabel = [NSString stringWithFormat:@"%@ (%d)", [playerOne name], playerOneStartingGameScore];
-        NSString *playerTwoSegmentLabel = [NSString stringWithFormat:@"%@ (%d)", [playerTwo name], playerTwoStartingGameScore];
-
-        [self setActivePlayerSegmentControl:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:playerOneSegmentLabel, playerTwoSegmentLabel, nil]]];
+        [self setActivePlayerSegmentControl:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"", @"", nil]]];
         [activePlayerSegmentControl setFrame:CGRectMake(0, 0, frame.size.width, 30)];
         [activePlayerSegmentControl setSelectedSegmentIndex:0];
         [self addSubview:activePlayerSegmentControl];
@@ -70,6 +65,8 @@ const double BOARD_Y_INSET = 40;
 }
 
 - (void)drawRect:(CGRect)rect {
+    [self updateScores];
+
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 2.0);
 
@@ -149,7 +146,7 @@ const double BOARD_Y_INSET = 40;
         }
     }
 
-    [self updateScores];
+    [self setNeedsDisplay];
 }
 
 - (void)updateScores {

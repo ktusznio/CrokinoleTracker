@@ -35,5 +35,6 @@
 - (void)updateScores;
 - (BOOL)canDrawNewDiscAtPosition:(CGPoint)newDiscPosition;
 - (void)removeLastDiscForActivePlayer;
+- (int)valueForPoint:(CGPoint)point;
 
 @end

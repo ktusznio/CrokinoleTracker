@@ -248,4 +248,18 @@ const double BOARD_Y_INSET = 40;
     }
 }
 
+- (int)valueForPoint:(CGPoint)point {
+    double radius = [self calculateRadiusOfPosition:point];
+
+    if (radius < fifteensRadiusThreshold - DISC_RADIUS) {
+        return 15;
+    } else if (radius < tensRadiusThreshold - DISC_RADIUS) {
+        return 10;
+    } else if (radius < fivesRadiusThreshold - DISC_RADIUS) {
+        return 5;
+    }
+
+    return 0;
+}
+
 @end

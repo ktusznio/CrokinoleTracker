@@ -23,6 +23,7 @@
 @property (strong, nonatomic) UIButton *nextRoundButton;
 
 - (id)initForRound:(Round *)aRound;
+
 - (void)onQuitButtonTap:(id)sender;
 - (void)onUndoButtonTap:(id)sender;
 - (void)onNextRoundButtonTap:(id)sender;

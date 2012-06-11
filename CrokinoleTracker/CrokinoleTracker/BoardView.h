@@ -8,40 +8,33 @@
 
 #import <UIKit/UIKit.h>
 
-#import "PlayerActivationButton.h"
+@class Round;
 
-@protocol BoardViewDelegate
+@interface BoardView : UIView <UIGestureRecognizerDelegate>
 
-- (void)boardWasRecreated;
-- (void)boardWasTapped:(CGPoint)point
-           playerIndex:(int)playerIndex;
+@property (strong, nonatomic) Round *round;
 
-@end
-
-extern const double DISC_RADIUS;
-
-@interface BoardView : UIView <PlayerActivationButtonDelegate, UIGestureRecognizerDelegate>
-
-@property (weak, nonatomic) id<BoardViewDelegate> delegate;
+@property (nonatomic) CGPoint boardCenter;
+@property (nonatomic) double fifteensRadiusThreshold;
+@property (nonatomic) double tensRadiusThreshold;
+@property (nonatomic) double fivesRadiusThreshold;
 
 @property (strong, nonatomic) NSMutableArray *discPositions;
-@property (nonatomic) int playerOne15s;
-@property (nonatomic) int playerOne10s;
-@property (nonatomic) int playerOne5s;
-@property (nonatomic) int playerTwo15s;
-@property (nonatomic) int playerTwo10s;
-@property (nonatomic) int playerTwo5s;
+
+@property (nonatomic) int playerOneStartingGameScore;
+@property (nonatomic) int playerTwoStartingGameScore;
+
 @property (strong, nonatomic) NSArray *playerColors;
 
-@property (strong, nonatomic) PlayerActivationButton *playerOneActivationButton;
-@property (strong, nonatomic) PlayerActivationButton *playerTwoActivationButton;
+@property (strong, nonatomic) UISegmentedControl *activePlayerSegmentControl;
 
-- (id)initWithFrame:(CGRect)frame
-           delegate:(id<BoardViewDelegate>)aDelegate;
+- (id)initWithRound:(Round *)aRound andFrame:(CGRect)frame;
+
 - (void)recreateDiscPositions:(NSMutableArray *)someDiscPositions;
-+ (double)calculateRadiusOfPosition:(CGPoint)position;
+- (double)calculateRadiusOfPosition:(CGPoint)position;
 - (void)updateCountsForDiscWithCenterAtRadius:(double)radius
                                   playerIndex:(int)playerIndex;
+- (void)updateScores;
 - (BOOL)canDrawNewDiscAtPosition:(CGPoint)newDiscPosition;
 - (void)removeLastDiscForActivePlayer;
 

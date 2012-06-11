@@ -38,7 +38,6 @@
 		5077FE271582947E004184EE /* BoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5077FE261582947E004184EE /* BoardView.m */; };
 		5077FE2A1582988D004184EE /* TwentiesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5077FE291582988D004184EE /* TwentiesView.m */; };
 		50C24F211548978B005327FA /* PlayerStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C24F201548978B005327FA /* PlayerStatistics.m */; };
-		50F929861583D55600CEC039 /* PlayerActivationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F929851583D55600CEC039 /* PlayerActivationButton.m */; };
 		8E155FEA154A1A6700BB6A0C /* GameStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E155FE9154A1A6700BB6A0C /* GameStatistics.m */; };
 		8E155FEC154A284800BB6A0C /* GameStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E155FEB154A284800BB6A0C /* GameStatisticsViewController.xib */; };
 		8E155FF1154A30D000BB6A0C /* GameStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E155FF0154A30D000BB6A0C /* GameStatisticsViewController.m */; };
@@ -116,8 +115,6 @@
 		5077FE291582988D004184EE /* TwentiesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwentiesView.m; sourceTree = "<group>"; };
 		50C24F1F1548978B005327FA /* PlayerStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerStatistics.h; sourceTree = "<group>"; };
 		50C24F201548978B005327FA /* PlayerStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerStatistics.m; sourceTree = "<group>"; };
-		50F929841583D55600CEC039 /* PlayerActivationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerActivationButton.h; sourceTree = "<group>"; };
-		50F929851583D55600CEC039 /* PlayerActivationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerActivationButton.m; sourceTree = "<group>"; };
 		8E155FE8154A1A6700BB6A0C /* GameStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStatistics.h; sourceTree = "<group>"; };
 		8E155FE9154A1A6700BB6A0C /* GameStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameStatistics.m; sourceTree = "<group>"; };
 		8E155FEB154A284800BB6A0C /* GameStatisticsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameStatisticsViewController.xib; sourceTree = "<group>"; };
@@ -270,8 +267,6 @@
 			children = (
 				5077FE251582947E004184EE /* BoardView.h */,
 				5077FE261582947E004184EE /* BoardView.m */,
-				50F929841583D55600CEC039 /* PlayerActivationButton.h */,
-				50F929851583D55600CEC039 /* PlayerActivationButton.m */,
 				5077FE281582988D004184EE /* TwentiesView.h */,
 				5077FE291582988D004184EE /* TwentiesView.m */,
 				5055C95C1550B9940072917D /* GameSummaryView.h */,
@@ -483,7 +478,6 @@
 				5077FE2415828EEF004184EE /* VisualScorekeepingViewController.m in Sources */,
 				5077FE271582947E004184EE /* BoardView.m in Sources */,
 				5077FE2A1582988D004184EE /* TwentiesView.m in Sources */,
-				50F929861583D55600CEC039 /* PlayerActivationButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

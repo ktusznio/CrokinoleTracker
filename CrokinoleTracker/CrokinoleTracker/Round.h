@@ -33,6 +33,10 @@
 - (int)fifteensForPlayer:(Player *)player;
 - (int)twentiesForPlayer:(Player *)player;
 
+- (void)adjustCounter:(int)counterValue
+          playerIndex:(int)playerIndex
+            increment:(BOOL)incrementFlag;
+
 - (Player *)winner;
 
 @end

@@ -8,6 +8,8 @@
 
 #import "Round.h"
 
+#import <objc/message.h>
+
 #import "CoreDataUtilities.h"
 #import "Game.h"
 
@@ -128,6 +130,39 @@
     }
 
     return 0;
+}
+
+
+- (void)adjustCounter:(int)counterValue
+          playerIndex:(int)playerIndex
+            increment:(BOOL)incrementFlag {
+    NSString *player = (playerIndex == 0) ? @"playerOne" : @"playerTwo";
+
+    NSString *counter;
+    switch (counterValue) {
+        case 20:
+            counter = @"20s";
+            break;
+        case 15:
+            counter = @"15s";
+            break;
+        case 10:
+            counter = @"10s";
+            break;
+        case 5:
+            counter = @"5s";
+            break;
+        default:
+            break;
+    }
+
+    SEL getSelector = NSSelectorFromString([NSString stringWithFormat:@"%@%@", player, counter]);
+    SEL setSelector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@@", player, counter]);
+
+    int currentValue = [(NSNumber *)objc_msgSend(self, getSelector) intValue];
+    int newValue = (incrementFlag) ? currentValue + 1 : currentValue - 1;
+
+    objc_msgSend(self, setSelector, [NSNumber numberWithInt:newValue]);
 }
 
 - (Player *)winner {

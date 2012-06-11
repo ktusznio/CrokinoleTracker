@@ -19,8 +19,6 @@
 @property (nonatomic) double tensRadiusThreshold;
 @property (nonatomic) double fivesRadiusThreshold;
 
-@property (strong, nonatomic) NSMutableArray *discPositions;
-
 @property (nonatomic) int playerOneStartingGameScore;
 @property (nonatomic) int playerTwoStartingGameScore;
 

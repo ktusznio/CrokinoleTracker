@@ -18,7 +18,7 @@ const double BOARD_Y_INSET = 40;
 
 @implementation BoardView
 
-@synthesize round, boardCenter, discPositions;
+@synthesize round, boardCenter;
 @synthesize fifteensRadiusThreshold, tensRadiusThreshold, fivesRadiusThreshold;
 @synthesize playerOneStartingGameScore, playerTwoStartingGameScore;
 @synthesize playerColors;
@@ -31,8 +31,6 @@ const double BOARD_Y_INSET = 40;
         [self setRound:aRound];
         [self setPlayerOneStartingGameScore:[[round game] playerOneScoreAtRound:round]];
         [self setPlayerTwoStartingGameScore:[[round game] playerTwoScoreAtRound:round]];
-
-        [self setDiscPositions:[NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], nil]];
 
         [self setPlayerColors:[NSArray arrayWithObjects:[UIColor blackColor], [UIColor orangeColor], nil]];
 
@@ -108,7 +106,7 @@ const double BOARD_Y_INSET = 40;
 
     // Finally, draw the discs.
     for (int i = 0; i < 2; i++) {
-        NSMutableArray *discPositionArray = [[self discPositions] objectAtIndex:i];
+        NSMutableArray *discPositionArray = [[round discPositions] objectAtIndex:i];
         CGContextSetFillColorWithColor(context, ((UIColor *)[[self playerColors] objectAtIndex:i]).CGColor);
         for (NSValue *discPositionValue in discPositionArray) {
             CGPoint discPosition = [discPositionValue CGPointValue];
@@ -187,7 +185,6 @@ const double BOARD_Y_INSET = 40;
 }
 
 - (void)recreateDiscPositions:(NSMutableArray *)someDiscPositions {
-    [self setDiscPositions:someDiscPositions];
     [round setPlayerOne15s:[NSNumber numberWithInt:0]];
     [round setPlayerOne10s:[NSNumber numberWithInt:0]];
     [round setPlayerOne5s:[NSNumber numberWithInt:0]];
@@ -196,7 +193,7 @@ const double BOARD_Y_INSET = 40;
     [round setPlayerTwo5s:[NSNumber numberWithInt:0]];
 
     for (int i = 0; i < 2; i++) {
-        NSMutableArray *discPositionArray = [[self discPositions] objectAtIndex:i];
+        NSMutableArray *discPositionArray = [[round discPositions] objectAtIndex:i];
         for (NSValue *discPositionValue in discPositionArray) {
             CGPoint discPosition = [discPositionValue CGPointValue];
             [self updateCountsForDiscWithCenterAtRadius:[self calculateRadiusOfPosition:discPosition]
@@ -211,7 +208,7 @@ const double BOARD_Y_INSET = 40;
     double radius = [self calculateRadiusOfPosition:tapPosition];
     if (radius < fivesRadiusThreshold - DISC_RADIUS && [self canDrawNewDiscAtPosition:tapPosition]) {
         int playerIndex = [activePlayerSegmentControl selectedSegmentIndex];
-        [[[self discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:tapPosition]];
+        [[[round discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:tapPosition]];
 
         // Determine the value of the point and update the appropriate score.
         [self updateCountsForDiscWithCenterAtRadius:radius
@@ -225,7 +222,7 @@ const double BOARD_Y_INSET = 40;
 - (BOOL)canDrawNewDiscAtPosition:(CGPoint)newDiscPosition {
     // The given position needs to be 2*DISC_RADIUS away from all other disc positions.
     for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
-        NSMutableArray *playerDiscs = [[self discPositions] objectAtIndex:playerIndex];
+        NSMutableArray *playerDiscs = [[round discPositions] objectAtIndex:playerIndex];
         for (NSValue *discPositionValue in playerDiscs) {
             CGPoint discPosition = [discPositionValue CGPointValue];
 
@@ -244,7 +241,7 @@ const double BOARD_Y_INSET = 40;
 
 - (void)removeLastDiscForActivePlayer {
     int activePlayerIndex = [activePlayerSegmentControl selectedSegmentIndex];
-    NSMutableArray *playerDiscs = [[self discPositions] objectAtIndex:activePlayerIndex];
+    NSMutableArray *playerDiscs = [[round discPositions] objectAtIndex:activePlayerIndex];
     if ([playerDiscs count] > 0) {
         [playerDiscs removeLastObject];
         [self setNeedsDisplay];

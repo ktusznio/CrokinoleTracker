@@ -137,25 +137,6 @@ const double BOARD_Y_INSET = 40;
     [activePlayerSegmentControl setTitle:playerTwoSegmentLabel forSegmentAtIndex:1];
 }
 
-- (void)recreateDiscPositions:(NSMutableArray *)someDiscPositions {
-    [round setPlayerOne15s:[NSNumber numberWithInt:0]];
-    [round setPlayerOne10s:[NSNumber numberWithInt:0]];
-    [round setPlayerOne5s:[NSNumber numberWithInt:0]];
-    [round setPlayerTwo15s:[NSNumber numberWithInt:0]];
-    [round setPlayerTwo10s:[NSNumber numberWithInt:0]];
-    [round setPlayerTwo5s:[NSNumber numberWithInt:0]];
-
-    for (int i = 0; i < 2; i++) {
-        NSMutableArray *discPositionArray = [[round discPositions] objectAtIndex:i];
-        for (NSValue *discPositionValue in discPositionArray) {
-            int discValue = [self valueForPoint:[discPositionValue CGPointValue]];
-            [round adjustCounter:discValue
-                     playerIndex:i
-                       increment:YES];
-        }
-    }
-}
-
 - (void)onBoardTap:(UITapGestureRecognizer *)sender {
     // If the tap is in bounds, add a disc position.
     CGPoint tapPosition = [sender locationInView:self];

@@ -84,13 +84,6 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    // Recreate the board view.
-    [boardView recreateDiscPositions:[round discPositions]];
-
-    [super viewWillAppear:animated];
-}
-
 - (void)viewWillDisappear:(BOOL)animated {
     // Update and save the current round.
     [CoreDataUtilities saveManagedContext];

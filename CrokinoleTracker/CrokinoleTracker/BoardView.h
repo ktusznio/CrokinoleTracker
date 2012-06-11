@@ -28,7 +28,6 @@
 
 - (id)initWithRound:(Round *)aRound andFrame:(CGRect)frame;
 
-- (void)recreateDiscPositions:(NSMutableArray *)someDiscPositions;
 - (double)calculateRadiusOfPosition:(CGPoint)position;
 - (void)updateScores;
 - (BOOL)canDrawNewDiscAtPosition:(CGPoint)newDiscPosition;

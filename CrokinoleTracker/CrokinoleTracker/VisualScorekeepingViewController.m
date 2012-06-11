@@ -48,63 +48,66 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
 
     // Add the name labels.
     [self setPlayerOneNameLabel:[[UILabel alloc] initWithFrame:CGRectMake(20, 20, 94, 21)]];
-    [[self playerOneNameLabel] setTextAlignment:UITextAlignmentCenter];
-    [[self view] addSubview:[self playerOneNameLabel]];
+    [playerOneNameLabel setTextAlignment:UITextAlignmentCenter];
+    [[self view] addSubview:playerOneNameLabel];
 
     [self setPlayerTwoNameLabel:[[UILabel alloc] initWithFrame:CGRectMake(206, 20, 94, 21)]];
-    [[self playerTwoNameLabel] setTextAlignment:UITextAlignmentCenter];
-    [[self view] addSubview:[self playerTwoNameLabel]];
+    [playerTwoNameLabel setTextAlignment:UITextAlignmentCenter];
+    [[self view] addSubview:playerTwoNameLabel];
 
     // Add the score labels.
     [self setPlayerOneScoreLabel:[[UILabel alloc] initWithFrame:CGRectMake(20, 45, 94, 21)]];
-    [[self playerOneScoreLabel] setTextAlignment:UITextAlignmentCenter];
-    [[self view] addSubview:[self playerOneScoreLabel]];
+    [playerOneScoreLabel setTextAlignment:UITextAlignmentCenter];
+    [[self view] addSubview:playerOneScoreLabel];
 
     [self setPlayerTwoScoreLabel:[[UILabel alloc] initWithFrame:CGRectMake(206, 45, 94, 21)]];
-    [[self playerTwoScoreLabel] setTextAlignment:UITextAlignmentCenter];
-    [[self view] addSubview:[self playerTwoScoreLabel]];
+    [playerTwoScoreLabel setTextAlignment:UITextAlignmentCenter];
+    [[self view] addSubview:playerTwoScoreLabel];
 
     // Add the 20s views.
     [self setPlayerOne20sView:[[TwentiesView alloc] initWithFrame:CGRectMake(20, 70, 94, 21)
                                                          delegate:self]];
-    [[self view] addSubview:[self playerOne20sView]];
+    [[self view] addSubview:playerOne20sView];
 
     [self setPlayerTwo20sView:[[TwentiesView alloc] initWithFrame:CGRectMake(206, 70, 94, 21)
                                                          delegate:self]];
-    [[self view] addSubview:[self playerTwo20sView]];
+    [[self view] addSubview:playerTwo20sView];
 
     // Add the board view.
     [self setBoardView:[[BoardView alloc] initWithFrame:CGRectMake(35, 95, 250, 250)
                                                delegate:self]];
-    [[self view] addSubview:[self boardView]];
+    [[self view] addSubview:boardView];
 
     // Add the buttons.
     [self setQuitButton:[UIButton buttonWithType:UIButtonTypeRoundedRect]];
-    [[self quitButton] setFrame:CGRectMake(20, 359, 80, 37)];
-    [[self quitButton] setTitle:@"Quit"
-                       forState:UIControlStateNormal];
-    [[self quitButton] addTarget:self
-                          action:@selector(onQuitButtonTap:)
-                forControlEvents:UIControlEventTouchUpInside];
-    [[self view] addSubview:[self quitButton]];
+    [quitButton setFrame:CGRectMake(20, 359, 70, 37)];
+    [[quitButton titleLabel] setTextAlignment:UITextAlignmentCenter];
+    [quitButton setTitle:@"Quit"
+                forState:UIControlStateNormal];
+    [quitButton addTarget:self
+                   action:@selector(onQuitButtonTap:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [[self view] addSubview:quitButton];
 
     [self setUndoButton:[UIButton buttonWithType:UIButtonTypeRoundedRect]];
-    [[self undoButton] setFrame:CGRectMake(110, 359, 80, 37)];
-    [[self undoButton] setTitle:@"Undo"
-                       forState:UIControlStateNormal];
-    [[self undoButton] addTarget:self
-                          action:@selector(onUndoButtonTap:)
-                forControlEvents:UIControlEventTouchUpInside];
-    [[self view] addSubview:[self undoButton]];
+    [undoButton setFrame:CGRectMake(105, 359, 70, 37)];
+    [[undoButton titleLabel] setTextAlignment:UITextAlignmentCenter];
+    [undoButton setTitle:@"Undo"
+                forState:UIControlStateNormal];
+    [undoButton addTarget:self
+                   action:@selector(onUndoButtonTap:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [[self view] addSubview:undoButton];
 
     [self setNextRoundButton:[UIButton buttonWithType:UIButtonTypeRoundedRect]];
-    [[self nextRoundButton] setFrame:CGRectMake(180, 359, 120, 37)];
-    [[self nextRoundButton] setTitle:@"Next Round"
-                            forState:UIControlStateNormal];
-    [[self nextRoundButton] addTarget:self
-                              action:@selector(onNextRoundButtonTap:)
-                    forControlEvents:UIControlEventTouchUpInside];
-    [[self view] addSubview:[self nextRoundButton]];
+    [nextRoundButton setFrame:CGRectMake(190, 359, 110, 37)];
+    [[nextRoundButton titleLabel] setTextAlignment:UITextAlignmentCenter];
+    [nextRoundButton setTitle:@"Next Round"
+                     forState:UIControlStateNormal];
+    [nextRoundButton addTarget:self
+                        action:@selector(onNextRoundButtonTap:)
+              forControlEvents:UIControlEventTouchUpInside];
+    [[self view] addSubview:nextRoundButton];
 
     // If this is the first round, remove the back button on the navigation bar.
     if (round == [[[round game] rounds] objectAtIndex:0]) {
@@ -128,11 +131,11 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
     [playerTwoScoreLabel setText:[NSString stringWithFormat:@"%d", playerTwoStartingGameScore + [round playerTwoScore]]];
 
     // Set the twenties view values according to the round's data.
-    [[self playerOne20sView] updateValue:[[round playerOne20s] doubleValue]];
-    [[self playerTwo20sView] updateValue:[[round playerTwo20s] doubleValue]];
+    [playerOne20sView updateValue:[[round playerOne20s] doubleValue]];
+    [playerTwo20sView updateValue:[[round playerTwo20s] doubleValue]];
 
     // Recreate the board view.
-    [[self boardView] recreateDiscPositions:[round discPositions]];
+    [boardView recreateDiscPositions:[round discPositions]];
 
     [super viewWillAppear:animated];
 }
@@ -140,7 +143,6 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
 - (void)viewWillDisappear:(BOOL)animated {
     // Update and save the current round.
     [self saveRound];
-
     [super viewWillDisappear:animated];
 }
 
@@ -208,7 +210,7 @@ const int ALERT_VIEW_VISUAL_QUIT_BUTTON_INDEX = 1;
 }
 
 - (void)onUndoButtonTap:(id)sender {
-    [[self boardView] removeLastDiscForActivePlayer];
+    [boardView removeLastDiscForActivePlayer];
 }
 
 - (void)onNextRoundButtonTap:(id)sender {

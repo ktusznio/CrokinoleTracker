@@ -24,6 +24,16 @@
 @dynamic playerTwo5s;
 @dynamic game;
 
+- (id)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {
+    self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
+
+    if (self) {
+        [self setDiscPositions:[NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], nil]];
+    }
+
+    return self;
+}
+
 - (int)scoreForPlayer:(Player *)player {
     if ([[[self game] players] objectAtIndex:0] == player) {
         return [self playerOneScore];

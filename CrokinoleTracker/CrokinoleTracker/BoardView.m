@@ -68,14 +68,16 @@ const double BOARD_Y_INSET = 35;
     [self updateScores];
 
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(context, 2.0);
+    double lineWidth = 2.0;
+    CGContextSetLineWidth(context, lineWidth);
 
     // Draw the board.
     CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
 
     // First, the circles.
     double outerSquareWidth = 2 * fivesRadiusThreshold;
-    CGRect outerSquare = CGRectMake(0, BOARD_Y_INSET, outerSquareWidth, outerSquareWidth);
+    // The outer square needs to account for the line width so that the circle isn't clipped.
+    CGRect outerSquare = CGRectMake(lineWidth, BOARD_Y_INSET, outerSquareWidth - (2 * lineWidth), outerSquareWidth);
     CGContextAddEllipseInRect(context, outerSquare);
 
     double middleSquareWidth = 2 * tensRadiusThreshold;

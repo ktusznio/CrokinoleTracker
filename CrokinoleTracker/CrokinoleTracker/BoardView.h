@@ -15,13 +15,18 @@
 @property (strong, nonatomic) Round *round;
 
 @property (nonatomic) CGPoint boardCenter;
+@property (nonatomic) double boardYInset;
 @property (nonatomic) double fifteensRadiusThreshold;
 @property (nonatomic) double tensRadiusThreshold;
 @property (nonatomic) double fivesRadiusThreshold;
+@property (nonatomic) CGRect outerCircleBounds;
+@property (nonatomic) CGRect middleCircleBounds;
+@property (nonatomic) CGRect innerCircleBounds;
 
 @property (nonatomic) int playerOneStartingGameScore;
 @property (nonatomic) int playerTwoStartingGameScore;
 
+@property (nonatomic) double lineWidth;
 @property (strong, nonatomic) NSArray *playerColors;
 
 @property (strong, nonatomic) UISegmentedControl *activePlayerSegmentControl;

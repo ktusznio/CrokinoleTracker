@@ -13,8 +13,7 @@
 #import "Round.h"
 
 const double DISC_RADIUS = 7.5;
-const double BOARD_X_INSET = 5;
-const double BOARD_Y_INSET = 40;
+const double BOARD_Y_INSET = 35;
 
 @implementation BoardView
 
@@ -44,14 +43,16 @@ const double BOARD_Y_INSET = 40;
         [activePlayerSegmentControl setSelectedSegmentIndex:0];
         [self addSubview:activePlayerSegmentControl];
 
-        // Calculate the center of the board.
-        [self setBoardCenter:CGPointMake(frame.size.width / 2.0, BOARD_Y_INSET + (frame.size.width / 2.0))];
-
         // Calculate the radius scoring thresholds.
-        double boardWidth = frame.size.width - (2 * BOARD_X_INSET);
+        double boardWidth = frame.size.width;
         [self setFifteensRadiusThreshold:boardWidth / 6.0];
         [self setTensRadiusThreshold:boardWidth / 3.0];
         [self setFivesRadiusThreshold:boardWidth / 2.0];
+
+        // Calculate the center of the board.
+        double boardCenterX = frame.size.width / 2.0;
+        double boardCenterY = BOARD_Y_INSET + (boardWidth / 2.0);
+        [self setBoardCenter:CGPointMake(boardCenterX, boardCenterY)];
 
         // Prepare a tap gesture recognizer for the board.
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -74,17 +75,17 @@ const double BOARD_Y_INSET = 40;
 
     // First, the circles.
     double outerSquareWidth = 2 * fivesRadiusThreshold;
-    CGRect outerSquare = CGRectMake(BOARD_X_INSET, BOARD_Y_INSET, outerSquareWidth, outerSquareWidth);
+    CGRect outerSquare = CGRectMake(0, BOARD_Y_INSET, outerSquareWidth, outerSquareWidth);
     CGContextAddEllipseInRect(context, outerSquare);
 
     double middleSquareWidth = 2 * tensRadiusThreshold;
     double middleSquareInset = (outerSquareWidth - middleSquareWidth) / 2.0;
-    CGRect middleSquare = CGRectMake(BOARD_X_INSET + middleSquareInset, BOARD_Y_INSET + middleSquareInset, middleSquareWidth, middleSquareWidth);
+    CGRect middleSquare = CGRectMake(middleSquareInset, BOARD_Y_INSET + middleSquareInset, middleSquareWidth, middleSquareWidth);
     CGContextAddEllipseInRect(context, middleSquare);
 
     double innerSquareWidth = 2 * fifteensRadiusThreshold;
     double innerSquareInset = (outerSquareWidth - innerSquareWidth) / 2.0;
-    CGRect innerRectangle = CGRectMake(BOARD_X_INSET + innerSquareInset, BOARD_Y_INSET + innerSquareInset, innerSquareWidth, innerSquareWidth);
+    CGRect innerRectangle = CGRectMake(innerSquareInset, BOARD_Y_INSET + innerSquareInset, innerSquareWidth, innerSquareWidth);
     CGContextAddEllipseInRect(context, innerRectangle);
 
     // Next, the lines.

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "BoardView.h"
-#import "TwentiesView.h"
 
 @class Round;
 

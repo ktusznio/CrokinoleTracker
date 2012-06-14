@@ -160,8 +160,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 - (void)onBoardTap:(UITapGestureRecognizer *)sender {
     // If the tap is in bounds, add a disc position.
     CGPoint tapPosition = [sender locationInView:self];
-    double radius = [self radiusOfPosition:tapPosition];
-    if (radius < fivesRadiusThreshold - DISC_RADIUS && [self canDrawNewDiscAtPosition:tapPosition]) {
+    if ([self canDrawNewDiscAtPosition:tapPosition]) {
         int playerIndex = [activePlayerSegmentControl selectedSegmentIndex];
         [[[round discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:tapPosition]];
 
@@ -176,6 +175,11 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 }
 
 - (BOOL)canDrawNewDiscAtPosition:(CGPoint)newDiscPosition {
+    // The new disc needs to be inside the board.
+    if ([self radiusOfPosition:newDiscPosition] >= fivesRadiusThreshold - DISC_RADIUS) {
+        return NO;
+    }
+
     // If the disc is a 20 then it can be drawn.
     if ([self valueForPoint:newDiscPosition] >= 20) {
         return YES;

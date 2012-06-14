@@ -18,8 +18,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 @implementation BoardView
 
 @synthesize round, boardCenter, boardYInset;
-@synthesize fifteensRadiusThreshold, tensRadiusThreshold, fivesRadiusThreshold;
-@synthesize outerCircleBounds, middleCircleBounds, innerCircleBounds;
+@synthesize twentiesRadiusThreshold, fifteensRadiusThreshold, tensRadiusThreshold, fivesRadiusThreshold;
+@synthesize twentiesCircleBounds, outerCircleBounds, middleCircleBounds, innerCircleBounds;
 @synthesize playerOneStartingGameScore, playerTwoStartingGameScore;
 @synthesize playerColors, lineWidth;
 @synthesize activePlayerSegmentControl;
@@ -47,6 +47,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 
         // Calculate the radius scoring thresholds.
         double boardWidth = frame.size.width;
+        [self setTwentiesRadiusThreshold:DISC_RADIUS + 6.0];
         [self setFifteensRadiusThreshold:boardWidth / 6.0];
         [self setTensRadiusThreshold:boardWidth / 3.0];
         [self setFivesRadiusThreshold:boardWidth / 2.0];
@@ -66,6 +67,10 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         double innerSquareWidth = 2 * fifteensRadiusThreshold;
         double innerSquareInset = (outerSquareWidth - innerSquareWidth) / 2.0;
         [self setInnerCircleBounds:CGRectMake(innerSquareInset, boardYInset + innerSquareInset, innerSquareWidth, innerSquareWidth)];
+
+        double twentiesSquareWidth = 2 * twentiesRadiusThreshold;
+        double twentiesSquareInset = (outerSquareWidth - twentiesSquareWidth) / 2.0;
+        [self setTwentiesCircleBounds:CGRectMake(twentiesSquareInset, boardYInset + twentiesSquareInset, twentiesSquareWidth, twentiesSquareWidth)];
 
         // Calculate the center of the board.
         double boardCenterX = frame.size.width / 2.0;
@@ -95,6 +100,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     CGContextAddEllipseInRect(context, outerCircleBounds);
     CGContextAddEllipseInRect(context, middleCircleBounds);
     CGContextAddEllipseInRect(context, innerCircleBounds);
+    CGContextAddEllipseInRect(context, twentiesCircleBounds);
 
     // Next, the lines.
     // Did some sweet math to get these numbers.  God forbid they ever INCHWORM! GOD SPITS ON YOUR BRITTLE CODE!
@@ -120,7 +126,11 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         CGContextSetFillColorWithColor(context, ((UIColor *)[[self playerColors] objectAtIndex:i]).CGColor);
         for (NSValue *discPositionValue in discPositionArray) {
             CGPoint discPosition = [discPositionValue CGPointValue];
-            CGContextFillEllipseInRect(context, CGRectMake(discPosition.x - DISC_RADIUS, discPosition.y - DISC_RADIUS, DISC_RADIUS * 2, DISC_RADIUS * 2));
+
+            // Draw discs outside the 20s circle.
+            if ([self valueForPoint:discPosition] < 20) {
+                CGContextFillEllipseInRect(context, CGRectMake(discPosition.x - DISC_RADIUS, discPosition.y - DISC_RADIUS, DISC_RADIUS * 2, DISC_RADIUS * 2));
+            }
         }
     }
 }
@@ -166,6 +176,11 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 }
 
 - (BOOL)canDrawNewDiscAtPosition:(CGPoint)newDiscPosition {
+    // If the disc is a 20 then it can be drawn.
+    if ([self valueForPoint:newDiscPosition] >= 20) {
+        return YES;
+    }
+
     // The given position needs to be 2*DISC_RADIUS away from all other disc positions.
     for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
         NSMutableArray *playerDiscs = [[round discPositions] objectAtIndex:playerIndex];
@@ -202,7 +217,9 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 - (int)valueForPoint:(CGPoint)point {
     double radius = [self calculateRadiusOfPosition:point];
 
-    if (radius < fifteensRadiusThreshold - DISC_RADIUS) {
+    if (radius < twentiesRadiusThreshold - DISC_RADIUS) {
+        return 20;
+    } else if (radius < fifteensRadiusThreshold - DISC_RADIUS) {
         return 15;
     } else if (radius < tensRadiusThreshold - DISC_RADIUS) {
         return 10;

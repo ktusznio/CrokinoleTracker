@@ -16,9 +16,11 @@
 
 @property (nonatomic) CGPoint boardCenter;
 @property (nonatomic) double boardYInset;
+@property (nonatomic) double twentiesRadiusThreshold;
 @property (nonatomic) double fifteensRadiusThreshold;
 @property (nonatomic) double tensRadiusThreshold;
 @property (nonatomic) double fivesRadiusThreshold;
+@property (nonatomic) CGRect twentiesCircleBounds;
 @property (nonatomic) CGRect outerCircleBounds;
 @property (nonatomic) CGRect middleCircleBounds;
 @property (nonatomic) CGRect innerCircleBounds;

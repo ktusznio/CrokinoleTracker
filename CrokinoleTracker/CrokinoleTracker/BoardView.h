@@ -36,7 +36,7 @@
 - (id)initWithFrame:(CGRect)frame
               round:(Round *)aRound;
 
-- (double)calculateRadiusOfPosition:(CGPoint)position;
+- (double)radiusOfPosition:(CGPoint)position;
 - (void)updateScores;
 - (BOOL)canDrawNewDiscAtPosition:(CGPoint)newDiscPosition;
 - (void)removeLastDiscForActivePlayer;

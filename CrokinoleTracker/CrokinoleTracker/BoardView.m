@@ -135,7 +135,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     }
 }
 
-- (double)calculateRadiusOfPosition:(CGPoint)position {
+- (double)radiusOfPosition:(CGPoint)position {
     double xSquared = (position.x - boardCenter.x) * (position.x - boardCenter.x);
     double ySquared = (position.y - boardCenter.y) * (position.y - boardCenter.y);
     return sqrt(xSquared + ySquared);
@@ -160,7 +160,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 - (void)onBoardTap:(UITapGestureRecognizer *)sender {
     // If the tap is in bounds, add a disc position.
     CGPoint tapPosition = [sender locationInView:self];
-    double radius = [self calculateRadiusOfPosition:tapPosition];
+    double radius = [self radiusOfPosition:tapPosition];
     if (radius < fivesRadiusThreshold - DISC_RADIUS && [self canDrawNewDiscAtPosition:tapPosition]) {
         int playerIndex = [activePlayerSegmentControl selectedSegmentIndex];
         [[[round discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:tapPosition]];
@@ -215,7 +215,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 }
 
 - (int)valueForPoint:(CGPoint)point {
-    double radius = [self calculateRadiusOfPosition:point];
+    double radius = [self radiusOfPosition:point];
 
     if (radius < twentiesRadiusThreshold - DISC_RADIUS) {
         return 20;

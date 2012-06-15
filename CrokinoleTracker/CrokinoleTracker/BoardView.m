@@ -169,11 +169,26 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     // If the tap is in bounds, add a disc position.
     CGPoint tapPosition = [sender locationInView:self];
     if ([self canDrawNewDiscAtPosition:tapPosition]) {
+        // Detect and resolve any disc collisions.
+        CGPoint newDiscPosition = tapPosition;
+        CGPoint collidingDisc = [self detectDiscCollision:newDiscPosition];
+        if (collidingDisc.x >= 0 || collidingDisc.y >= 0) {
+            newDiscPosition = [self adjustDisc:newDiscPosition
+                             collidingWithDisc:collidingDisc];
+
+            // Ignore the tap if adjusting the position still causes collisions.
+            collidingDisc = [self detectDiscCollision:newDiscPosition];
+            if (collidingDisc.x >= 0 || collidingDisc.y >= 0) {
+                return;
+            }
+        }
+
+        // Add the disc for the selected player.
         int playerIndex = [activePlayerSegmentControl selectedSegmentIndex];
-        [[[round discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:tapPosition]];
+        [[[round discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:newDiscPosition]];
 
         // Determine the value of the point and update the appropriate score.
-        [round adjustCounter:[self valueForPoint:tapPosition]
+        [round adjustCounter:[self valueForPoint:newDiscPosition]
                  playerIndex:playerIndex
                    increment:YES];
 
@@ -182,18 +197,34 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     }
 }
 
-- (BOOL)canDrawNewDiscAtPosition:(CGPoint)newDiscPosition {
+- (BOOL)canDrawNewDiscAtPosition:(CGPoint)tapPosition {
     // The new disc needs to be inside the board.
-    if ([self radiusOfPosition:newDiscPosition] >= fivesRadiusThreshold - DISC_RADIUS) {
+    if ([self radiusOfPosition:tapPosition] >= (fivesRadiusThreshold - DISC_RADIUS)) {
         return NO;
     }
 
-    // If the disc is a 20 then it can be drawn.
-    if ([self valueForPoint:newDiscPosition] >= 20) {
-        return YES;
+    // The tap must not be on the same point as the center of an existing disc.
+    for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
+        NSMutableArray *playerDiscs = [[round discPositions] objectAtIndex:playerIndex];
+        for (NSValue *discPositionValue in playerDiscs) {
+            CGPoint discPosition = [discPositionValue CGPointValue];
+
+            if (CGPointEqualToPoint(tapPosition, discPosition)) {
+                return NO;
+            }
+        }
     }
 
-    // The given position needs to be 2*DISC_RADIUS away from all other disc positions.
+    return YES;
+}
+
+- (CGPoint)detectDiscCollision:(CGPoint)newDiscPosition {
+    // If the disc is a 20 then it doesn't collide with other discs.
+    if ([self valueForPoint:newDiscPosition] >= 20) {
+        return CGPointMake(-1, -1);
+    }
+
+    // The given position needs to be (2 * DISC_RADIUS) + lineWidth away from all other disc positions.
     for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
         NSMutableArray *playerDiscs = [[round discPositions] objectAtIndex:playerIndex];
         for (NSValue *discPositionValue in playerDiscs) {
@@ -203,13 +234,38 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
             CGFloat dy = newDiscPosition.y - discPosition.y;
             CGFloat distanceBetweenDiscs = sqrt(dx * dx + dy * dy);
 
-            if (distanceBetweenDiscs < 2 * DISC_RADIUS) {
-                return NO;
+            // To avoid imprecision when comparing doubles, we consider the difference.
+            double diff = (2 * DISC_RADIUS + lineWidth) - distanceBetweenDiscs;
+            if (diff > 0.1) {
+                return discPosition;
             }
         }
     }
 
-    return YES;
+    return CGPointMake(-1, -1);
+}
+
+- (CGPoint)adjustDisc:(CGPoint)newDisc
+    collidingWithDisc:(CGPoint)existingDisc {
+    // We move the new disc away from the existing disc so that they are (2 * DISC_RADIUS) + lineWidth apart.
+    // To get the new disc's new center, we create a vector pointing from the existing to the new disc, normalize it, and then scale it by (2 * DISC_RADIUS) + lineWidth.
+    double dx = newDisc.x - existingDisc.x;
+    double dy = newDisc.y - existingDisc.y;
+
+    double distanceBetweenDiscs = sqrt(dx * dx + dy * dy);
+
+    // Check that the distance between discs is not zero. If it is, return newDisc without adjustment to avoid division by zero.
+    if (distanceBetweenDiscs < DBL_EPSILON) {
+        return newDisc;
+    }
+
+    double dxNormalized = dx / distanceBetweenDiscs;
+    double dyNormalized = dy / distanceBetweenDiscs;
+
+    newDisc.x = existingDisc.x + (dxNormalized * ((2 * DISC_RADIUS) + lineWidth));
+    newDisc.y = existingDisc.y + (dyNormalized * ((2 * DISC_RADIUS) + lineWidth));
+
+    return newDisc;
 }
 
 - (void)removeLastDiscForActivePlayer {

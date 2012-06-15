@@ -204,7 +204,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 
     // The tap must not be on the same point as the center of an existing disc.
     for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
-        NSMutableArray *playerDiscs = [[round discPositions] objectAtIndex:playerIndex];
+        NSArray *playerDiscs = [[round discPositions] objectAtIndex:playerIndex];
         for (NSValue *discPositionValue in playerDiscs) {
             CGPoint discPosition = [discPositionValue CGPointValue];
 

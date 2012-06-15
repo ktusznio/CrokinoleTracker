@@ -39,9 +39,9 @@
 - (double)radiusOfPosition:(CGPoint)position;
 - (void)updateScores;
 - (BOOL)canDrawNewDiscAtPosition:(CGPoint)tapPosition;
-- (CGPoint)detectDiscCollision:(CGPoint)newDiscPosition;
-- (CGPoint)adjustDisc:(CGPoint)newDisc
-    collidingWithDisc:(CGPoint)existingDisc;
+- (CGPoint)discThatCollidesWithDiscAtPosition:(CGPoint)newDiscPosition;
+- (CGPoint)adjustedPositionForNewDisc:(CGPoint)newDisc
+                    collidingWithDisc:(CGPoint)existingDisc;
 - (void)removeLastDiscForActivePlayer;
 - (int)valueForPoint:(CGPoint)point;
 

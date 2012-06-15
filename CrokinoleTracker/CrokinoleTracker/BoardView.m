@@ -171,13 +171,13 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     if ([self canDrawNewDiscAtPosition:tapPosition]) {
         // Detect and resolve any disc collisions.
         CGPoint newDiscPosition = tapPosition;
-        CGPoint collidingDisc = [self detectDiscCollision:newDiscPosition];
+        CGPoint collidingDisc = [self discThatCollidesWithDiscAtPosition:newDiscPosition];
         if (collidingDisc.x >= 0 || collidingDisc.y >= 0) {
-            newDiscPosition = [self adjustDisc:newDiscPosition
-                             collidingWithDisc:collidingDisc];
+            newDiscPosition = [self adjustedPositionForNewDisc:newDiscPosition
+                                             collidingWithDisc:collidingDisc];
 
             // Ignore the tap if adjusting the position still causes collisions.
-            collidingDisc = [self detectDiscCollision:newDiscPosition];
+            collidingDisc = [self discThatCollidesWithDiscAtPosition:newDiscPosition];
             if (collidingDisc.x >= 0 || collidingDisc.y >= 0) {
                 return;
             }
@@ -218,7 +218,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     return YES;
 }
 
-- (CGPoint)detectDiscCollision:(CGPoint)newDiscPosition {
+- (CGPoint)discThatCollidesWithDiscAtPosition:(CGPoint)newDiscPosition {
     // If the disc is a 20 then it doesn't collide with other discs.
     if ([self valueForPoint:newDiscPosition] >= 20) {
         return CGPointMake(-1, -1);
@@ -245,8 +245,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     return CGPointMake(-1, -1);
 }
 
-- (CGPoint)adjustDisc:(CGPoint)newDisc
-    collidingWithDisc:(CGPoint)existingDisc {
+- (CGPoint)adjustedPositionForNewDisc:(CGPoint)newDisc
+                    collidingWithDisc:(CGPoint)existingDisc {
     // We move the new disc away from the existing disc so that they are (2 * DISC_RADIUS) + lineWidth apart.
     // To get the new disc's new center, we create a vector pointing from the existing to the new disc, normalize it, and then scale it by (2 * DISC_RADIUS) + lineWidth.
     double dx = newDisc.x - existingDisc.x;

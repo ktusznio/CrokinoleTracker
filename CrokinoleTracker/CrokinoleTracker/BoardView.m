@@ -166,28 +166,28 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 }
 
 - (void)onBoardTap:(UITapGestureRecognizer *)sender {
-    // If the tap is in bounds, add a disc position.
     CGPoint tapPosition = [sender locationInView:self];
-    if ([self canDrawNewDiscAtPosition:tapPosition]) {
-        // Detect and resolve any disc collisions.
-        CGPoint newDiscPosition = tapPosition;
-        NSValue *collidingDiscValue = [self discThatCollidesWithDiscAtPosition:newDiscPosition];
+    if ([self shouldConsiderDrawingNewDiscAtPosition:tapPosition]) {
+        // Check for disc collisions.
+        CGPoint adjustedDiscPosition = tapPosition;
+        NSValue *collidingDiscValue = [self discThatCollidesWithDiscAtPosition:adjustedDiscPosition];
         if (collidingDiscValue) {
-            newDiscPosition = [self adjustedPositionForNewDisc:newDiscPosition
-                                             collidingWithDisc:[collidingDiscValue CGPointValue]];
+            // Try to adjust the new disc position to avoid the collision.
+            adjustedDiscPosition = [self adjustedPositionForNewDisc:adjustedDiscPosition
+                                                  collidingWithDisc:[collidingDiscValue CGPointValue]];
 
             // Ignore the tap if adjusting the position still causes collisions.
-            if ([self discThatCollidesWithDiscAtPosition:newDiscPosition]) {
+            if ([self discThatCollidesWithDiscAtPosition:adjustedDiscPosition]) {
                 return;
             }
         }
 
         // Add the disc for the selected player.
         int playerIndex = [activePlayerSegmentControl selectedSegmentIndex];
-        [[[round discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:newDiscPosition]];
+        [[[round discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:adjustedDiscPosition]];
 
         // Determine the value of the point and update the appropriate score.
-        [round adjustCounter:[self valueForPoint:newDiscPosition]
+        [round adjustCounter:[self valueForPoint:adjustedDiscPosition]
                  playerIndex:playerIndex
                    increment:YES];
 
@@ -196,9 +196,9 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     }
 }
 
-- (BOOL)canDrawNewDiscAtPosition:(CGPoint)tapPosition {
+- (BOOL)shouldConsiderDrawingNewDiscAtPosition:(CGPoint)position {
     // The new disc needs to be inside the board.
-    if ([self radiusOfPosition:tapPosition] >= (fivesRadiusThreshold - DISC_RADIUS)) {
+    if ([self radiusOfPosition:position] >= (fivesRadiusThreshold - DISC_RADIUS)) {
         return NO;
     }
 
@@ -208,7 +208,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         for (NSValue *discPositionValue in playerDiscs) {
             CGPoint discPosition = [discPositionValue CGPointValue];
 
-            if (CGPointEqualToPoint(tapPosition, discPosition)) {
+            if (CGPointEqualToPoint(position, discPosition)) {
                 return NO;
             }
         }
@@ -264,8 +264,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     newPosition.x = existingDisc.x + (dxNormalized * ((2 * DISC_RADIUS) + lineWidth));
     newPosition.y = existingDisc.y + (dyNormalized * ((2 * DISC_RADIUS) + lineWidth));
 
-    // If they are suitable, return the new co-ordinates.
-    if ([self canDrawNewDiscAtPosition:newPosition]) {
+    // If they seem suitable, return the new co-ordinates.
+    if ([self shouldConsiderDrawingNewDiscAtPosition:newPosition]) {
         return newPosition;
     } else {
         return newDisc;

@@ -103,20 +103,28 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     CGContextAddEllipseInRect(context, twentiesCircleBounds);
 
     // Next, the lines.
-    // Did some sweet math to get these numbers.  God forbid they ever INCHWORM! GOD SPITS ON YOUR BRITTLE CODE!
-    /*
-    CGContextMoveToPoint(context, 40.15, 40.15);
-    CGContextAddLineToPoint(context, 68.43, 68.43);
+    // We simply need to calculate the offsets to add to and subtract from the center point.
+    // Then we can draw lines using the appropriate combinations of these points.
+    double boardCenterX = [self boardCenter].x;
+    double boardCenterY = [self boardCenter].y;
+    double outerPointOffset = sqrt([self fivesRadiusThreshold] * [self fivesRadiusThreshold] / 2);
+    double innerPointOffset = sqrt([self tensRadiusThreshold] * [self tensRadiusThreshold] / 2);
 
-    CGContextMoveToPoint(context, 40.15, 209.85);
-    CGContextAddLineToPoint(context, 68.43, 181.57);
+    // Draw the top left line.
+    CGContextMoveToPoint(context, boardCenterX - outerPointOffset, boardCenterY - outerPointOffset);
+    CGContextAddLineToPoint(context, boardCenterX - innerPointOffset, boardCenterY - innerPointOffset);
 
-    CGContextMoveToPoint(context, 209.85, 40.15);
-    CGContextAddLineToPoint(context, 181.57, 68.43);
+    // Draw the top right line.
+    CGContextMoveToPoint(context, boardCenterX + outerPointOffset, boardCenterY - outerPointOffset);
+    CGContextAddLineToPoint(context, boardCenterX + innerPointOffset, boardCenterY - innerPointOffset);
 
-    CGContextMoveToPoint(context, 209.85, 209.85);
-    CGContextAddLineToPoint(context, 181.57, 181.57);
-    */
+    // Draw the bottom left line.
+    CGContextMoveToPoint(context, boardCenterX - outerPointOffset, boardCenterY + outerPointOffset);
+    CGContextAddLineToPoint(context, boardCenterX - innerPointOffset, boardCenterY + innerPointOffset);
+
+    // Draw the bottom right line.
+    CGContextMoveToPoint(context, boardCenterX + outerPointOffset, boardCenterY + outerPointOffset);
+    CGContextAddLineToPoint(context, boardCenterX + innerPointOffset, boardCenterY + innerPointOffset);
 
     CGContextStrokePath(context);
 

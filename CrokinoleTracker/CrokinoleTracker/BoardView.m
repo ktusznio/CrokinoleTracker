@@ -171,14 +171,13 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     if ([self canDrawNewDiscAtPosition:tapPosition]) {
         // Detect and resolve any disc collisions.
         CGPoint newDiscPosition = tapPosition;
-        CGPoint collidingDisc = [self discThatCollidesWithDiscAtPosition:newDiscPosition];
-        if (collidingDisc.x >= 0 || collidingDisc.y >= 0) {
+        NSValue *collidingDiscValue = [self discThatCollidesWithDiscAtPosition:newDiscPosition];
+        if (collidingDiscValue) {
             newDiscPosition = [self adjustedPositionForNewDisc:newDiscPosition
-                                             collidingWithDisc:collidingDisc];
+                                             collidingWithDisc:[collidingDiscValue CGPointValue]];
 
             // Ignore the tap if adjusting the position still causes collisions.
-            collidingDisc = [self discThatCollidesWithDiscAtPosition:newDiscPosition];
-            if (collidingDisc.x >= 0 || collidingDisc.y >= 0) {
+            if ([self discThatCollidesWithDiscAtPosition:newDiscPosition]) {
                 return;
             }
         }
@@ -218,10 +217,10 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     return YES;
 }
 
-- (CGPoint)discThatCollidesWithDiscAtPosition:(CGPoint)newDiscPosition {
+- (NSValue *)discThatCollidesWithDiscAtPosition:(CGPoint)newDiscPosition {
     // If the disc is a 20 then it doesn't collide with other discs.
     if ([self valueForPoint:newDiscPosition] >= 20) {
-        return CGPointMake(-1, -1);
+        return nil;
     }
 
     // The given position needs to be (2 * DISC_RADIUS) + lineWidth away from all other disc positions.
@@ -237,12 +236,12 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
             // To avoid imprecision when comparing doubles, we consider the difference.
             double diff = (2 * DISC_RADIUS + lineWidth) - distanceBetweenDiscs;
             if (diff > 0.1) {
-                return discPosition;
+                return [NSValue valueWithCGPoint:discPosition];
             }
         }
     }
 
-    return CGPointMake(-1, -1);
+    return nil;
 }
 
 - (CGPoint)adjustedPositionForNewDisc:(CGPoint)newDisc

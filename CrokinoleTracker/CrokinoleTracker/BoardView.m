@@ -251,7 +251,6 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     // To get the new disc's new center, we create a vector pointing from the existing to the new disc, normalize it, and then scale it by (2 * DISC_RADIUS) + lineWidth.
     double dx = newDisc.x - existingDisc.x;
     double dy = newDisc.y - existingDisc.y;
-
     double distanceBetweenDiscs = sqrt(dx * dx + dy * dy);
 
     // Check that the distance between discs is not zero. If it is, return newDisc without adjustment to avoid division by zero.
@@ -262,10 +261,16 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     double dxNormalized = dx / distanceBetweenDiscs;
     double dyNormalized = dy / distanceBetweenDiscs;
 
-    newDisc.x = existingDisc.x + (dxNormalized * ((2 * DISC_RADIUS) + lineWidth));
-    newDisc.y = existingDisc.y + (dyNormalized * ((2 * DISC_RADIUS) + lineWidth));
+    CGPoint newPosition = CGPointZero;
+    newPosition.x = existingDisc.x + (dxNormalized * ((2 * DISC_RADIUS) + lineWidth));
+    newPosition.y = existingDisc.y + (dyNormalized * ((2 * DISC_RADIUS) + lineWidth));
 
-    return newDisc;
+    // If they are suitable, return the new co-ordinates.
+    if ([self canDrawNewDiscAtPosition:newPosition]) {
+        return newPosition;
+    } else {
+        return newDisc;
+    }
 }
 
 - (void)removeLastDiscForActivePlayer {

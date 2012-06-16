@@ -202,14 +202,16 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         return NO;
     }
 
-    // The tap must not be on the same point as the center of an existing disc.
-    for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
-        NSArray *playerDiscs = [[round discPositions] objectAtIndex:playerIndex];
-        for (NSValue *discPositionValue in playerDiscs) {
-            CGPoint discPosition = [discPositionValue CGPointValue];
+    // The tap must not be on the same point as the center of an existing disc, unless the discs are twenties which aren't drawn.
+    if ([self valueForPoint:position] < 20) {
+        for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
+            NSArray *playerDiscs = [[round discPositions] objectAtIndex:playerIndex];
+            for (NSValue *discPositionValue in playerDiscs) {
+                CGPoint discPosition = [discPositionValue CGPointValue];
 
-            if (CGPointEqualToPoint(position, discPosition)) {
-                return NO;
+                if (CGPointEqualToPoint(position, discPosition)) {
+                    return NO;
+                }
             }
         }
     }

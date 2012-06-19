@@ -29,9 +29,11 @@
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0);
-    CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
     CGRect strokeRect = [CoreGraphicsUtilities rectForOnePixelStroke:[self bounds]];
     CGContextStrokeEllipseInRect(context, strokeRect);
+    CGContextFillEllipseInRect(context, strokeRect);
     CGContextFillPath(context);
 }
 

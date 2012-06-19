@@ -8,6 +8,7 @@
 
 #import "BoardView.h"
 
+#import "DiscView.h"
 #import "Game.h"
 #import "Player.h"
 #import "Round.h"
@@ -127,20 +128,6 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     CGContextAddLineToPoint(context, boardCenterX + innerPointOffset, boardCenterY + innerPointOffset);
 
     CGContextStrokePath(context);
-
-    // Finally, draw the discs.
-    for (int i = 0; i < 2; i++) {
-        NSMutableArray *discPositionArray = [[round discPositions] objectAtIndex:i];
-        CGContextSetFillColorWithColor(context, ((UIColor *)[[self playerColors] objectAtIndex:i]).CGColor);
-        for (NSValue *discPositionValue in discPositionArray) {
-            CGPoint discPosition = [discPositionValue CGPointValue];
-
-            // Draw discs outside the 20s circle.
-            if ([self valueForPoint:discPosition] < 20) {
-                CGContextFillEllipseInRect(context, CGRectMake(discPosition.x - DISC_RADIUS, discPosition.y - DISC_RADIUS, DISC_RADIUS * 2, DISC_RADIUS * 2));
-            }
-        }
-    }
 }
 
 - (double)radiusOfPosition:(CGPoint)position {
@@ -187,9 +174,21 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         [[[round discPositions] objectAtIndex:playerIndex] addObject:[NSValue valueWithCGPoint:adjustedDiscPosition]];
 
         // Determine the value of the point and update the appropriate score.
-        [round adjustCounter:[self valueForPoint:adjustedDiscPosition]
+        int discValue = [self valueForPoint:adjustedDiscPosition];
+        [round adjustCounter:discValue
                  playerIndex:playerIndex
                    increment:YES];
+
+        // Add a disc subview for non-twenty discs.
+        if (discValue < 20) {
+            CGRect discFrame = CGRectMake(adjustedDiscPosition.x - DISC_RADIUS,
+                                          adjustedDiscPosition.y - DISC_RADIUS,
+                                          2 * DISC_RADIUS,
+                                          2 * DISC_RADIUS);
+            DiscView *discView = [[DiscView alloc] initWithFrame:discFrame
+                                                           value:discValue];
+            [self addSubview:discView];
+        }
 
         // Update the view.
         [self setNeedsDisplay];

@@ -48,11 +48,13 @@
 		8E6E90001582632600E5214D /* MyCrokinoleIcon-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6E8FFF1582632600E5214D /* MyCrokinoleIcon-114x114.png */; };
 		8E6E90021582633C00E5214D /* MyCrokinoleIcon-72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6E90011582633C00E5214D /* MyCrokinoleIcon-72x72.png */; };
 		8E6E90041582634100E5214D /* MyCrokinoleIcon-144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6E90031582634100E5214D /* MyCrokinoleIcon-144x144.png */; };
+		8E9F77FE159134E800FF5F21 /* CoreGraphicsUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9F77FD159134E800FF5F21 /* CoreGraphicsUtilities.m */; };
 		8EAE6A7D153F5B3300ECA3A7 /* GameOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A7C153F5B3300ECA3A7 /* GameOptionsViewController.m */; };
 		8EAE6A83153F603B00ECA3A7 /* GameOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAE6A82153F603B00ECA3A7 /* GameOptionsViewController.xib */; };
 		8EAE6A87153F643200ECA3A7 /* PlayerSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A85153F643200ECA3A7 /* PlayerSelectionViewController.m */; };
 		8EAE6A88153F643200ECA3A7 /* PlayerSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EAE6A86153F643200ECA3A7 /* PlayerSelectionViewController.xib */; };
 		8EAE6A8C1540A63000ECA3A7 /* CoreDataUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE6A8B1540A63000ECA3A7 /* CoreDataUtilities.m */; };
+		8EE063C9158C5171005D2626 /* DiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE063C8158C5171005D2626 /* DiscView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,8 @@
 		8E6E8FFF1582632600E5214D /* MyCrokinoleIcon-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MyCrokinoleIcon-114x114.png"; path = "../MyCrokinoleIcon-114x114.png"; sourceTree = "<group>"; };
 		8E6E90011582633C00E5214D /* MyCrokinoleIcon-72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MyCrokinoleIcon-72x72.png"; path = "../MyCrokinoleIcon-72x72.png"; sourceTree = "<group>"; };
 		8E6E90031582634100E5214D /* MyCrokinoleIcon-144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MyCrokinoleIcon-144x144.png"; path = "../MyCrokinoleIcon-144x144.png"; sourceTree = "<group>"; };
+		8E9F77FC159134E800FF5F21 /* CoreGraphicsUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreGraphicsUtilities.h; sourceTree = "<group>"; };
+		8E9F77FD159134E800FF5F21 /* CoreGraphicsUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreGraphicsUtilities.m; sourceTree = "<group>"; };
 		8EAE6A7B153F5B3300ECA3A7 /* GameOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOptionsViewController.h; sourceTree = "<group>"; };
 		8EAE6A7C153F5B3300ECA3A7 /* GameOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOptionsViewController.m; sourceTree = "<group>"; };
 		8EAE6A82153F603B00ECA3A7 /* GameOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOptionsViewController.xib; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 		8EAE6A86153F643200ECA3A7 /* PlayerSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerSelectionViewController.xib; sourceTree = "<group>"; };
 		8EAE6A8A1540A63000ECA3A7 /* CoreDataUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataUtilities.h; sourceTree = "<group>"; };
 		8EAE6A8B1540A63000ECA3A7 /* CoreDataUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataUtilities.m; sourceTree = "<group>"; };
+		8EE063C7158C5171005D2626 /* DiscView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscView.h; sourceTree = "<group>"; };
+		8EE063C8158C5171005D2626 /* DiscView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +270,8 @@
 			children = (
 				5077FE251582947E004184EE /* BoardView.h */,
 				5077FE261582947E004184EE /* BoardView.m */,
+				8EE063C7158C5171005D2626 /* DiscView.h */,
+				8EE063C8158C5171005D2626 /* DiscView.m */,
 				5055C95C1550B9940072917D /* GameSummaryView.h */,
 				5055C95D1550B9940072917D /* GameSummaryView.m */,
 				5055C95B1550B9790072917D /* NIBs */,
@@ -328,6 +336,8 @@
 			children = (
 				8EAE6A8A1540A63000ECA3A7 /* CoreDataUtilities.h */,
 				8EAE6A8B1540A63000ECA3A7 /* CoreDataUtilities.m */,
+				8E9F77FC159134E800FF5F21 /* CoreGraphicsUtilities.h */,
+				8E9F77FD159134E800FF5F21 /* CoreGraphicsUtilities.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -472,6 +482,8 @@
 				5055C95E1550B9940072917D /* GameSummaryView.m in Sources */,
 				5077FE2415828EEF004184EE /* VisualScorekeepingViewController.m in Sources */,
 				5077FE271582947E004184EE /* BoardView.m in Sources */,
+				8EE063C9158C5171005D2626 /* DiscView.m in Sources */,
+				8E9F77FE159134E800FF5F21 /* CoreGraphicsUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

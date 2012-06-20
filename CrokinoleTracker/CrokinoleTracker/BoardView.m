@@ -37,6 +37,33 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 
         [self setPlayerDiscViews:[NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], nil]];
 
+        // Initialize disc views for existing disc positions.
+        for (int i = 0; i < 2; i++) {
+            NSArray *playerDiscPositions = [[round discPositions] objectAtIndex:i];
+
+            for (int j = 0; j < [playerDiscPositions count]; j++) {
+                NSValue *discPositionValue = [playerDiscPositions objectAtIndex:j];
+                CGPoint discPosition = [discPositionValue CGPointValue];
+
+                int discValue = [self valueForPoint:discPosition];
+                if (discValue < 20) {
+                    CGRect discFrame = CGRectMake(discPosition.x - DISC_RADIUS,
+                                                  discPosition.y - DISC_RADIUS,
+                                                  2 * DISC_RADIUS,
+                                                  2 * DISC_RADIUS);
+                    DiscView *discView = [[DiscView alloc] initWithFrame:discFrame
+                                                                   value:discValue];
+
+                    // Add the disc view to the player's disc views.
+                    [[playerDiscViews objectAtIndex:0] addObject:discView];
+
+                    // Add the disc view as a subview.
+                    [self addSubview:discView];
+                }
+            }
+        }
+
+        // Set styling.
         [self setPlayerColors:[NSArray arrayWithObjects:[UIColor blackColor], [UIColor orangeColor], nil]];
         [self setLineWidth:2.0];
 

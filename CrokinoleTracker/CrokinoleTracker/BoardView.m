@@ -277,7 +277,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         return nil;
     }
 
-    // The given position needs to be (2 * DISC_RADIUS) + lineWidth away from all other disc positions.
+    // The given position needs to be (2 * DISC_RADIUS) - 2 away from all other disc positions.
+    // The -2 adjusts for rectangle insets.
     for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
         NSMutableArray *playerDiscs = [[round discPositions] objectAtIndex:playerIndex];
         for (NSValue *discPositionValue in playerDiscs) {
@@ -288,7 +289,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
             CGFloat distanceBetweenDiscs = sqrt(dx * dx + dy * dy);
 
             // To avoid imprecision when comparing doubles, we consider the difference.
-            double diff = (2 * DISC_RADIUS + lineWidth) - distanceBetweenDiscs;
+            double diff = (2 * DISC_RADIUS - 2) - distanceBetweenDiscs;
             if (diff > 0.1) {
                 return [NSValue valueWithCGPoint:discPosition];
             }
@@ -300,8 +301,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 
 - (CGPoint)adjustedPositionForNewDisc:(CGPoint)newDisc
                     collidingWithDisc:(CGPoint)existingDisc {
-    // We move the new disc away from the existing disc so that they are (2 * DISC_RADIUS) + lineWidth apart.
-    // To get the new disc's new center, we create a vector pointing from the existing to the new disc, normalize it, and then scale it by (2 * DISC_RADIUS) + lineWidth.
+    // We move the new disc away from the existing disc so that they are (2 * DISC_RADIUS) - 2 pixels apart. The -2 adjusts for rectangle insets.
+    // To get the new disc's new center, we create a vector pointing from the existing to the new disc, normalize it, and then scale it by (2 * DISC_RADIUS) - 2.
     double dx = newDisc.x - existingDisc.x;
     double dy = newDisc.y - existingDisc.y;
     double distanceBetweenDiscs = sqrt(dx * dx + dy * dy);
@@ -315,8 +316,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     double dyNormalized = dy / distanceBetweenDiscs;
 
     CGPoint newPosition = CGPointZero;
-    newPosition.x = existingDisc.x + (dxNormalized * ((2 * DISC_RADIUS) + lineWidth));
-    newPosition.y = existingDisc.y + (dyNormalized * ((2 * DISC_RADIUS) + lineWidth));
+    newPosition.x = existingDisc.x + (dxNormalized * (2 * DISC_RADIUS - 2));
+    newPosition.y = existingDisc.y + (dyNormalized * (2 * DISC_RADIUS - 2));
 
     // If they seem suitable, return the new co-ordinates.
     if ([self shouldConsiderDrawingNewDiscAtPosition:newPosition]) {

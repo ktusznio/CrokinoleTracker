@@ -10,6 +10,6 @@
 
 @interface CoreGraphicsUtilities : NSObject
 
-+ (CGRect) rectForOnePixelStroke:(CGRect)rect;
++ (CGRect)rectForOnePixelStroke:(CGRect)rect;
 
 @end

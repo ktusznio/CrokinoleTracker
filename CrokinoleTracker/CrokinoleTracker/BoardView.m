@@ -72,7 +72,10 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 
         // Create the player activation control.
         [self setActivePlayerSegmentControl:[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"", @"", nil]]];
-        [activePlayerSegmentControl setFrame:CGRectMake(0, 0, frame.size.width, SEGMENT_CONTROL_HEIGHT)];
+        [activePlayerSegmentControl setFrame:CGRectMake(0,
+                                                        0,
+                                                        frame.size.width,
+                                                        SEGMENT_CONTROL_HEIGHT)];
         [activePlayerSegmentControl setSelectedSegmentIndex:0];
         [self addSubview:activePlayerSegmentControl];
 
@@ -89,19 +92,31 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         // Calculate the circle bounds.
         double outerSquareWidth = 2 * fivesRadiusThreshold;
         // The outer square needs to account for the line width so that the circle isn't clipped.
-        [self setOuterCircleBounds:CGRectMake(lineWidth, boardYInset, outerSquareWidth - (2 * lineWidth), outerSquareWidth)];
+        [self setOuterCircleBounds:CGRectMake(lineWidth,
+                                              boardYInset,
+                                              outerSquareWidth - (2 * lineWidth),
+                                              outerSquareWidth)];
 
         double middleSquareWidth = 2 * tensRadiusThreshold;
         double middleSquareInset = (outerSquareWidth - middleSquareWidth) / 2.0;
-        [self setMiddleCircleBounds:CGRectMake(middleSquareInset, boardYInset + middleSquareInset, middleSquareWidth, middleSquareWidth)];
+        [self setMiddleCircleBounds:CGRectMake(middleSquareInset,
+                                               boardYInset + middleSquareInset,
+                                               middleSquareWidth,
+                                               middleSquareWidth)];
 
         double innerSquareWidth = 2 * fifteensRadiusThreshold;
         double innerSquareInset = (outerSquareWidth - innerSquareWidth) / 2.0;
-        [self setInnerCircleBounds:CGRectMake(innerSquareInset, boardYInset + innerSquareInset, innerSquareWidth, innerSquareWidth)];
+        [self setInnerCircleBounds:CGRectMake(innerSquareInset,
+                                              boardYInset + innerSquareInset,
+                                              innerSquareWidth,
+                                              innerSquareWidth)];
 
         double twentiesSquareWidth = 2 * twentiesRadiusThreshold;
         double twentiesSquareInset = (outerSquareWidth - twentiesSquareWidth) / 2.0;
-        [self setTwentiesCircleBounds:CGRectMake(twentiesSquareInset, boardYInset + twentiesSquareInset, twentiesSquareWidth, twentiesSquareWidth)];
+        [self setTwentiesCircleBounds:CGRectMake(twentiesSquareInset,
+                                                 boardYInset + twentiesSquareInset,
+                                                 twentiesSquareWidth,
+                                                 twentiesSquareWidth)];
 
         // Calculate the center of the board.
         double boardCenterX = frame.size.width / 2.0;
@@ -234,7 +249,10 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
             [UIView animateWithDuration:0.2
                              animations:^{
                                  // Slide the disc up 3 pixels.
-                                 [discView setFrame:CGRectMake(discFrame.origin.x, discFrame.origin.y - 3, discFrame.size.width, discFrame.size.height)];
+                                 [discView setFrame:CGRectMake(discFrame.origin.x,
+                                                               discFrame.origin.y - 3,
+                                                               discFrame.size.width,
+                                                               discFrame.size.height)];
                              } completion:^(BOOL finished) {
                                  // Then fade it out.
                                  [UIView animateWithDuration:0.2 animations:^{

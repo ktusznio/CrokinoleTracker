@@ -17,23 +17,27 @@
 - (id)initWithFrame:(CGRect)frame
               value:(int)aValue {
     self = [super initWithFrame:frame];
-    
+
     if (self) {
         [self setValue:aValue];
         [self setBackgroundColor:[UIColor clearColor]];
     }
-    
+
     return self;
 }
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0);
-    CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
-    CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
+
     CGRect strokeRect = [CoreGraphicsUtilities rectForOnePixelStroke:[self bounds]];
+
+    CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
     CGContextStrokeEllipseInRect(context, strokeRect);
+
+    CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
     CGContextFillEllipseInRect(context, strokeRect);
+
     CGContextFillPath(context);
 }
 

@@ -13,14 +13,14 @@
 @interface CoreDataUtilities : NSObject
 
 // CoreData helpers.
-+ (NSArray *) fetchEntitiesForEntityName:(NSString *)entityName;
-+ (NSManagedObject *) entityForEntityName:(NSString *)entityName
-                            attributeName:(NSString *)attributeName
-                           attributeValue:(NSString *)attributeValue;
-+ (NSManagedObject *) createEntityForEntityName:(NSString *)entityName
-                            attributeDictionary:(NSDictionary *)attributes;
-+ (void) saveManagedContext;
-+ (void) deleteEntity:(NSManagedObject *)entity;
++ (NSArray *)fetchEntitiesForEntityName:(NSString *)entityName;
++ (NSManagedObject *)entityForEntityName:(NSString *)entityName
+                           attributeName:(NSString *)attributeName
+                          attributeValue:(NSString *)attributeValue;
++ (NSManagedObject *)createEntityForEntityName:(NSString *)entityName
+                           attributeDictionary:(NSDictionary *)attributes;
++ (void)saveManagedContext;
++ (void)deleteEntity:(NSManagedObject *)entity;
 
 // Game helpers.
 + (Game *)createGameForPlayers:(NSArray *)players;

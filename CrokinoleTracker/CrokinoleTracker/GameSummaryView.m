@@ -47,7 +47,10 @@
                                                            options:nil] lastObject];
 
     CGRect outerFrame = [self frame];
-    CGRect innerFrame = CGRectMake(0, 0, outerFrame.size.width, outerFrame.size.height);
+    CGRect innerFrame = CGRectMake(0,
+                                   0,
+                                   outerFrame.size.width,
+                                   outerFrame.size.height);
     [gameSummaryView setFrame:innerFrame];
 
     [self addSubview:gameSummaryView];

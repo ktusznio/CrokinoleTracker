@@ -10,7 +10,7 @@
 
 @implementation CoreGraphicsUtilities
 
-+ (CGRect) rectForOnePixelStroke:(CGRect)rect {
++ (CGRect)rectForOnePixelStroke:(CGRect)rect {
     // When Core Graphics strokes a path, it draws the stroke down the middle of the exact edge of the path.
     // This results in 0.5 pixels being drawing inside the rectangle, and 0.5 being drawn outside.
     // Since half-pixels don't exist, Core Graphics uses anti-aliasing to draw both pixels, using a lighter shade on the outside pixel.

@@ -28,6 +28,8 @@
 @property (nonatomic) int playerOneStartingGameScore;
 @property (nonatomic) int playerTwoStartingGameScore;
 
+@property (strong, nonatomic) NSMutableArray *playerDiscViews;
+
 @property (nonatomic) double lineWidth;
 @property (strong, nonatomic) NSArray *playerColors;
 

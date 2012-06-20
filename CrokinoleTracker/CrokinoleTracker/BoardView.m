@@ -24,6 +24,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 @synthesize playerOneStartingGameScore, playerTwoStartingGameScore;
 @synthesize playerColors, lineWidth;
 @synthesize activePlayerSegmentControl;
+@synthesize playerDiscViews;
 
 - (id)initWithFrame:(CGRect)frame
               round:(Round *)aRound {
@@ -33,6 +34,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         [self setRound:aRound];
         [self setPlayerOneStartingGameScore:[[round game] playerOneScoreAtRound:round]];
         [self setPlayerTwoStartingGameScore:[[round game] playerTwoScoreAtRound:round]];
+
+        [self setPlayerDiscViews:[NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], nil]];
 
         [self setPlayerColors:[NSArray arrayWithObjects:[UIColor blackColor], [UIColor orangeColor], nil]];
         [self setLineWidth:2.0];
@@ -187,6 +190,11 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
                                           2 * DISC_RADIUS);
             DiscView *discView = [[DiscView alloc] initWithFrame:discFrame
                                                            value:discValue];
+
+            // Add the disc view to the player's disc views.
+            [[playerDiscViews objectAtIndex:playerIndex] addObject:discView];
+
+            // Add the disc view as a subview.
             [self addSubview:discView];
         }
 
@@ -277,12 +285,31 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     int activePlayerIndex = [activePlayerSegmentControl selectedSegmentIndex];
     NSMutableArray *playerDiscs = [[round discPositions] objectAtIndex:activePlayerIndex];
     if ([playerDiscs count] > 0) {
+        // Get the most recently added point for the active player.
         CGPoint lastPoint = [(NSValue *)[[[round discPositions] objectAtIndex:activePlayerIndex] lastObject] CGPointValue];
-        [round adjustCounter:[self valueForPoint:lastPoint]
+
+        // Subtract the value lastPoint from the active player's round score.
+        int lastPointValue = [self valueForPoint:lastPoint];
+        [round adjustCounter:lastPointValue
                  playerIndex:activePlayerIndex
                    increment:NO];
 
+        // Remove the last point from the player's disc co-ordinates.
         [playerDiscs removeLastObject];
+
+        // Remove the disc view at the last point, unless it's a twenty.
+        if (lastPointValue < 20) {
+            DiscView *discView = [[playerDiscViews objectAtIndex:activePlayerIndex] lastObject];
+            [[playerDiscViews objectAtIndex:activePlayerIndex] removeLastObject];
+            [UIView animateWithDuration:0.2
+                             animations:^{
+                                 discView.alpha = 0.0;
+                             }
+                             completion:^(BOOL finished) {
+                                 [discView removeFromSuperview];
+                             }];
+        }
+
         [self setNeedsDisplay];
     }
 }

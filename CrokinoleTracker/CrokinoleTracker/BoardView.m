@@ -222,6 +222,10 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
             [[playerDiscViews objectAtIndex:playerIndex] addObject:discView];
 
             // Add the disc view as a subview.
+            [discView setAlpha:0];
+            [UIView animateWithDuration:0.2 animations:^{
+                [discView setAlpha:1];
+            }];
             [self addSubview:discView];
         }
 
@@ -328,9 +332,10 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         if (lastPointValue < 20) {
             DiscView *discView = [[playerDiscViews objectAtIndex:activePlayerIndex] lastObject];
             [[playerDiscViews objectAtIndex:activePlayerIndex] removeLastObject];
+
             [UIView animateWithDuration:0.2
                              animations:^{
-                                 discView.alpha = 0.0;
+                                 [discView setAlpha:0];
                              }
                              completion:^(BOOL finished) {
                                  [discView removeFromSuperview];

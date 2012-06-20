@@ -286,11 +286,13 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 
             CGFloat dx = newDiscPosition.x - discPosition.x;
             CGFloat dy = newDiscPosition.y - discPosition.y;
-            CGFloat distanceBetweenDiscs = sqrt(dx * dx + dy * dy);
 
-            // To avoid imprecision when comparing doubles, we consider the difference.
-            double diff = (2 * DISC_RADIUS - 2) - distanceBetweenDiscs;
-            if (diff > 0.1) {
+            // We use squared values instead of taking the square root to find the actual distance between discs.
+            // As a result, we can compare integers.
+            CGFloat squaredDistanceBetweenDiscs = dx * dx + dy * dy;
+            CGFloat squaredMinimumDistanceBetweenDiscs = (2 * DISC_RADIUS - 2) * (2 * DISC_RADIUS - 2);
+
+            if (squaredDistanceBetweenDiscs < squaredMinimumDistanceBetweenDiscs) {
                 return [NSValue valueWithCGPoint:discPosition];
             }
         }

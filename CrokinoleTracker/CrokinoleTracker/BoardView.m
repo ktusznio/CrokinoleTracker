@@ -209,24 +209,38 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
                  playerIndex:playerIndex
                    increment:YES];
 
-        // Add a disc subview for non-twenty discs.
-        if (discValue < 20) {
-            CGRect discFrame = CGRectMake(adjustedDiscPosition.x - DISC_RADIUS,
-                                          adjustedDiscPosition.y - DISC_RADIUS,
-                                          2 * DISC_RADIUS,
-                                          2 * DISC_RADIUS);
-            DiscView *discView = [[DiscView alloc] initWithFrame:discFrame
-                                                           value:discValue];
+        // Add a disc subview.
+        CGRect discFrame = CGRectMake(adjustedDiscPosition.x - DISC_RADIUS,
+                                      adjustedDiscPosition.y - DISC_RADIUS,
+                                      2 * DISC_RADIUS,
+                                      2 * DISC_RADIUS);
+        DiscView *discView = [[DiscView alloc] initWithFrame:discFrame
+                                                       value:discValue];
 
+        if (discValue < 20) {
             // Add the disc view to the player's disc views.
             [[playerDiscViews objectAtIndex:playerIndex] addObject:discView];
 
             // Add the disc view as a subview.
             [discView setAlpha:0];
-            [UIView animateWithDuration:0.2 animations:^{
-                [discView setAlpha:1];
-            }];
+            [UIView animateWithDuration:0.2
+                             animations:^{
+                                 [discView setAlpha:1];
+                             }];
             [self addSubview:discView];
+        } else {
+            // For twenties, show the disc and then animate it out.
+            [self addSubview:discView];
+            [UIView animateWithDuration:0.2
+                             animations:^{
+                                 // Slide the disc up 3 pixels.
+                                 [discView setFrame:CGRectMake(discFrame.origin.x, discFrame.origin.y - 3, discFrame.size.width, discFrame.size.height)];
+                             } completion:^(BOOL finished) {
+                                 // Then fade it out.
+                                 [UIView animateWithDuration:0.2 animations:^{
+                                     [discView setAlpha:0];
+                                 }];
+                             }];
         }
 
         // Update the view.

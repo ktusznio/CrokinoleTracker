@@ -45,7 +45,8 @@
 - (CGPoint)adjustedPositionForNewDisc:(CGPoint)newDisc
                     collidingWithDisc:(CGPoint)existingDisc;
 - (void)addDiscViewAtPosition:(CGPoint)position
-                  playerIndex:(int)playerIndex;
+                  playerIndex:(int)playerIndex
+                     animated:(BOOL)animated;
 - (void)removeLastDiscForActivePlayer;
 - (int)valueForPoint:(CGPoint)point;
 

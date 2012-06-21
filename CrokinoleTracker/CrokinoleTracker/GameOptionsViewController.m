@@ -9,7 +9,9 @@
 #import "GameOptionsViewController.h"
 
 #import "AppDelegate.h"
+#import "BoardView.h"
 #import "CoreDataUtilities.h"
+#import "DiscView.h"
 #import "Game.h"
 #import "Player.h"
 #import "PlayerSelectionViewController.h"
@@ -36,6 +38,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    // Draw disc views to represent player colors.
+    UIView *playerOneDiscView = [[DiscView alloc] initWithFrame:CGRectMake(50, 121, 20, 20)
+                                                          value:0
+                                                      fillColor:[[BoardView playerColors] objectAtIndex:0]];
+    [[self view] addSubview:playerOneDiscView];
+
+    UIView *playerTwoDiscView = [[DiscView alloc] initWithFrame:CGRectMake(250, 196, 20, 20)
+                                                          value:0
+                                                      fillColor:[[BoardView playerColors] objectAtIndex:1]];
+    [[self view] addSubview:playerTwoDiscView];
 
     // Change the text on the back bar button item.
     UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"

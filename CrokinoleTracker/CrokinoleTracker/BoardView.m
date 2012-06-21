@@ -37,22 +37,9 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 
         [self setPlayerDiscViews:[NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], nil]];
 
-        // Initialize disc views for existing disc positions.
-        for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
-            NSArray *playerDiscPositions = [[round discPositions] objectAtIndex:playerIndex];
-            for (int j = 0; j < [playerDiscPositions count]; j++) {
-                NSValue *discPositionValue = [playerDiscPositions objectAtIndex:j];
-                CGPoint discPosition = [discPositionValue CGPointValue];
-                [self addDiscViewAtPosition:discPosition
-                                playerIndex:playerIndex];
-            }
-        }
-
         // Set styling.
         [self setPlayerColors:[NSArray arrayWithObjects:[UIColor blackColor], [UIColor orangeColor], nil]];
         [self setLineWidth:2.0];
-
-        // Make the background transparent.
         [self setBackgroundColor:[UIColor clearColor]];
 
         // Create the player activation control.
@@ -107,6 +94,17 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         double boardCenterX = frame.size.width / 2.0;
         double boardCenterY = boardYInset + (boardWidth / 2.0);
         [self setBoardCenter:CGPointMake(boardCenterX, boardCenterY)];
+
+        // Initialize disc views for existing disc positions.
+        for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
+            NSArray *playerDiscPositions = [[round discPositions] objectAtIndex:playerIndex];
+            for (int j = 0; j < [playerDiscPositions count]; j++) {
+                NSValue *discPositionValue = [playerDiscPositions objectAtIndex:j];
+                CGPoint discPosition = [discPositionValue CGPointValue];
+                [self addDiscViewAtPosition:discPosition
+                                playerIndex:playerIndex];
+            }
+        }
 
         // Prepare a tap gesture recognizer for the board.
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self

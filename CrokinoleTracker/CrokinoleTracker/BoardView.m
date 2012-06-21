@@ -38,28 +38,13 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         [self setPlayerDiscViews:[NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], nil]];
 
         // Initialize disc views for existing disc positions.
-        for (int i = 0; i < 2; i++) {
-            NSArray *playerDiscPositions = [[round discPositions] objectAtIndex:i];
-
+        for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
+            NSArray *playerDiscPositions = [[round discPositions] objectAtIndex:playerIndex];
             for (int j = 0; j < [playerDiscPositions count]; j++) {
                 NSValue *discPositionValue = [playerDiscPositions objectAtIndex:j];
                 CGPoint discPosition = [discPositionValue CGPointValue];
-
-                int discValue = [self valueForPoint:discPosition];
-                if (discValue < 20) {
-                    CGRect discFrame = CGRectMake(discPosition.x - DISC_RADIUS,
-                                                  discPosition.y - DISC_RADIUS,
-                                                  2 * DISC_RADIUS,
-                                                  2 * DISC_RADIUS);
-                    DiscView *discView = [[DiscView alloc] initWithFrame:discFrame
-                                                                   value:discValue];
-
-                    // Add the disc view to the player's disc views.
-                    [[playerDiscViews objectAtIndex:0] addObject:discView];
-
-                    // Add the disc view as a subview.
-                    [self addSubview:discView];
-                }
+                [self addDiscSubviewAtPosition:discPosition
+                                   playerIndex:playerIndex];
             }
         }
 
@@ -225,41 +210,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
                    increment:YES];
 
         // Add a disc subview.
-        CGRect discFrame = CGRectMake(adjustedDiscPosition.x - DISC_RADIUS,
-                                      adjustedDiscPosition.y - DISC_RADIUS,
-                                      2 * DISC_RADIUS,
-                                      2 * DISC_RADIUS);
-        DiscView *discView = [[DiscView alloc] initWithFrame:discFrame
-                                                       value:discValue];
-
-        if (discValue < 20) {
-            // Add the disc view to the player's disc views.
-            [[playerDiscViews objectAtIndex:playerIndex] addObject:discView];
-
-            // Add the disc view as a subview.
-            [discView setAlpha:0];
-            [UIView animateWithDuration:0.2
-                             animations:^{
-                                 [discView setAlpha:1];
-                             }];
-            [self addSubview:discView];
-        } else {
-            // For twenties, show the disc and then animate it out.
-            [self addSubview:discView];
-            [UIView animateWithDuration:0.2
-                             animations:^{
-                                 // Slide the disc up 3 pixels.
-                                 [discView setFrame:CGRectMake(discFrame.origin.x,
-                                                               discFrame.origin.y - 3,
-                                                               discFrame.size.width,
-                                                               discFrame.size.height)];
-                             } completion:^(BOOL finished) {
-                                 // Then fade it out.
-                                 [UIView animateWithDuration:0.2 animations:^{
-                                     [discView setAlpha:0];
-                                 }];
-                             }];
-        }
+        [self addDiscSubviewAtPosition:adjustedDiscPosition
+                           playerIndex:playerIndex];
 
         // Update the view.
         [self setNeedsDisplay];
@@ -344,6 +296,46 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         return newPosition;
     } else {
         return newDisc;
+    }
+}
+
+- (void)addDiscSubviewAtPosition:(CGPoint)position
+                     playerIndex:(int)playerIndex {
+    CGRect discFrame = CGRectMake(position.x - DISC_RADIUS,
+                                  position.y - DISC_RADIUS,
+                                  2 * DISC_RADIUS,
+                                  2 * DISC_RADIUS);
+    int discValue = [self valueForPoint:position];
+    DiscView *discView = [[DiscView alloc] initWithFrame:discFrame
+                                                   value:discValue];
+
+    if (discValue < 20) {
+        // Add the disc view to the player's disc views.
+        [[playerDiscViews objectAtIndex:playerIndex] addObject:discView];
+
+        // Add the disc view as a subview.
+        [discView setAlpha:0];
+        [UIView animateWithDuration:0.2
+                         animations:^{
+                             [discView setAlpha:1];
+                         }];
+        [self addSubview:discView];
+    } else {
+        // For twenties, show the disc and then animate it out.
+        [self addSubview:discView];
+        [UIView animateWithDuration:0.2
+                         animations:^{
+                             // Slide the disc up 3 pixels.
+                             [discView setFrame:CGRectMake(discFrame.origin.x,
+                                                           discFrame.origin.y - 3,
+                                                           discFrame.size.width,
+                                                           discFrame.size.height)];
+                         } completion:^(BOOL finished) {
+                             // Then fade it out.
+                             [UIView animateWithDuration:0.2 animations:^{
+                                 [discView setAlpha:0];
+                             }];
+                         }];
     }
 }
 

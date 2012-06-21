@@ -44,8 +44,8 @@
 - (NSValue *)discThatCollidesWithDiscAtPosition:(CGPoint)newDiscPosition;
 - (CGPoint)adjustedPositionForNewDisc:(CGPoint)newDisc
                     collidingWithDisc:(CGPoint)existingDisc;
-- (void)addDiscSubviewAtPosition:(CGPoint)position
-                     playerIndex:(int)playerIndex;
+- (void)addDiscViewAtPosition:(CGPoint)position
+                  playerIndex:(int)playerIndex;
 - (void)removeLastDiscForActivePlayer;
 - (int)valueForPoint:(CGPoint)point;
 

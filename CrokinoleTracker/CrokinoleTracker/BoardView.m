@@ -43,8 +43,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
             for (int j = 0; j < [playerDiscPositions count]; j++) {
                 NSValue *discPositionValue = [playerDiscPositions objectAtIndex:j];
                 CGPoint discPosition = [discPositionValue CGPointValue];
-                [self addDiscSubviewAtPosition:discPosition
-                                   playerIndex:playerIndex];
+                [self addDiscViewAtPosition:discPosition
+                                playerIndex:playerIndex];
             }
         }
 
@@ -210,8 +210,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
                    increment:YES];
 
         // Add a disc subview.
-        [self addDiscSubviewAtPosition:adjustedDiscPosition
-                           playerIndex:playerIndex];
+        [self addDiscViewAtPosition:adjustedDiscPosition
+                        playerIndex:playerIndex];
 
         // Update the view.
         [self setNeedsDisplay];
@@ -299,8 +299,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     }
 }
 
-- (void)addDiscSubviewAtPosition:(CGPoint)position
-                     playerIndex:(int)playerIndex {
+- (void)addDiscViewAtPosition:(CGPoint)position
+                  playerIndex:(int)playerIndex {
     CGRect discFrame = CGRectMake(position.x - DISC_RADIUS,
                                   position.y - DISC_RADIUS,
                                   2 * DISC_RADIUS,

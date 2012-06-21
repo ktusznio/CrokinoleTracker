@@ -32,7 +32,6 @@
 @property (strong, nonatomic) NSMutableArray *playerDiscViews;
 
 @property (nonatomic) double lineWidth;
-@property (strong, nonatomic) NSArray *playerColors;
 
 @property (strong, nonatomic) UISegmentedControl *activePlayerSegmentControl;
 
@@ -50,5 +49,6 @@
                      animated:(BOOL)animated;
 - (void)removeLastDiscForActivePlayer;
 - (int)valueForPoint:(CGPoint)point;
++ (NSArray *)playerColors;
 
 @end

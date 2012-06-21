@@ -21,7 +21,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 @synthesize discRadius, twentiesRadiusThreshold, fifteensRadiusThreshold, tensRadiusThreshold, fivesRadiusThreshold;
 @synthesize twentiesCircleBounds, outerCircleBounds, middleCircleBounds, innerCircleBounds;
 @synthesize playerOneStartingGameScore, playerTwoStartingGameScore;
-@synthesize playerColors, lineWidth;
+@synthesize lineWidth;
 @synthesize activePlayerSegmentControl;
 @synthesize playerDiscViews;
 
@@ -37,7 +37,6 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         [self setPlayerDiscViews:[NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], nil]];
 
         // Set styling.
-        [self setPlayerColors:[NSArray arrayWithObjects:[UIColor blackColor], [UIColor orangeColor], nil]];
         [self setLineWidth:2.0];
         [self setBackgroundColor:[UIColor clearColor]];
 
@@ -313,7 +312,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     int discValue = [self valueForPoint:position];
     DiscView *discView = [[DiscView alloc] initWithFrame:discFrame
                                                    value:discValue
-                                               fillColor:[playerColors objectAtIndex:playerIndex]];
+                                               fillColor:[[BoardView playerColors] objectAtIndex:playerIndex]];
 
     if (discValue < 20) {
         // Add the disc view to the player's disc views.
@@ -399,5 +398,9 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 
     return 0;
 }
+
++ (NSArray *)playerColors {
+    return [NSArray arrayWithObjects:[UIColor blackColor], [UIColor orangeColor], nil];
+};
 
 @end

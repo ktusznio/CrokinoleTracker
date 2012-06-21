@@ -307,7 +307,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
                                   2 * DISC_RADIUS);
     int discValue = [self valueForPoint:position];
     DiscView *discView = [[DiscView alloc] initWithFrame:discFrame
-                                                   value:discValue];
+                                                   value:discValue
+                                               fillColor:[playerColors objectAtIndex:playerIndex]];
 
     if (discValue < 20) {
         // Add the disc view to the player's disc views.

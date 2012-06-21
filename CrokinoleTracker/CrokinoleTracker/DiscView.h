@@ -12,7 +12,10 @@
 
 @property (nonatomic) int value;
 
+@property (strong, nonatomic) UIColor *fillColor;
+
 - (id)initWithFrame:(CGRect)frame
-              value:(int)aValue;
+              value:(int)aValue
+              fillColor:(UIColor *)aFillColor;
 
 @end

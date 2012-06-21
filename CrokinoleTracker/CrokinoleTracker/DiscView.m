@@ -13,13 +13,16 @@
 @implementation DiscView
 
 @synthesize value;
+@synthesize fillColor;
 
 - (id)initWithFrame:(CGRect)frame
-              value:(int)aValue {
+              value:(int)aValue
+          fillColor:(UIColor *)aFillColor {
     self = [super initWithFrame:frame];
 
     if (self) {
         [self setValue:aValue];
+        [self setFillColor:aFillColor];
         [self setBackgroundColor:[UIColor clearColor]];
     }
 
@@ -35,7 +38,7 @@
     CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
     CGContextStrokeEllipseInRect(context, strokeRect);
 
-    CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
+    CGContextSetFillColorWithColor(context, fillColor.CGColor);
     CGContextFillEllipseInRect(context, strokeRect);
 
     CGContextFillPath(context);

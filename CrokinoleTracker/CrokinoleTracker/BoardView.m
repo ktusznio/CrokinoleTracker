@@ -13,13 +13,12 @@
 #import "Player.h"
 #import "Round.h"
 
-const double DISC_RADIUS = 7.5;
 const double SEGMENT_CONTROL_HEIGHT = 30;
 
 @implementation BoardView
 
 @synthesize round, boardCenter, boardYInset;
-@synthesize twentiesRadiusThreshold, fifteensRadiusThreshold, tensRadiusThreshold, fivesRadiusThreshold;
+@synthesize discRadius, twentiesRadiusThreshold, fifteensRadiusThreshold, tensRadiusThreshold, fivesRadiusThreshold;
 @synthesize twentiesCircleBounds, outerCircleBounds, middleCircleBounds, innerCircleBounds;
 @synthesize playerOneStartingGameScore, playerTwoStartingGameScore;
 @synthesize playerColors, lineWidth;
@@ -51,9 +50,10 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         [activePlayerSegmentControl setSelectedSegmentIndex:0];
         [self addSubview:activePlayerSegmentControl];
 
-        // Calculate the radius scoring thresholds.
+        // Calculate the disc radius and radius scoring thresholds.
         double boardWidth = frame.size.width;
-        [self setTwentiesRadiusThreshold:DISC_RADIUS + 6.0];
+        [self setDiscRadius:boardWidth / 38.25];
+        [self setTwentiesRadiusThreshold:[self discRadius] * 1.5];
         [self setFifteensRadiusThreshold:boardWidth / 6.0];
         [self setTensRadiusThreshold:boardWidth / 3.0];
         [self setFivesRadiusThreshold:boardWidth / 2.0];
@@ -220,7 +220,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 
 - (BOOL)shouldConsiderDrawingNewDiscAtPosition:(CGPoint)position {
     // The new disc needs to be inside the board.
-    if ([self radiusOfPosition:position] >= (fivesRadiusThreshold - DISC_RADIUS)) {
+    if ([self radiusOfPosition:position] >= (fivesRadiusThreshold - [self discRadius])) {
         return NO;
     }
 
@@ -247,7 +247,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         return nil;
     }
 
-    // The given position needs to be (2 * DISC_RADIUS) - 2 away from all other non-twenty disc positions.
+    // The given position needs to be (2 * [self discRadius]) - 2 away from all other non-twenty disc positions.
     // The -2 adjusts for rectangle insets.
     for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
         NSMutableArray *playerDiscs = [[round discPositions] objectAtIndex:playerIndex];
@@ -264,7 +264,7 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
             // We use squared values instead of taking the square root to find the actual distance between discs.
             // As a result, we can compare integers.
             CGFloat squaredDistanceBetweenDiscs = dx * dx + dy * dy;
-            CGFloat squaredMinimumDistanceBetweenDiscs = (2 * DISC_RADIUS - 2) * (2 * DISC_RADIUS - 2);
+            CGFloat squaredMinimumDistanceBetweenDiscs = (2 * [self discRadius] - 2) * (2 * [self discRadius] - 2);
 
             if (squaredDistanceBetweenDiscs < squaredMinimumDistanceBetweenDiscs) {
                 return [NSValue valueWithCGPoint:discPosition];
@@ -277,8 +277,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 
 - (CGPoint)adjustedPositionForNewDisc:(CGPoint)newDisc
                     collidingWithDisc:(CGPoint)existingDisc {
-    // We move the new disc away from the existing disc so that they are (2 * DISC_RADIUS) - 2 pixels apart. The -2 adjusts for rectangle insets.
-    // To get the new disc's new center, we create a vector pointing from the existing to the new disc, normalize it, and then scale it by (2 * DISC_RADIUS) - 2.
+    // We move the new disc away from the existing disc so that they are (2 * [self discRadius]) - 2 pixels apart. The -2 adjusts for rectangle insets.
+    // To get the new disc's new center, we create a vector pointing from the existing to the new disc, normalize it, and then scale it by (2 * [self discRadius]) - 2.
     double dx = newDisc.x - existingDisc.x;
     double dy = newDisc.y - existingDisc.y;
     double distanceBetweenDiscs = sqrt(dx * dx + dy * dy);
@@ -292,8 +292,8 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
     double dyNormalized = dy / distanceBetweenDiscs;
 
     CGPoint newPosition = CGPointZero;
-    newPosition.x = existingDisc.x + (dxNormalized * (2 * DISC_RADIUS - 2));
-    newPosition.y = existingDisc.y + (dyNormalized * (2 * DISC_RADIUS - 2));
+    newPosition.x = existingDisc.x + (dxNormalized * (2 * [self discRadius] - 2));
+    newPosition.y = existingDisc.y + (dyNormalized * (2 * [self discRadius] - 2));
 
     // If they seem suitable, return the new co-ordinates.
     if ([self shouldConsiderDrawingNewDiscAtPosition:newPosition]) {
@@ -306,10 +306,10 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 - (void)addDiscViewAtPosition:(CGPoint)position
                   playerIndex:(int)playerIndex
                      animated:(BOOL)animated {
-    CGRect discFrame = CGRectMake(position.x - DISC_RADIUS,
-                                  position.y - DISC_RADIUS,
-                                  2 * DISC_RADIUS,
-                                  2 * DISC_RADIUS);
+    CGRect discFrame = CGRectMake(position.x - [self discRadius],
+                                  position.y - [self discRadius],
+                                  2 * [self discRadius],
+                                  2 * [self discRadius]);
     int discValue = [self valueForPoint:position];
     DiscView *discView = [[DiscView alloc] initWithFrame:discFrame
                                                    value:discValue
@@ -387,13 +387,13 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
 - (int)valueForPoint:(CGPoint)point {
     double radius = [self radiusOfPosition:point];
 
-    if (radius < twentiesRadiusThreshold - DISC_RADIUS) {
+    if (radius < twentiesRadiusThreshold - [self lineWidth]) {
         return 20;
-    } else if (radius < fifteensRadiusThreshold - DISC_RADIUS) {
+    } else if (radius < fifteensRadiusThreshold - [self discRadius]) {
         return 15;
-    } else if (radius < tensRadiusThreshold - DISC_RADIUS) {
+    } else if (radius < tensRadiusThreshold - [self discRadius]) {
         return 10;
-    } else if (radius < fivesRadiusThreshold - DISC_RADIUS) {
+    } else if (radius < fivesRadiusThreshold - [self discRadius]) {
         return 5;
     }
 

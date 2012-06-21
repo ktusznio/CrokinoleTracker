@@ -16,6 +16,7 @@
 
 @property (nonatomic) CGPoint boardCenter;
 @property (nonatomic) double boardYInset;
+@property (nonatomic) double discRadius;
 @property (nonatomic) double twentiesRadiusThreshold;
 @property (nonatomic) double fifteensRadiusThreshold;
 @property (nonatomic) double tensRadiusThreshold;

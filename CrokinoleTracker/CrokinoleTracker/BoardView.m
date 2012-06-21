@@ -247,11 +247,15 @@ const double SEGMENT_CONTROL_HEIGHT = 30;
         return nil;
     }
 
-    // The given position needs to be (2 * DISC_RADIUS) - 2 away from all other disc positions.
+    // The given position needs to be (2 * DISC_RADIUS) - 2 away from all other non-twenty disc positions.
     // The -2 adjusts for rectangle insets.
     for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
         NSMutableArray *playerDiscs = [[round discPositions] objectAtIndex:playerIndex];
         for (NSValue *discPositionValue in playerDiscs) {
+            if ([self valueForPoint:[discPositionValue CGPointValue]] >= 20) {
+                continue;
+            }
+
             CGPoint discPosition = [discPositionValue CGPointValue];
 
             CGFloat dx = newDiscPosition.x - discPosition.x;

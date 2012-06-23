@@ -30,9 +30,7 @@ const int WINNING_SCORE = 100;
 - (int)playerOneScoreAtRound:(Round *)lastRound {
     int gameScore = 0;
 
-    for (int i = 0; i < [[self rounds] count]; i++) {
-        Round *round = [[self rounds] objectAtIndex:i];
-
+    for (Round *round in [self rounds]) {
         // If this is the given round, exit the loop.  We don't want to add scores for this or any further rounds.
         if (round == lastRound) {
             break;
@@ -67,9 +65,7 @@ const int WINNING_SCORE = 100;
 - (int)playerTwoScoreAtRound:(Round *)lastRound {
     int gameScore = 0;
 
-    for (int i = 0; i < [[self rounds] count]; i++) {
-        Round *round = [[self rounds] objectAtIndex:i];
-
+    for (Round *round in [self rounds]) {
         // If this is the given round, exit the loop.  We don't want to add scores for this or any further rounds.
         if (round == lastRound) {
             break;
